@@ -2,18 +2,24 @@
 from ..database import UserTable
 
 from sqlmodel import  select
-from fastapi import HTTPException, APIRouter
+from fastapi import HTTPException, APIRouter, Depends
 from ..dependencies import SessionDep
 from ..libs.schemas import LoginInfo
-from ..libs.auth_jwt import sign_jwt
+from ..libs.auth_jwt import sign_jwt, JWTBearer, decode_jwt, get_current_user
+from ..models import Role
 router = APIRouter(
     prefix="/user",
     tags=["user"],
     responses={404: {"description": "Not found"}},
 )
-
-@router.get("/")
-def read_all_user(session: SessionDep):
+@router.get("/whoami", dependencies = [Depends(JWTBearer())])
+def whoami(session: SessionDep, current_user = Depends(get_current_user)):
+    return session.exec(select(UserTable).where(UserTable.id == current_user.get("user_id"))).first()
+@router.get("/", dependencies=[Depends(JWTBearer())])
+def read_all_user(session: SessionDep, current_user = Depends(get_current_user)):
+    role = session.exec(select(UserTable).where(UserTable.id == current_user.get("user_id"))).first().role
+    if not role in [Role.STAFF, Role.ADMIN]:
+        raise HTTPException(status_code=401, detail="Unauthorized")
     return session.exec(select(UserTable)).all()
 
 @router.get("/{user_id}")
@@ -25,9 +31,13 @@ def read_spec_user(user_id: int, session: SessionDep):
 
 @router.post("/add")
 def add_user(user: UserTable, session: SessionDep):
-    session.add(user)
-    session.commit()
-    session.refresh(user)
+    try:
+        session.add(user)
+        session.commit()
+        session.refresh(user)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail="User already exists")
+    
     return user
 
 @router.put("/update/{user_id}")
@@ -46,11 +56,14 @@ def update_user(user_id: int, user: UserTable, session: SessionDep):
     session.refresh(user)
     return user
 
-@router.delete("/delete/{user_id}")
-def delete_user(user_id: int, session: SessionDep):
+@router.delete("/delete/{user_id}",  dependencies = [Depends(JWTBearer())])
+def delete_user(user_id: int, session: SessionDep, current_user = Depends(get_current_user)):
+    role = session.exec(select(UserTable).where(UserTable.id == current_user.get("user_id"))).first().role
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     if user is None:
         raise HTTPException(status_code=404, detail="User not found")
+    if role != Role.ADMIN:
+        raise HTTPException(status_code=401, detail="Unauthorized")
     session.delete(user)
     session.commit()
     return user
