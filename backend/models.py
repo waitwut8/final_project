@@ -11,7 +11,7 @@ class Role(str, Enum):
     STAFF = "staff"
     GUEST = "guest"
 class UserTable(SQLModel, table=True):
-    __table_arge__ = (UniqueConstraint('username'))
+    __table_args__ = (UniqueConstraint('username', name = "abc"),)
     id: Optional[int] = Field(default=None, primary_key=True)
     username: str
     email: str

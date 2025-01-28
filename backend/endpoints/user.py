@@ -6,6 +6,9 @@ from ..dependencies import SessionDep
 from ..libs.schemas import LoginInfo
 from ..libs.auth_jwt import sign_jwt, JWTBearer, decode_jwt, get_current_user
 from ..models import Role
+from ..utils import hash_password, verify_password
+
+from ..libs.lib_sender import *
 
 router = APIRouter(
     prefix="/user",
@@ -45,11 +48,26 @@ def read_spec_user(user_id: int, session: SessionDep):
 
 @router.post("/add")
 def add_user(user: UserTable, session: SessionDep):
+    user.password = hash_password(user.password)
     try:
+        print(user)
         session.add(user)
         session.commit()
         session.refresh(user)
+        send_email(
+            "waitwut8@gmail.com",
+            "waitwut8@gmail.com",
+            "You have registered",
+            generic_email(
+                {
+                    "first": user.first_name,
+                    "user": user.username,
+                },
+                "registration.html",
+            ),
+        )
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=400, detail="User already exists")
 
     return user
@@ -94,14 +112,17 @@ def delete_user(
 
 
 def check_login(user: LoginInfo, session: SessionDep) -> object:
-    user = session.exec(
-        select(UserTable)
-        .where(UserTable.username == user.username)
-        .where(UserTable.password == user.password)
+
+    user_info = session.exec(
+        select(UserTable).where(UserTable.username == user.username)
     ).first()
-    if user != None:
-        return user
-    return {}
+    if user_info is None:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    if verify_password(user.password, user_info.password):
+        return user_info
+    else:
+        raise HTTPException(status_code=401, detail="Login failed")
 
 
 @router.post("/login")
