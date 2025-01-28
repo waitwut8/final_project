@@ -3,7 +3,7 @@
 import { defineComponent, ref } from 'vue'
 // import axios from 'axios'
 import api from '../plugins/api'
-import {AxiosInstance} from 'axios'
+import type { AxiosInstance } from 'axios';
 
 
 declare module '@vue/runtime-core' {
@@ -15,7 +15,7 @@ declare module '@vue/runtime-core' {
 
 export default defineComponent({
     methods: {
-        login(event){
+        login(event: { srcElement: { value: any; }[]; }){
             const user = event.srcElement[0].value
             const pass = event.srcElement[1].value
             
@@ -24,8 +24,17 @@ export default defineComponent({
                 password: pass
             }).then((response) => {
                 console.log(response)
-            }).catch((error) => {
-                console.log(error)
+                localStorage.setItem("token", response.data.access_token)
+                localStorage.setItem("refresh", response.data.refresh_token)
+                
+                
+            })
+            
+        },
+        redirect(path: string){
+            this.$router.push(path).then(()=>{
+                
+                this.$router.go(0)
             })
         }
     }
@@ -51,7 +60,9 @@ export default defineComponent({
     <hr>
 
     <div class="text-center">
-        <router-link to = "/register">A</router-link>
+        <!-- <router-link to = "/register">Register</router-link> -->
+         <button @click = "redirect('/profile')">See your profile</button>
+        <!-- <router-link to = "/profile">See your profile</router-link> -->
     </div>
     <router-view></router-view>
 </div>

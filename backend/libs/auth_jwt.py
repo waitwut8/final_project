@@ -31,7 +31,7 @@ def decode_jwt(token: str) -> dict:
         return {}
 
 
-def sign_jwt(user_name: str, user_id: int, expiration: int = ExpiryTime.FIFTEEN_MINUTES) -> dict:
+def sign_jwt(user_name: str, user_id: int, expiration: int = ExpiryTime.ONE_DAY) -> dict:
 
     now_timestamp = datetime.now(timezone.utc).timestamp()
     expiry_time = now_timestamp + expiration
