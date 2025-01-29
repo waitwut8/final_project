@@ -36,6 +36,7 @@ import api from '../plugins/api'
 api.get("/user/whoami").then((res) => {
     console.log(res)
     let data = res.data
+    console.log(data)
 
             document.getElementById("email").value = data.email
 

@@ -19,4 +19,6 @@ class UserTable(SQLModel, table=True):
     first_name: str
     last_name: str
     role: Role
+    phone: str
+    active: bool
 

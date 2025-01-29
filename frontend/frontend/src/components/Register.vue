@@ -1,7 +1,11 @@
 <script lang = "ts">
 import { defineComponent, ref } from 'vue'
 import api from '../plugins/api'
+let users = ref("")
 
+api.get("/user/").then((res) => {
+    users.value = res.data
+})
 export default defineComponent({
     methods: {
         register(event){
@@ -11,6 +15,7 @@ export default defineComponent({
             const pass = event.srcElement[2].value
             const first = event.srcElement[3].value
             const last = event.srcElement[4].value
+            const phone = event.srcElement[5].value
             console.log(
                 {
                 username: user,
@@ -28,6 +33,8 @@ export default defineComponent({
                 first_name: first,
                 last_name: last,
                 role: "USER",
+                phone: phone,
+                active: true
             }).then((response) => {
                 console.log(response)
             }).catch((error) => {
@@ -66,6 +73,10 @@ export default defineComponent({
         <div>
             <label for="lastname">Last Name:</label>
             <input type="text" id="lastname"  required>
+        </div>
+        <div>
+            <label for="lastname">Phone Number:</label>
+            <input type="tel" id="lastname"  required>
         </div>
         <button>Register</button>
     </form>

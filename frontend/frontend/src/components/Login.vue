@@ -18,7 +18,7 @@ export default defineComponent({
         login(event: { srcElement: { value: any; }[]; }){
             const user = event.srcElement[0].value
             const pass = event.srcElement[1].value
-            
+            api.get("/")
             api.post("/user/login" , {
                 username: user,
                 password: pass
@@ -26,6 +26,16 @@ export default defineComponent({
                 console.log(response)
                 localStorage.setItem("token", response.data.access_token)
                 localStorage.setItem("refresh", response.data.refresh_token)
+                api.get("/user/whoami").then((res) => {
+                    console.log(res)
+                    let data = res.data
+                    let role = data.role
+                    if(role == "admin"){
+                        this.$router.push("/admin_u").then(()=>{
+                            this.$router.go(0)
+                        })
+                    }
+                })
                 
                 
             })

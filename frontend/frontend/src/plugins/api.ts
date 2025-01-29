@@ -19,10 +19,7 @@ api.interceptors.response.use(function (config) {
   ,
   async function (error) {
 
-    if (
-      error.status === 401
-
-    ) {
+    
       console.error("oh no")
 
       let res = await api.post("/user/refresh",
@@ -33,10 +30,10 @@ api.interceptors.response.use(function (config) {
           }
         }
       )
-      console.log(res)
-      if (res.status === 200) {
+      console.log(res )
+      if (res.status == 200) {
         localStorage.setItem("access_token", res.data.access_token);
-        return api.request(error.config);
+        
       }
       else {
         localStorage.removeItem("access_token");
@@ -51,7 +48,7 @@ api.interceptors.response.use(function (config) {
 
 
 
-    }
+    
 
     return Promise.reject(error);
   }

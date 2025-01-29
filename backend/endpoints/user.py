@@ -1,7 +1,7 @@
 from ..database import UserTable
 
 from sqlmodel import select
-from fastapi import HTTPException, APIRouter, Depends
+from fastapi import HTTPException, APIRouter, Depends, Request, Response
 from ..dependencies import SessionDep
 from ..libs.schemas import LoginInfo
 from ..libs.auth_jwt import sign_jwt, JWTBearer, decode_jwt, get_current_user
@@ -18,8 +18,8 @@ router = APIRouter(
 
 
 @router.get("/whoami", dependencies=[Depends(JWTBearer())])
-def whoami(session: SessionDep, current_user=Depends(get_current_user)):
-    print(current_user)
+async def whoami(session: SessionDep, current_user=Depends(get_current_user)):
+    print(f"current_user: {current_user}")
     user_info = session.exec(
         select(UserTable).where(UserTable.id == current_user.get("user_id"))
     ).first()
@@ -34,21 +34,21 @@ def whoami(session: SessionDep, current_user=Depends(get_current_user)):
 
 
 @router.get("/", dependencies=[Depends(JWTBearer())])
-def read_all_user(session: SessionDep, current_user=Depends(get_current_user)):
+async def read_all_user(session: SessionDep, current_user=Depends(get_current_user)):
     role = (
         session.exec(
             select(UserTable).where(UserTable.id == current_user.get("user_id"))
         )
         .first()
-        .role
-    )
+        
+    ).role
     if not role in [Role.STAFF, Role.ADMIN]:
         raise HTTPException(status_code=401, detail="Unauthorized")
     return session.exec(select(UserTable)).all()
 
 
 @router.get("/{user_id}")
-def read_spec_user(user_id: int, session: SessionDep):
+async def read_spec_user(user_id: int, session: SessionDep):
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     if user is None:
         raise HTTPException(status_code=404, detail="User not found")
@@ -56,7 +56,7 @@ def read_spec_user(user_id: int, session: SessionDep):
 
 
 @router.post("/add")
-def add_user(user: UserTable, session: SessionDep):
+async def add_user(user: UserTable, session: SessionDep):
     user.password = hash_password(user.password)
     try:
         print(user)
@@ -82,10 +82,10 @@ def add_user(user: UserTable, session: SessionDep):
     return user
 
 @router.post("/refresh", dependencies=[Depends(JWTBearer())])
-def refresh_token(current_user=Depends(get_current_user)):
+async def refresh_token(current_user=Depends(get_current_user)):
     return sign_jwt(current_user.get("user_name"), current_user.get("user_id"))
 @router.put("/update/{user_id}")
-def update_user(user_id: int, user: UserTable, session: SessionDep):
+async def update_user(user_id: int, user: UserTable, session: SessionDep):
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     if user is None:
         raise HTTPException(status_code=404, detail="User not found")
@@ -101,10 +101,13 @@ def update_user(user_id: int, user: UserTable, session: SessionDep):
     return user
 
 
-@router.delete("/delete/{user_id}", dependencies=[Depends(JWTBearer())])
-def delete_user(
-    user_id: int, session: SessionDep, current_user=Depends(get_current_user)
+@router.delete("/delete", dependencies=[Depends(JWTBearer())])
+async def delete_user(
+    request: Request, session: SessionDep, current_user=Depends(get_current_user)
 ):
+    print(await request.json())
+    user_id = await request.json()
+    user_id = user_id.get("user_id")
     role = (
         session.exec(
             select(UserTable).where(UserTable.id == current_user.get("user_id"))
@@ -137,7 +140,7 @@ def check_login(user: LoginInfo, session: SessionDep) -> object:
 
 
 @router.post("/login")
-def login_user(user: LoginInfo, session: SessionDep):
+async def login_user(user: LoginInfo, session: SessionDep):
 
     if user := check_login(user, session):
         print(f"User {user.username} logged in")
@@ -146,7 +149,7 @@ def login_user(user: LoginInfo, session: SessionDep):
         raise HTTPException(status_code=401, detail="Login failed")
     
 @router.post("/edit_profile", dependencies=[Depends(JWTBearer())])
-def edit_profile(requested_user: UserTable, session: SessionDep, current_user=Depends(get_current_user)):
+async def edit_profile(requested_user: UserTable, session: SessionDep, current_user=Depends(get_current_user)):
     user_id = current_user.get("user_id")
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     # session.delete(user)
@@ -163,3 +166,19 @@ def edit_profile(requested_user: UserTable, session: SessionDep, current_user=De
     session.commit()
     session.refresh(user)
     return user
+
+@router.post("/disable", dependencies=[Depends(JWTBearer())])
+async def disable(request: Request, session: SessionDep):
+    user_id = await request.json()
+    user_id = user_id.get("user_id")
+    
+    user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    user.active = False
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+    return user
+
+
