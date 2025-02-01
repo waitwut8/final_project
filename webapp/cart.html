@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"/>
+    <script src="js/scripts.js"></script>
+    <script src="js/cart.js"></script>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid justify-content-between">
+            <!-- Left elements -->
+            <div class="d-flex">
+                <!-- Brand -->
+                <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
+                    <img
+                            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+                            height="20"
+                            alt="MDB Logo"
+                            loading="lazy"
+                            style="margin-top: 2px;"
+                    />
+                </a>
+
+                <!-- Search form -->
+               
+            </div>
+            <!-- Left elements -->
+
+            <!-- Center elements -->
+            <ul class="navbar-nav flex-row d-none d-md-flex">
+                <li class="nav-item me-3 me-lg-1 active" href="admin_index.html">
+
+                    <a class="nav-link" href = "index.html">
+                       <i class="fa-regular fa-home fa-2xl  link-info">
+
+                       </i>
+
+                    </a>
+                </li>
+
+                <li class="nav-item me-3 me-lg-1">
+                    <a class="nav-link" href = "login.html">
+                        <span><i class="fa-regular fa-door-open fa-2xl  link-info"></i></span>
+                    </a>
+                </li>
+
+                <li class="nav-item me-3 me-lg-1">
+                    <a class="nav-link" href = "search.html">
+                        <span><i class="fa-regular fa-crate-apple fa-2xl  link-info"></i></span>
+                    </a>
+                </li>
+
+                <li class="nav-item me-3 me-lg-1"?>
+                    <a class="nav-link"  href = "cart.html">
+                        <span><i class="fa-regular fa-cart-shopping fa-2xl  link-info"></i></span>
+                    </a>
+                </li>
+
+                <li class="nav-item me-3 me-lg-1">
+                    <a class="nav-link" onclick = "logout()">
+                        <span><i class="fa-regular fa-right-from-bracket fa-2xl  link-info"></i></span>
+
+                    </a>
+                </li>
+            </ul>
+            <!-- Center elements -->
+
+            <!-- Right elements -->
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item me-3 me-lg-1">
+                    <a class="nav-link d-sm-flex align-items-sm-center" href="profile.html">
+
+                        <strong class="d-none d-sm-block ms-1 username-title">John</strong>
+                    </a>
+                </li>
+
+
+            </ul>
+            <!-- Right elements -->
+        </div>
+    </nav>
+    </header>
+    <main>
+        <section class="h-100 h-custom" style="background-color: #d2c9ff;">
+            <div class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12">
+                  <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                      <div class="row g-0">
+                        <div class="col-lg-8">
+                          <div class="p-5">
+                            <div class="d-flex justify-content-between align-items-center mb-5">
+                              <h1 class="fw-bold mb-0">Shopping Cart</h1>
+
+                            </div>
+                            
+                            <div id = "productContainer">
+                              There's nothing here! Try <a href = "login.html">logging in</a>, or if you have, try adding some products to your cart.
+                            </div>
+          
+                            <div class="pt-5">
+                              <h6 class="mb-0"><a href="#!" class="text-body"><i
+                                    class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 bg-body-tertiary">
+                          <div class="p-5">
+                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                            <hr class="my-4">
+          
+                            <div class="d-flex justify-content-between mb-4">
+                              <h5 class="text-uppercase" id = "products"></h5>
+
+                            </div>
+          
+
+
+          
+                            <h5 class="text-uppercase mb-3">Give code</h5>
+          
+                            <div class="mb-5">
+                              <div data-mdb-input-init class="form-outline">
+                                <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                                <label class="form-label" for="form3Examplea2" >Enter your code</label>
+                              </div>
+                            </div>
+          
+                            <hr class="my-4">
+          
+                            <div class="d-flex justify-content-between mb-5">
+                              <h5 class="text-uppercase">Total price</h5>
+                              <h5 id = "price">€ 137.00</h5>
+                            </div>
+          
+                            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg"
+                              data-mdb-ripple-color="dark" id = "checkout">Checkout</button>
+          
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+    </main>
+    <script>
+       cartLoad(getToken());
+        loadCheckout()
+       load_Username()// You can now use the cart object to update the DOM as needed
+            
+        
+    </script>
+    <footer>
+
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

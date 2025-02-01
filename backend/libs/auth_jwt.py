@@ -5,10 +5,11 @@ from enum import Enum
 from pydantic import BaseModel
 from datetime import datetime, timezone, timedelta
 
+from os import getenv
 JWT_ALGORITHM = "HS256"
 JWT_SECRET = "63622b9b424e32212a1947ffcf3342748a41f4808540641c2a9469ba2ab489a0"
-
-
+IMGKIT_PUBLIC_KEY = getenv("IKIOPU")
+IMGKIT_URL_ENDPOINT = getenv("IKIOEND")
 class ExpiryTime(int, Enum):
     ONE_MINUTE = 60
     FIVE_MINUTES = 5 * 60
@@ -57,6 +58,8 @@ def sign_jwt(user_name: str, user_id: int, expiration: int = ExpiryTime.ONE_DAY)
         "refresh_token": refresh_token,
         "expiry_time": datetime.fromtimestamp(expiry_time),
         "issued_at": datetime.fromtimestamp(now_timestamp),
+        "imgkit_public_key": IMGKIT_PUBLIC_KEY,
+        "imgkit_url_endpoint": IMGKIT_URL_ENDPOINT,
     }
 
 

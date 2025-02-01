@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="PROJECT" libraries="{@tarekraafat/autocomplete.js, all, axios, bootstrap, bootstrap-icons, dataTables, jquery-3.7.1, lodash, lodash.js, simple-datatables}" />
+  </component>
+</project>

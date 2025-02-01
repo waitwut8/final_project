@@ -1,0 +1,24 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waitwut8/LAB301x_Assignment.git"
+  },
+  "private": true,
+  "dependencies": {
+    "@algolia/autocomplete-js": "^1.17.8",
+    "algoliasearch": "^5.18.0",
+    "simple-datatables": "^9.2.1"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel": "^2.13.3",
+    "stream-http": "^3.2.0"
+  }
+}

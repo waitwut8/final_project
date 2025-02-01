@@ -37,7 +37,7 @@ def send_email(sender, receiver, subject, message):
         print(e)
 
 def generic_email(context, template):
-    loader = FileSystemLoader("backend/libs/templates")
+    loader = FileSystemLoader("libs/templates")
     environment = Environment(loader=loader)
     print(loader.list_templates())
     template = environment.get_template(template)

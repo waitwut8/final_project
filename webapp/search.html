@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src = "js/awesomplete.js"></script>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/css/autoComplete.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src = "js/bloodhound.js"></script>
+    <script src = "js/typeahead.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-results {
+            margin-top: 20px;
+        }
+        .tt-menu{
+            position: static !important;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <header><nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid justify-content-between">
+            <!-- Left elements -->
+            <div class="d-flex">
+                <!-- Brand -->
+                <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
+                    <img
+                            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+                            height="20"
+                            alt="MDB Logo"
+                            loading="lazy"
+                            style="margin-top: 2px;"
+                    />
+                </a>
+
+                <!-- Search form -->
+               
+            </div>
+            <!-- Left elements -->
+
+            <!-- Center elements -->
+            <ul class="navbar-nav flex-row d-none d-md-flex">
+                <li class="nav-item me-3 me-lg-1 active" href="admin_index.html">
+
+                    <a class="nav-link" href = "index.html">
+                       <i class="fa-regular fa-home fa-2xl  link-info">
+
+                       </i>
+
+                    </a>
+                </li>
+
+                <li class="nav-item me-3 me-lg-1">
+                    <a class="nav-link" href = "login.html">
+                        <span><i class="fa-regular fa-door-open fa-2xl  link-info"></i></span>
+                    </a>
+                </li>
+
+                <li class="nav-item me-3 me-lg-1">
+                    <a class="nav-link" href = "search.html">
+                        <span><i class="fa-regular fa-crate-apple fa-2xl  link-info"></i></span>
+                    </a>
+                </li>
+
+                <li class="nav-item me-3 me-lg-1"?>
+                    <a class="nav-link"  href = "cart.html">
+                        <span><i class="fa-regular fa-cart-shopping fa-2xl  link-info"></i></span>
+                    </a>
+                </li>
+
+                <li class="nav-item me-3 me-lg-1">
+                    <a class="nav-link" onclick = "logout()">
+                        <span><i class="fa-regular fa-right-from-bracket fa-2xl  link-info"></i></span>
+
+                    </a>
+                </li>
+            </ul>
+            <!-- Center elements -->
+
+            <!-- Right elements -->
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item me-3 me-lg-1">
+                    <a class="nav-link d-sm-flex align-items-sm-center" href="profile.html">
+
+                        <strong class="d-none d-sm-block ms-1 username-title">John</strong>
+                    </a>
+                </li>
+
+
+            </ul>
+            <!-- Right elements -->
+        </div>
+    </nav></header>
+    <div class="row">
+<div class = "col-4">
+    <div class="accordion py-5" id="accordionExample">
+        <div class="accordion-item show" style = "width: 100%">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style = "font-size: 1rem">
+                    Brand
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show">
+                <div class="accordion-body container-fluid" id = "brand-filter" style ="height: auto">
+                    <label for="brand-search"></label>
+                    <div class = 'row'>
+                    <div id = "o_bloodhound">
+                    <input type="text" class="brand border border-primary o_typeahead" id="brand-search">
+                    <button class = "btn btn-primary col-3" id = "brand-filter-adder" style = "font-size: 0.75em">Add filter</button>
+                    </div>
+                    
+                </div>
+
+                </div>
+                <div class = "px-3">
+
+                    <div id = "active-filters" class = "container mx-3">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="accordion-item w-100">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Type
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body" id = "type-filter">
+                    
+                </div>
+            </div>
+        </div>
+
+        
+    </div>  
+</div>
+    <div class="col-7" >
+        <h1 class="my-4">Product Search</h1>
+
+        <div class="search-container">
+            <div class="input-group">
+                <input id="search-input" type="text" class="form-control" placeholder="Enter keyword" aria-label="Search">
+                <button class="btn btn-primary" type="button" id="search-button">Search</button>
+            </div>
+        </div>
+        <div class="search-results" id="search-results"></div>
+    </div>
+</div>
+
+
+ 
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+></script>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"
+></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js@1.17.8/dist/umd/index.production.js" integrity="sha256-BswVd4QSpCLHYZLRCx0R3y78oQuL8q/Tz+TLsMJAENU=" crossorigin="anonymous"></script>
+    <script>
+
+    </script>
+
+
+    <script src="js/scripts.js"></script>
+
+    <script>
+        setModal_Login()
+        load_Username()
+
+
+
+    </script>
+
+    <script src = "js/search.js"></script>
+</body>
+
+</html>
+
+
+
