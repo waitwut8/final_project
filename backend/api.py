@@ -27,4 +27,9 @@ ikit = ImageKit(
     )
 @app.get("/imagekit_auth", dependencies=[Depends(JWTBearer())])
 def get_auth():
+    print(ikit.get_authentication_parameters())
     return ikit.get_authentication_parameters()
+
+@app.get("/imagekit_public")
+def get_public():
+    return [getenv("IKIOPU"), getenv("IKIOEND")]

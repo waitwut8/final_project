@@ -2,6 +2,7 @@ from sqlmodel import Field, SQLModel, create_engine, Column, JSON
 from sqlalchemy import UniqueConstraint
 from enum import Enum
 from typing import Optional
+from pydantic import BaseModel
 
 
 
@@ -46,3 +47,7 @@ class Product(SQLModel, table=True):
     images: list[str] = Field(sa_column=Column(JSON))
     thumbnail: str
 
+class LoginPayload(BaseModel):
+    user_name: str
+    user_id: str
+    role: Role

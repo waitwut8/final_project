@@ -20,32 +20,15 @@ function login(form) {
       localStorage.setItem("user_name", r.username)
       if (res.status === 200) {
         localStorage.setItem("logged_in", "true")
-        // api.get(`/user/get_role?user_id=${s.user_id}`).then((res)=>{
-        //   console.log(res.data)
-        //   if (res.status === 200) {
-        //     data = res.data;
-        //     console.log(data)
-        //     if (data && data.length > 0) {
-        //       console.log(data.length, data && data.length > 0)
-        //       if (data === 'admin'){
-        //         console.log(data === 'admin')
-        //         window.location.href = "admin_index.html"
-        //       }
-        //       else{
-        //         if (localStorage.getItem('loadedBefore')){
-        //           window.location.href = localStorage.getItem('loadedBefore')
-        //         }
-        //         else{
-        //           window.location.href = 'index.html'
-        //         }
-        //       }
-        //     }
-        //   }
-        // })
-        api.post("/user/get_role").then((res)=>{
-          console.log(res.data)
-        })
-        console.log(res)
+        
+        role = res.data.role
+        console.log(role.toLowerCase())
+        if (role.toLowerCase() == "admin"){
+          window.location.href = "admin_index.html"
+        }
+        else{
+          window.location.href = "index.html"
+        }
         
         
       } else {

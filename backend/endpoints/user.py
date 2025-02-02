@@ -5,7 +5,7 @@ from fastapi import HTTPException, APIRouter, Depends, Request, Response
 from dependencies import SessionDep
 from libs.schemas import LoginInfo
 from libs.auth_jwt import sign_jwt, JWTBearer, decode_jwt, get_current_user
-from models import Role
+from models import Role, LoginPayload
 from utils import hash_password, verify_password
 
 from libs.lib_sender import *
@@ -56,6 +56,14 @@ async def read_spec_user(user_id: str, session: SessionDep):
 @router.post("/add")
 async def add_user(user: UserTable, session: SessionDep):
     user.password = hash_password(user.password)
+    user.role = Role.USER
+    if not user.email:
+        user.email = "example@example.com"
+    if not user.phone:
+        user.phone = "1234567890"
+    if not user.image:
+        user.image = "not available"
+    
     try:
         print(user)
         session.add(user)
@@ -144,8 +152,13 @@ def check_login(user: LoginInfo, session: SessionDep) -> object:
 async def login_user(user: LoginInfo, session: SessionDep):
 
     if user := check_login(user, session):
+        
         print(f"User {user.username} logged in")
-        return sign_jwt(user.username, user.id)
+        return sign_jwt({
+            "user_name": user.username,
+            "user_id": user.id,
+            "role": user.role
+        })
     else:
         raise HTTPException(status_code=401, detail="Login failed")
 

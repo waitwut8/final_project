@@ -2,9 +2,10 @@ import jwt
 from fastapi import Request, HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from enum import Enum
-from pydantic import BaseModel
 from datetime import datetime, timezone, timedelta
-
+from models import UserTable
+from dotenv import load_dotenv
+load_dotenv()
 from os import getenv
 JWT_ALGORITHM = "HS256"
 JWT_SECRET = "63622b9b424e32212a1947ffcf3342748a41f4808540641c2a9469ba2ab489a0"
@@ -32,34 +33,34 @@ def decode_jwt(token: str) -> dict:
         return {}
 
 
-def sign_jwt(user_name: str, user_id: int, expiration: int = ExpiryTime.ONE_DAY) -> dict:
+def sign_jwt(user_info: object, expiration: int = ExpiryTime.ONE_DAY) -> dict:
+    # user_info = {
+    #     "user_name": "",
+    #     "user_id": "",
+    #     "role": ""
+    # }
+    
 
     now_timestamp = datetime.now(timezone.utc).timestamp()
     expiry_time = now_timestamp + expiration
-    payload = {
-        "user_name": user_name,
-        "user_id": user_id,
-        "exp": expiry_time,
-        "iat": datetime.now(timezone.utc).timestamp(),
-    }
-    payload_refresh = {
-        "user_name": user_name,
-        "user_id": user_id,
-        "exp": expiry_time + 1,
-        "iat": datetime.now(timezone.utc).timestamp(),
-    }
+    user_info['exp']=expiry_time
+    user_info['iat']=datetime.now(timezone.utc).timestamp()
+    payload = user_info
+    payload_refresh = payload
+    payload_refresh['exp'] += ExpiryTime.FIFTEEN_MINUTES
+
     token = jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
     refresh_token = jwt.encode(payload_refresh, JWT_SECRET, algorithm=JWT_ALGORITHM)
     return {
-        "user_name": user_name,
-        
-        "user_id": user_id,
+        "user_name": user_info.get("user_name"),
+        "role": user_info.get('role'),
+        "user_id": user_info.get('user_id'),
         "access_token": token,
         "refresh_token": refresh_token,
         "expiry_time": datetime.fromtimestamp(expiry_time),
         "issued_at": datetime.fromtimestamp(now_timestamp),
-        "imgkit_public_key": IMGKIT_PUBLIC_KEY,
-        "imgkit_url_endpoint": IMGKIT_URL_ENDPOINT,
+        # "imgkit_public_key": IMGKIT_PUBLIC_KEY,
+        # "imgkit_url_endpoint": IMGKIT_URL_ENDPOINT,
     }
 
 

@@ -27,6 +27,16 @@ function setModal_Login() {
   }
 }
 
+customElements.define('navigation-bar', class extends HTMLElement {
+  constructor(){
+    super();
+    let template = $("#navigation-bar")[0].content
+    const shadow = this.attachShadow({mode: 'open'})
+    shadow.appendChild(template.cloneNode(true))
+
+  }
+})
+
 function callModal(id){
   let modal = new bootstrap.Modal(document.getElementById(id), {})
   modal.show()
@@ -56,7 +66,7 @@ api.interceptors.response.use(
     ) {
       try {
         let res = await axios.post(
-            `${api_url}/refresh`,
+            `${api_url}/user/refresh`,
             {},
             {
               headers: {
@@ -180,19 +190,26 @@ async function addToCart(id) {
 
 }
 
-let load_Username = async function () {
+
+async function loadUsername() {
   let username = localStorage.getItem("user_name");
-  let topelement = $(".username-title")[0]
+  let titleelement = $("#username")
+  let topelement = $(".username-title")
+
+  
+  
 
   if (username){
 
-    username = username.slice(0, -1)
-    console.log(username)
-    topelement.innerHTML = capitalize(username);
-    titleelement.innerHTML = "Hello, " + capitalize(username);
+      username = username.slice(0, -1)
+      console.log(username)
+      topelement.text(username);
+      titleelement.innerHTML = "Hello, " + capitalize(username);
   }
   else{
-    setText(topelement, "Welcome!")
+
+      titleelement.text("Welcome!")
+      topelement.text("Welcome!")
 
   }
 }

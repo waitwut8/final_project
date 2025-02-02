@@ -60,79 +60,10 @@ color:#69707a;
 <body>
 <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid justify-content-between">
-            <!-- Left elements -->
-            <div class="d-flex">
-                <!-- Brand -->
-                <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
-                    <img
-                            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                            height="20"
-                            alt="MDB Logo"
-                            loading="lazy"
-                            style="margin-top: 2px;"
-                    />
-                </a>
-
-                <!-- Search form -->
-               
-            </div>
-            <!-- Left elements -->
-
-            <!-- Center elements -->
-            <ul class="navbar-nav flex-row d-none d-md-flex">
-                <li class="nav-item me-3 me-lg-1 active" href="admin_index.html">
-
-                    <a class="nav-link" href = "index.html">
-                       <i class="fa-regular fa-home fa-2xl  link-info">
-
-                       </i>
-
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link" href = "login.html">
-                        <span><i class="fa-regular fa-door-open fa-2xl  link-info"></i></span>
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link" href = "search.html">
-                        <span><i class="fa-regular fa-crate-apple fa-2xl  link-info"></i></span>
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1"?>
-                    <a class="nav-link"  href = "cart.html">
-                        <span><i class="fa-regular fa-cart-shopping fa-2xl  link-info"></i></span>
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link" onclick = "logout()">
-                        <span><i class="fa-regular fa-right-from-bracket fa-2xl  link-info"></i></span>
-
-                    </a>
-                </li>
-            </ul>
-            <!-- Center elements -->
-
-            <!-- Right elements -->
-            <ul class="navbar-nav flex-row">
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link d-sm-flex align-items-sm-center" href="profile.html">
-
-                        <strong class="d-none d-sm-block ms-1 username-title">John</strong>
-                    </a>
-                </li>
-
-
-            </ul>
-            <!-- Right elements -->
-        </div>
-    </nav>
+    <div id="header"></div>
+    <script>
+        fetch('header.html').then(res => res.text()).then((res) => { $("#header").html(res) })
+    </script>
     <hr class="mt-0 mb-4">
     <div class="row">
         <div class="col-xl-4">
@@ -145,8 +76,10 @@ color:#69707a;
                     <!-- Profile picture help block-->
 
                     <!-- Profile picture upload button-->
-                    <input type="file" name="" id="file1">
-                    <button class="btn btn-primary" type="button" id = "upload">Upload new image</button>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" id = "file1">
+                        <button class="btn btn-outline-secondary" type="button" id="upload">Button</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -180,22 +113,10 @@ color:#69707a;
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmail">Email address</label>
                             <input class="form-control" id="inputEmail" type="email" placeholder="Enter your email address" value="name@example.com">
-                            <label class="small mb-1" for="inputLast">Address</label>
-                            <input class="form-control" id="inputLocation" type="text" placeholder="Enter your last name" value="Luna">
+
                         </div>
                         <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
-                            </div>
-                            <!-- Form Group (birthday)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
-                            </div>
-                        </div>
+
                         <!-- Save changes button-->
                         <button class="btn btn-primary" type="button" id = "save">Save changes</button>
                     </form>
