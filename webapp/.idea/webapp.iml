@@ -18,5 +18,12 @@
     <orderEntry type="library" name="lodash" level="application" />
     <orderEntry type="library" name="lodash.js" level="application" />
     <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="jquery-3.6.4" level="application" />
+    <orderEntry type="library" name="jquery.dataTables" level="application" />
+    <orderEntry type="library" name="dataTables.bootstrap5" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="dataTables" level="application" />
+    <orderEntry type="library" name="axios" level="application" />
+    <orderEntry type="library" name="dataTables.dataTables" level="application" />
   </component>
 </module>

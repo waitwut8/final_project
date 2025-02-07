@@ -10,7 +10,7 @@ async function upload(data) {
     var datas = ress.data
     var imagekit = new ImageKit({
         publicKey : datas[0],
-        urlEndpoint : datas[1]+"/profiles",
+        urlEndpoint : datas[1],
 
 
     });
@@ -20,9 +20,9 @@ async function upload(data) {
 
     
     var file = document.getElementById("file1");
-    imagekit.upload({
+    await imagekit.upload({
         file: file.files[0],
-        fileName: "abcd.jpg",
+        fileName: `profile-${$("#inputUsername").val()}`,
         folder: "profiles",
         tags: ["tag1"],
         token: token,
@@ -30,8 +30,10 @@ async function upload(data) {
         expire: expiration,
       }, function(err, result) {
         console.log(err);
-        // do nothing
+        console.log(result);
+        api.post("/user/change_profile_pic", {'url': result.url});
       })
+
 }
 async function start_profile(){
     let res = await api.get("/user/whoami")
@@ -41,6 +43,8 @@ async function start_profile(){
     $("#inputFirst").attr('value', profile.first_name)
     $("#inputLast").attr('value', profile.last_name)
     $("#inputPhone").attr('value', profile.phone)
+    let image = (await api.get("/user/get_profile_pic")).data
+    $("#image").attr('src', image)
 
 }
 async function edit_profile(){
@@ -48,19 +52,14 @@ async function edit_profile(){
     let email = $("#inputEmail").val()
     let firstName = $("#inputFirst").val()
     let lastName = $("#inputLast").val()
-    let phone = $("#inputPhone").val()
-    let address = $("#inputLocation").val()
-    let birthDate = $("#inputBirthday").val()
+
     
-    let res = await api.post("/change_profile", {
+    let res = await api.post("/user/edit_profile", {
         username: username,
         email: email,
-        first: firstName,
-        last: lastName,
-        location: address,
-        email: email,
-        phone: phone,
-        birthday: birthDate
+        first_name: firstName,
+        last_name: lastName,
+
     })
     if (res.status == 200){
         alert("Profile updated successfully")

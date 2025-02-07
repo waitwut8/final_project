@@ -10,7 +10,8 @@ function register(){
                 email: email,
                 password: password,
                 first_name: first,
-                last_name: last
+                last_name: last,
+                active: true,
             })
             
             // If the response is successful, alert the user

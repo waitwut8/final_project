@@ -34,6 +34,7 @@ class UserTable(SQLModel, table=True):
     password: str
     image: str
     role: Role
+    active: Optional[bool] = 'true'
 
 
 class Product(SQLModel, table=True):
