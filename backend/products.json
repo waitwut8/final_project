@@ -1,0 +1,3174 @@
+[
+    {
+        "id": "97d22b8b-b724-4ce1-bf92-b4125a5966be",
+        "title": "Essence Mascara Lash Princess",
+        "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+        "category": "beauty",
+        "price": 9.99,
+        "discountPercentage": 7.17,
+        "stock": 5,
+        "tags": [
+            "beauty",
+            "mascara"
+        ],
+        "brand": "Essence",
+        "weight": 2,
+        "dimensions": {
+            "width": 23.17,
+            "height": 14.43,
+            "depth": 28.01
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "Low Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 24,
+        "images": [
+            "assets/images/Essence_Mascara_Lash_Princess_1.png"
+        ],
+        "thumbnail": "assets/images/Essence_Mascara_Lash_Princess_thumbnail.png"
+    },
+    {
+        "id": "15c997cb-c1fb-46e3-8798-8b5249e6c8be",
+        "title": "Eyeshadow Palette with Mirror",
+        "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+        "category": "beauty",
+        "price": 19.99,
+        "discountPercentage": 5.5,
+        "stock": 44,
+        "tags": [
+            "beauty",
+            "eyeshadow"
+        ],
+        "brand": "Glamour Beauty",
+        "weight": 3,
+        "dimensions": {
+            "width": 12.42,
+            "height": 8.63,
+            "depth": 29.13
+        },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 32,
+        "images": [
+            "assets/images/Eyeshadow_Palette_with_Mirror_1.png"
+        ],
+        "thumbnail": "assets/images/Eyeshadow_Palette_with_Mirror_thumbnail.png"
+    },
+    {
+        "id": "012de47f-f23b-49d2-a753-2d610a7952e1",
+        "title": "Powder Canister",
+        "description": "The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.",
+        "category": "beauty",
+        "price": 14.99,
+        "discountPercentage": 18.14,
+        "stock": 59,
+        "tags": [
+            "beauty",
+            "face powder"
+        ],
+        "brand": "Velvet Touch",
+        "weight": 8,
+        "dimensions": {
+            "width": 24.16,
+            "height": 10.7,
+            "depth": 11.07
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 25,
+        "images": [
+            "assets/images/Powder_Canister_1.png"
+        ],
+        "thumbnail": "assets/images/Powder_Canister_thumbnail.png"
+    },
+    {
+        "id": "ece60535-670c-45dd-a4c8-4d5504e5ac48",
+        "title": "Red Lipstick",
+        "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+        "category": "beauty",
+        "price": 12.99,
+        "discountPercentage": 19.03,
+        "stock": 68,
+        "tags": [
+            "beauty",
+            "lipstick"
+        ],
+        "brand": "Chic Cosmetics",
+        "weight": 5,
+        "dimensions": {
+            "width": 14.37,
+            "height": 13.94,
+            "depth": 14.6
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 6,
+        "images": [
+            "assets/images/Red_Lipstick_1.png"
+        ],
+        "thumbnail": "assets/images/Red_Lipstick_thumbnail.png"
+    },
+    {
+        "id": "1557c974-3669-46af-b7a4-fc4812f92f8b",
+        "title": "Red Nail Polish",
+        "description": "The Red Nail Polish offers a rich and glossy red hue for vibrant and polished nails. With a quick-drying formula, it provides a salon-quality finish at home.",
+        "category": "beauty",
+        "price": 8.99,
+        "discountPercentage": 2.46,
+        "stock": 71,
+        "tags": [
+            "beauty",
+            "nail polish"
+        ],
+        "brand": "Nail Couture",
+        "weight": 9,
+        "dimensions": {
+            "width": 8.11,
+            "height": 10.89,
+            "depth": 29.06
+        },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 46,
+        "images": [
+            "assets/images/Red_Nail_Polish_1.png"
+        ],
+        "thumbnail": "assets/images/Red_Nail_Polish_thumbnail.png"
+    },
+    {
+        "id": "fddc8eea-a5f3-4a94-ae3a-4b5df132f38b",
+        "title": "Calvin Klein CK One",
+        "description": "CK One by Calvin Klein is a classic unisex fragrance, known for its fresh and clean scent. It's a versatile fragrance suitable for everyday wear.",
+        "category": "fragrances",
+        "price": 49.99,
+        "discountPercentage": 0.32,
+        "stock": 17,
+        "tags": [
+            "fragrances",
+            "perfumes"
+        ],
+        "brand": "Calvin Klein",
+        "weight": 5,
+        "dimensions": {
+            "width": 11.53,
+            "height": 14.44,
+            "depth": 6.81
+        },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 20,
+        "images": [
+            "assets/images/Calvin_Klein_CK_One_1.png",
+            "assets/images/Calvin_Klein_CK_One_2.png",
+            "assets/images/Calvin_Klein_CK_One_3.png"
+        ],
+        "thumbnail": "assets/images/Calvin_Klein_CK_One_thumbnail.png"
+    },
+    {
+        "id": "c837ea6f-26d2-4b8b-8657-f393470aa22c",
+        "title": "Chanel Coco Noir Eau De",
+        "description": "Coco Noir by Chanel is an elegant and mysterious fragrance, featuring notes of grapefruit, rose, and sandalwood. Perfect for evening occasions.",
+        "category": "fragrances",
+        "price": 129.99,
+        "discountPercentage": 18.64,
+        "stock": 41,
+        "tags": [
+            "fragrances",
+            "perfumes"
+        ],
+        "brand": "Chanel",
+        "weight": 4,
+        "dimensions": {
+            "width": 21.27,
+            "height": 28,
+            "depth": 11.89
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 5,
+        "images": [
+            "assets/images/Chanel_Coco_Noir_Eau_De_1.png",
+            "assets/images/Chanel_Coco_Noir_Eau_De_2.png",
+            "assets/images/Chanel_Coco_Noir_Eau_De_3.png"
+        ],
+        "thumbnail": "assets/images/Chanel_Coco_Noir_Eau_De_thumbnail.png"
+    },
+    {
+        "id": "64e0a6fe-cf13-4ff6-8c9c-b811850875f8",
+        "title": "Dior J'adore",
+        "description": "J'adore by Dior is a luxurious and floral fragrance, known for its blend of ylang-ylang, rose, and jasmine. It embodies femininity and sophistication.",
+        "category": "fragrances",
+        "price": 89.99,
+        "discountPercentage": 17.44,
+        "stock": 91,
+        "tags": [
+            "fragrances",
+            "perfumes"
+        ],
+        "brand": "Dior",
+        "weight": 10,
+        "dimensions": {
+            "width": 21.51,
+            "height": 7,
+            "depth": 26.51
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 8,
+        "images": [
+            "assets/images/Dior_J'adore_1.png",
+            "assets/images/Dior_J'adore_2.png",
+            "assets/images/Dior_J'adore_3.png"
+        ],
+        "thumbnail": "assets/images/Dior_J'adore_thumbnail.png"
+    },
+    {
+        "id": "3750cd9e-2ad8-47d1-9787-0883d394d5ac",
+        "title": "Dolce Shine Eau de",
+        "description": "Dolce Shine by Dolce & Gabbana is a vibrant and fruity fragrance, featuring notes of mango, jasmine, and blonde woods. It's a joyful and youthful scent.",
+        "category": "fragrances",
+        "price": 69.99,
+        "discountPercentage": 11.47,
+        "stock": 3,
+        "tags": [
+            "fragrances",
+            "perfumes"
+        ],
+        "brand": "Dolce & Gabbana",
+        "weight": 5,
+        "dimensions": {
+            "width": 17,
+            "height": 24.57,
+            "depth": 13.3
+        },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "Low Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 9,
+        "images": [
+            "assets/images/Dolce_Shine_Eau_de_1.png",
+            "assets/images/Dolce_Shine_Eau_de_2.png",
+            "assets/images/Dolce_Shine_Eau_de_3.png"
+        ],
+        "thumbnail": "assets/images/Dolce_Shine_Eau_de_thumbnail.png"
+    },
+    {
+        "id": "12068e47-aeef-4afa-beab-128ae05831e2",
+        "title": "Gucci Bloom Eau de",
+        "description": "Gucci Bloom by Gucci is a floral and captivating fragrance, with notes of tuberose, jasmine, and Rangoon creeper. It's a modern and romantic scent.",
+        "category": "fragrances",
+        "price": 79.99,
+        "discountPercentage": 8.9,
+        "stock": 93,
+        "tags": [
+            "fragrances",
+            "perfumes"
+        ],
+        "brand": "Gucci",
+        "weight": 10,
+        "dimensions": {
+            "width": 22.28,
+            "height": 17.81,
+            "depth": 27.18
+        },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 10,
+        "images": [
+            "assets/images/Gucci_Bloom_Eau_de_1.png",
+            "assets/images/Gucci_Bloom_Eau_de_2.png",
+            "assets/images/Gucci_Bloom_Eau_de_3.png"
+        ],
+        "thumbnail": "assets/images/Gucci_Bloom_Eau_de_thumbnail.png"
+    },
+    {
+        "id": "743f3905-cf99-4f23-b396-3c71e8922bce",
+        "title": "Annibale Colombo Bed",
+        "description": "The Annibale Colombo Bed is a luxurious and elegant bed frame, crafted with high-quality materials for a comfortable and stylish bedroom.",
+        "category": "furniture",
+        "price": 1899.99,
+        "discountPercentage": 0.29,
+        "stock": 47,
+        "tags": [
+            "furniture",
+            "beds"
+        ],
+        "brand": "Annibale Colombo",
+        "weight": 3,
+        "dimensions": {
+            "width": 28.75,
+            "height": 26.88,
+            "depth": 24.47
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Annibale_Colombo_Bed_1.png",
+            "assets/images/Annibale_Colombo_Bed_2.png",
+            "assets/images/Annibale_Colombo_Bed_3.png"
+        ],
+        "thumbnail": "assets/images/Annibale_Colombo_Bed_thumbnail.png"
+    },
+    {
+        "id": "06a61c38-398b-4131-8e45-f71692ef934b",
+        "title": "Annibale Colombo Sofa",
+        "description": "The Annibale Colombo Sofa is a sophisticated and comfortable seating option, featuring exquisite design and premium upholstery for your living room.",
+        "category": "furniture",
+        "price": 2499.99,
+        "discountPercentage": 18.54,
+        "stock": 16,
+        "tags": [
+            "furniture",
+            "sofas"
+        ],
+        "brand": "Annibale Colombo",
+        "weight": 3,
+        "dimensions": {
+            "width": 20.97,
+            "height": 19.11,
+            "depth": 25.81
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Annibale_Colombo_Sofa_1.png",
+            "assets/images/Annibale_Colombo_Sofa_2.png",
+            "assets/images/Annibale_Colombo_Sofa_3.png"
+        ],
+        "thumbnail": "assets/images/Annibale_Colombo_Sofa_thumbnail.png"
+    },
+    {
+        "id": "270de56f-44c2-4169-a47b-3441916fde34",
+        "title": "Bedside Table African Cherry",
+        "description": "The Bedside Table in African Cherry is a stylish and functional addition to your bedroom, providing convenient storage space and a touch of elegance.",
+        "category": "furniture",
+        "price": 299.99,
+        "discountPercentage": 9.58,
+        "stock": 16,
+        "tags": [
+            "furniture",
+            "bedside tables"
+        ],
+        "brand": "Furniture Co.",
+        "weight": 10,
+        "dimensions": {
+            "width": 25.43,
+            "height": 20.2,
+            "depth": 24.95
+        },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 5,
+        "images": [
+            "assets/images/Bedside_Table_African_Cherry_1.png",
+            "assets/images/Bedside_Table_African_Cherry_2.png",
+            "assets/images/Bedside_Table_African_Cherry_3.png"
+        ],
+        "thumbnail": "assets/images/Bedside_Table_African_Cherry_thumbnail.png"
+    },
+    {
+        "id": "e139d98e-591a-4f2c-80ba-669dc976f221",
+        "title": "Knoll Saarinen Executive Conference Chair",
+        "description": "The Knoll Saarinen Executive Conference Chair is a modern and ergonomic chair, perfect for your office or conference room with its timeless design.",
+        "category": "furniture",
+        "price": 499.99,
+        "discountPercentage": 15.23,
+        "stock": 47,
+        "tags": [
+            "furniture",
+            "office chairs"
+        ],
+        "brand": "Knoll",
+        "weight": 3,
+        "dimensions": {
+            "width": 16.59,
+            "height": 21.46,
+            "depth": 29.07
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 5,
+        "images": [
+            "assets/images/Knoll_Saarinen_Executive_Conference_Chair_1.png",
+            "assets/images/Knoll_Saarinen_Executive_Conference_Chair_2.png",
+            "assets/images/Knoll_Saarinen_Executive_Conference_Chair_3.png"
+        ],
+        "thumbnail": "assets/images/Knoll_Saarinen_Executive_Conference_Chair_thumbnail.png"
+    },
+    {
+        "id": "44079b65-a5f9-46cc-a49b-526cec3c9c78",
+        "title": "Wooden Bathroom Sink With Mirror",
+        "description": "The Wooden Bathroom Sink with Mirror is a unique and stylish addition to your bathroom, featuring a wooden sink countertop and a matching mirror.",
+        "category": "furniture",
+        "price": 799.99,
+        "discountPercentage": 11.22,
+        "stock": 95,
+        "tags": [
+            "furniture",
+            "bathroom"
+        ],
+        "brand": "Bath Trends",
+        "weight": 6,
+        "dimensions": {
+            "width": 7.32,
+            "height": 22.64,
+            "depth": 12.37
+        },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Wooden_Bathroom_Sink_With_Mirror_1.png",
+            "assets/images/Wooden_Bathroom_Sink_With_Mirror_2.png",
+            "assets/images/Wooden_Bathroom_Sink_With_Mirror_3.png"
+        ],
+        "thumbnail": "assets/images/Wooden_Bathroom_Sink_With_Mirror_thumbnail.png"
+    },
+    {
+        "id": "050fb6b6-4580-4da7-b1ef-51794a92d5ed",
+        "title": "Apple MacBook Pro 14 Inch Space Grey",
+        "description": "The MacBook Pro 14 Inch in Space Grey is a powerful and sleek laptop, featuring Apple's M1 Pro chip for exceptional performance and a stunning Retina display.",
+        "category": "laptops",
+        "price": 1999.99,
+        "discountPercentage": 9.25,
+        "stock": 39,
+        "tags": [
+            "laptops",
+            "apple"
+        ],
+        "brand": "Apple",
+        "weight": 4,
+        "dimensions": {
+            "width": 12.38,
+            "height": 21.55,
+            "depth": 27.95
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Apple_MacBook_Pro_14_Inch_Space_Grey_1.png",
+            "assets/images/Apple_MacBook_Pro_14_Inch_Space_Grey_2.png",
+            "assets/images/Apple_MacBook_Pro_14_Inch_Space_Grey_3.png"
+        ],
+        "thumbnail": "assets/images/Apple_MacBook_Pro_14_Inch_Space_Grey_thumbnail.png"
+    },
+    {
+        "id": "5a4ecd46-9808-4c26-be7c-3858df15af2b",
+        "title": "Asus Zenbook Pro Dual Screen Laptop",
+        "description": "The Asus Zenbook Pro Dual Screen Laptop is a high-performance device with dual screens, providing productivity and versatility for creative professionals.",
+        "category": "laptops",
+        "price": 1799.99,
+        "discountPercentage": 9.21,
+        "stock": 38,
+        "tags": [
+            "laptops"
+        ],
+        "brand": "Asus",
+        "weight": 8,
+        "dimensions": {
+            "width": 19.67,
+            "height": 11.05,
+            "depth": 14.32
+        },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Asus_Zenbook_Pro_Dual_Screen_Laptop_1.png",
+            "assets/images/Asus_Zenbook_Pro_Dual_Screen_Laptop_2.png",
+            "assets/images/Asus_Zenbook_Pro_Dual_Screen_Laptop_3.png"
+        ],
+        "thumbnail": "assets/images/Asus_Zenbook_Pro_Dual_Screen_Laptop_thumbnail.png"
+    },
+    {
+        "id": "befa7ba1-11d8-46ab-a790-933d453315cc",
+        "title": "Huawei Matebook X Pro",
+        "description": "The Huawei Matebook X Pro is a slim and stylish laptop with a high-resolution touchscreen display, offering a premium experience for users on the go.",
+        "category": "laptops",
+        "price": 1399.99,
+        "discountPercentage": 15.25,
+        "stock": 34,
+        "tags": [
+            "laptops"
+        ],
+        "brand": "Huawei",
+        "weight": 9,
+        "dimensions": {
+            "width": 22.11,
+            "height": 11.11,
+            "depth": 23.07
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Huawei_Matebook_X_Pro_1.png",
+            "assets/images/Huawei_Matebook_X_Pro_2.png",
+            "assets/images/Huawei_Matebook_X_Pro_3.png"
+        ],
+        "thumbnail": "assets/images/Huawei_Matebook_X_Pro_thumbnail.png"
+    },
+    {
+        "id": "08b4fe78-6c6c-47fb-9fb1-dce9241c32aa",
+        "title": "Lenovo Yoga 920",
+        "description": "The Lenovo Yoga 920 is a 2-in-1 convertible laptop with a flexible hinge, allowing you to use it as a laptop or tablet, offering versatility and portability.",
+        "category": "laptops",
+        "price": 1099.99,
+        "discountPercentage": 7.77,
+        "stock": 71,
+        "tags": [
+            "laptops"
+        ],
+        "brand": "Lenovo",
+        "weight": 7,
+        "dimensions": {
+            "width": 11.02,
+            "height": 14.45,
+            "depth": 24.09
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Lenovo_Yoga_920_1.png",
+            "assets/images/Lenovo_Yoga_920_2.png",
+            "assets/images/Lenovo_Yoga_920_3.png"
+        ],
+        "thumbnail": "assets/images/Lenovo_Yoga_920_thumbnail.png"
+    },
+    {
+        "id": "e109fb8e-86f1-403b-ac7c-0182a07071a6",
+        "title": "New DELL XPS 13 9300 Laptop",
+        "description": "The New DELL XPS 13 9300 Laptop is a compact and powerful device, featuring a virtually borderless InfinityEdge display and high-end performance for various tasks.",
+        "category": "laptops",
+        "price": 1499.99,
+        "discountPercentage": 11.7,
+        "stock": 18,
+        "tags": [
+            "laptops"
+        ],
+        "brand": "Dell",
+        "weight": 10,
+        "dimensions": {
+            "width": 12.09,
+            "height": 6.43,
+            "depth": 15.69
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/New_DELL_XPS_13_9300_Laptop_1.png",
+            "assets/images/New_DELL_XPS_13_9300_Laptop_2.png",
+            "assets/images/New_DELL_XPS_13_9300_Laptop_3.png"
+        ],
+        "thumbnail": "assets/images/New_DELL_XPS_13_9300_Laptop_thumbnail.png"
+    },
+    {
+        "id": "a5dbc595-54a4-4210-8592-b8e42a4ba54b",
+        "title": "Blue & Black Check Shirt",
+        "description": "The Blue & Black Check Shirt is a stylish and comfortable men's shirt featuring a classic check pattern. Made from high-quality fabric, it's suitable for both casual and semi-formal occasions.",
+        "category": "mens-shirts",
+        "price": 29.99,
+        "discountPercentage": 1.41,
+        "stock": 44,
+        "tags": [
+            "clothing",
+            "men's shirts"
+        ],
+        "brand": "Fashion Trends",
+        "weight": 6,
+        "dimensions": {
+            "width": 17.25,
+            "height": 27.31,
+            "depth": 20.88
+        },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 4,
+        "images": [
+            "assets/images/Blue_&_Black_Check_Shirt_1.png",
+            "assets/images/Blue_&_Black_Check_Shirt_2.png",
+            "assets/images/Blue_&_Black_Check_Shirt_3.png",
+            "assets/images/Blue_&_Black_Check_Shirt_4.png"
+        ],
+        "thumbnail": "assets/images/Blue_&_Black_Check_Shirt_thumbnail.png"
+    },
+    {
+        "id": "0987eb5a-1b45-4cea-b028-7e58b58f7682",
+        "title": "Gigabyte Aorus Men Tshirt",
+        "description": "The Gigabyte Aorus Men Tshirt is a cool and casual shirt for gaming enthusiasts. With the Aorus logo and sleek design, it's perfect for expressing your gaming style.",
+        "category": "mens-shirts",
+        "price": 24.99,
+        "discountPercentage": 12.6,
+        "stock": 64,
+        "tags": [
+            "clothing",
+            "men's t-shirts"
+        ],
+        "brand": "Gigabyte",
+        "weight": 2,
+        "dimensions": {
+            "width": 8.54,
+            "height": 23.52,
+            "depth": 5.66
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 4,
+        "images": [
+            "assets/images/Gigabyte_Aorus_Men_Tshirt_1.png",
+            "assets/images/Gigabyte_Aorus_Men_Tshirt_2.png",
+            "assets/images/Gigabyte_Aorus_Men_Tshirt_3.png",
+            "assets/images/Gigabyte_Aorus_Men_Tshirt_4.png"
+        ],
+        "thumbnail": "assets/images/Gigabyte_Aorus_Men_Tshirt_thumbnail.png"
+    },
+    {
+        "id": "428e6762-0516-4b66-965a-cd398260a969",
+        "title": "Man Plaid Shirt",
+        "description": "The Man Plaid Shirt is a timeless and versatile men's shirt with a classic plaid pattern. Its comfortable fit and casual style make it a wardrobe essential for various occasions.",
+        "category": "mens-shirts",
+        "price": 34.99,
+        "discountPercentage": 17.53,
+        "stock": 65,
+        "tags": [
+            "clothing",
+            "men's shirts"
+        ],
+        "brand": "Classic Wear",
+        "weight": 1,
+        "dimensions": {
+            "width": 29.56,
+            "height": 29.84,
+            "depth": 7.77
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Man_Plaid_Shirt_1.png",
+            "assets/images/Man_Plaid_Shirt_2.png",
+            "assets/images/Man_Plaid_Shirt_3.png",
+            "assets/images/Man_Plaid_Shirt_4.png"
+        ],
+        "thumbnail": "assets/images/Man_Plaid_Shirt_thumbnail.png"
+    },
+    {
+        "id": "0ec12535-b3f8-4f8a-a1bf-574ac27d439f",
+        "title": "Man Short Sleeve Shirt",
+        "description": "The Man Short Sleeve Shirt is a breezy and stylish option for warm days. With a comfortable fit and short sleeves, it's perfect for a laid-back yet polished look.",
+        "category": "mens-shirts",
+        "price": 19.99,
+        "discountPercentage": 8.65,
+        "stock": 20,
+        "tags": [
+            "clothing",
+            "men's shirts"
+        ],
+        "brand": "Casual Comfort",
+        "weight": 2,
+        "dimensions": {
+            "width": 7.11,
+            "height": 28.63,
+            "depth": 27.54
+        },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Man_Short_Sleeve_Shirt_1.png",
+            "assets/images/Man_Short_Sleeve_Shirt_2.png",
+            "assets/images/Man_Short_Sleeve_Shirt_3.png",
+            "assets/images/Man_Short_Sleeve_Shirt_4.png"
+        ],
+        "thumbnail": "assets/images/Man_Short_Sleeve_Shirt_thumbnail.png"
+    },
+    {
+        "id": "ed8bcb18-d50c-4a33-989e-3fed2fa011fd",
+        "title": "Men Check Shirt",
+        "description": "The Men Check Shirt is a classic and versatile shirt featuring a stylish check pattern. Suitable for various occasions, it adds a smart and polished touch to your wardrobe.",
+        "category": "mens-shirts",
+        "price": 27.99,
+        "discountPercentage": 14.21,
+        "stock": 69,
+        "tags": [
+            "clothing",
+            "men's shirts"
+        ],
+        "brand": "Urban Chic",
+        "weight": 1,
+        "dimensions": {
+            "width": 18.43,
+            "height": 6.96,
+            "depth": 20.73
+        },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 8,
+        "images": [
+            "assets/images/Men_Check_Shirt_1.png",
+            "assets/images/Men_Check_Shirt_2.png",
+            "assets/images/Men_Check_Shirt_3.png",
+            "assets/images/Men_Check_Shirt_4.png"
+        ],
+        "thumbnail": "assets/images/Men_Check_Shirt_thumbnail.png"
+    },
+    {
+        "id": "4744b455-082b-4209-9e13-9ed3f50a0575",
+        "title": "Nike Air Jordan 1 Red And Black",
+        "description": "The Nike Air Jordan 1 in Red and Black is an iconic basketball sneaker known for its stylish design and high-performance features, making it a favorite among sneaker enthusiasts and athletes.",
+        "category": "mens-shoes",
+        "price": 149.99,
+        "discountPercentage": 15.82,
+        "stock": 15,
+        "tags": [
+            "footwear",
+            "athletic shoes"
+        ],
+        "brand": "Nike",
+        "weight": 5,
+        "dimensions": {
+            "width": 19.29,
+            "height": 13.2,
+            "depth": 29.13
+        },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 2,
+        "images": [
+            "assets/images/Nike_Air_Jordan_1_Red_And_Black_1.png",
+            "assets/images/Nike_Air_Jordan_1_Red_And_Black_2.png",
+            "assets/images/Nike_Air_Jordan_1_Red_And_Black_3.png",
+            "assets/images/Nike_Air_Jordan_1_Red_And_Black_4.png"
+        ],
+        "thumbnail": "assets/images/Nike_Air_Jordan_1_Red_And_Black_thumbnail.png"
+    },
+    {
+        "id": "baf223e0-7428-4b5a-b626-15ce76ff25b0",
+        "title": "Nike Baseball Cleats",
+        "description": "Nike Baseball Cleats are designed for maximum traction and performance on the baseball field. They provide stability and support for players during games and practices.",
+        "category": "mens-shoes",
+        "price": 79.99,
+        "discountPercentage": 11.4,
+        "stock": 14,
+        "tags": [
+            "footwear",
+            "sports cleats"
+        ],
+        "brand": "Nike",
+        "weight": 7,
+        "dimensions": {
+            "width": 14.83,
+            "height": 19.16,
+            "depth": 28.98
+        },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 3,
+        "images": [
+            "assets/images/Nike_Baseball_Cleats_1.png",
+            "assets/images/Nike_Baseball_Cleats_2.png",
+            "assets/images/Nike_Baseball_Cleats_3.png",
+            "assets/images/Nike_Baseball_Cleats_4.png"
+        ],
+        "thumbnail": "assets/images/Nike_Baseball_Cleats_thumbnail.png"
+    },
+    {
+        "id": "64dd6cae-56c7-48f8-8b65-edfe5f43ffff",
+        "title": "Puma Future Rider Trainers",
+        "description": "The Puma Future Rider Trainers offer a blend of retro style and modern comfort. Perfect for casual wear, these trainers provide a fashionable and comfortable option for everyday use.",
+        "category": "mens-shoes",
+        "price": 89.99,
+        "discountPercentage": 3.64,
+        "stock": 10,
+        "tags": [
+            "footwear",
+            "casual shoes"
+        ],
+        "brand": "Puma",
+        "weight": 8,
+        "dimensions": {
+            "width": 14.58,
+            "height": 25.54,
+            "depth": 19.57
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 9,
+        "images": [
+            "assets/images/Puma_Future_Rider_Trainers_1.png",
+            "assets/images/Puma_Future_Rider_Trainers_2.png",
+            "assets/images/Puma_Future_Rider_Trainers_3.png",
+            "assets/images/Puma_Future_Rider_Trainers_4.png"
+        ],
+        "thumbnail": "assets/images/Puma_Future_Rider_Trainers_thumbnail.png"
+    },
+    {
+        "id": "6a45b43b-0664-4f48-82c2-b8abb5d6ee4c",
+        "title": "Sports Sneakers Off White & Red",
+        "description": "The Sports Sneakers in Off White and Red combine style and functionality, making them a fashionable choice for sports enthusiasts. The red and off-white color combination adds a bold and energetic touch.",
+        "category": "mens-shoes",
+        "price": 119.99,
+        "discountPercentage": 11.69,
+        "stock": 73,
+        "tags": [
+            "footwear",
+            "athletic shoes"
+        ],
+        "brand": "Off White",
+        "weight": 3,
+        "dimensions": {
+            "width": 10.71,
+            "height": 19.23,
+            "depth": 19.85
+        },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 5,
+        "images": [
+            "assets/images/Sports_Sneakers_Off_White_&_Red_1.png",
+            "assets/images/Sports_Sneakers_Off_White_&_Red_2.png",
+            "assets/images/Sports_Sneakers_Off_White_&_Red_3.png",
+            "assets/images/Sports_Sneakers_Off_White_&_Red_4.png"
+        ],
+        "thumbnail": "assets/images/Sports_Sneakers_Off_White_&_Red_thumbnail.png"
+    },
+    {
+        "id": "056f3a1e-e8d6-4d13-85dd-793041a1b44e",
+        "title": "Sports Sneakers Off White Red",
+        "description": "Another variant of the Sports Sneakers in Off White Red, featuring a unique design. These sneakers offer style and comfort for casual occasions.",
+        "category": "mens-shoes",
+        "price": 109.99,
+        "discountPercentage": 17.22,
+        "stock": 75,
+        "tags": [
+            "footwear",
+            "casual shoes"
+        ],
+        "brand": "Off White",
+        "weight": 4,
+        "dimensions": {
+            "width": 18.32,
+            "height": 19.34,
+            "depth": 28.56
+        },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 3,
+        "images": [
+            "assets/images/Sports_Sneakers_Off_White_Red_1.png",
+            "assets/images/Sports_Sneakers_Off_White_Red_2.png",
+            "assets/images/Sports_Sneakers_Off_White_Red_3.png",
+            "assets/images/Sports_Sneakers_Off_White_Red_4.png"
+        ],
+        "thumbnail": "assets/images/Sports_Sneakers_Off_White_Red_thumbnail.png"
+    },
+    {
+        "id": "3a2eccd8-c133-413c-b717-4a08e7abcf2c",
+        "title": "Brown Leather Belt Watch",
+        "description": "The Brown Leather Belt Watch is a stylish timepiece with a classic design. Featuring a genuine leather strap and a sleek dial, it adds a touch of sophistication to your look.",
+        "category": "mens-watches",
+        "price": 89.99,
+        "discountPercentage": 15.01,
+        "stock": 69,
+        "tags": [
+            "watches",
+            "leather watches"
+        ],
+        "brand": "Fashion Timepieces",
+        "weight": 10,
+        "dimensions": {
+            "width": 18.39,
+            "height": 10.82,
+            "depth": 10.52
+        },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 10,
+        "images": [
+            "assets/images/Brown_Leather_Belt_Watch_1.png",
+            "assets/images/Brown_Leather_Belt_Watch_2.png",
+            "assets/images/Brown_Leather_Belt_Watch_3.png"
+        ],
+        "thumbnail": "assets/images/Brown_Leather_Belt_Watch_thumbnail.png"
+    },
+    {
+        "id": "ea360935-0018-4abd-b4a2-322a7c5c4ff0",
+        "title": "Longines Master Collection",
+        "description": "The Longines Master Collection is an elegant and refined watch known for its precision and craftsmanship. With a timeless design, it's a symbol of luxury and sophistication.",
+        "category": "mens-watches",
+        "price": 1499.99,
+        "discountPercentage": 0.64,
+        "stock": 65,
+        "tags": [
+            "watches",
+            "luxury watches"
+        ],
+        "brand": "Longines",
+        "weight": 2,
+        "dimensions": {
+            "width": 5.83,
+            "height": 12.48,
+            "depth": 7.65
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Longines_Master_Collection_1.png",
+            "assets/images/Longines_Master_Collection_2.png",
+            "assets/images/Longines_Master_Collection_3.png"
+        ],
+        "thumbnail": "assets/images/Longines_Master_Collection_thumbnail.png"
+    },
+    {
+        "id": "f42c5240-5fb7-4fad-9bd2-7403abca5ca1",
+        "title": "Rolex Cellini Date Black Dial",
+        "description": "The Rolex Cellini Date with Black Dial is a classic and prestigious watch. With a black dial and date complication, it exudes sophistication and is a symbol of Rolex's heritage.",
+        "category": "mens-watches",
+        "price": 8999.99,
+        "discountPercentage": 14.28,
+        "stock": 84,
+        "tags": [
+            "watches",
+            "luxury watches"
+        ],
+        "brand": "Rolex",
+        "weight": 6,
+        "dimensions": {
+            "width": 12.17,
+            "height": 27.99,
+            "depth": 10.36
+        },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Rolex_Cellini_Date_Black_Dial_1.png",
+            "assets/images/Rolex_Cellini_Date_Black_Dial_2.png",
+            "assets/images/Rolex_Cellini_Date_Black_Dial_3.png"
+        ],
+        "thumbnail": "assets/images/Rolex_Cellini_Date_Black_Dial_thumbnail.png"
+    },
+    {
+        "id": "5a812975-a415-4545-b138-215ef7371773",
+        "title": "Rolex Cellini Moonphase",
+        "description": "The Rolex Cellini Moonphase is a masterpiece of horology, featuring a moon phase complication and exquisite design. It reflects Rolex's commitment to precision and elegance.",
+        "category": "mens-watches",
+        "price": 12999.99,
+        "discountPercentage": 5.7,
+        "stock": 33,
+        "tags": [
+            "watches",
+            "luxury watches"
+        ],
+        "brand": "Rolex",
+        "weight": 5,
+        "dimensions": {
+            "width": 28.07,
+            "height": 13.43,
+            "depth": 10.81
+        },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Rolex_Cellini_Moonphase_1.png",
+            "assets/images/Rolex_Cellini_Moonphase_2.png",
+            "assets/images/Rolex_Cellini_Moonphase_3.png"
+        ],
+        "thumbnail": "assets/images/Rolex_Cellini_Moonphase_thumbnail.png"
+    },
+    {
+        "id": "7ca20d39-0da7-4e10-8ba0-d3ad820bd926",
+        "title": "Rolex Datejust",
+        "description": "The Rolex Datejust is an iconic and versatile timepiece with a date window. Known for its timeless design and reliability, it's a symbol of Rolex's watchmaking excellence.",
+        "category": "mens-watches",
+        "price": 10999.99,
+        "discountPercentage": 9.69,
+        "stock": 11,
+        "tags": [
+            "watches",
+            "luxury watches"
+        ],
+        "brand": "Rolex",
+        "weight": 5,
+        "dimensions": {
+            "width": 9.68,
+            "height": 7.29,
+            "depth": 5.67
+        },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Rolex_Datejust_1.png",
+            "assets/images/Rolex_Datejust_2.png",
+            "assets/images/Rolex_Datejust_3.png"
+        ],
+        "thumbnail": "assets/images/Rolex_Datejust_thumbnail.png"
+    },
+    {
+        "id": "b777ede9-87d1-4b1b-a1c0-a7d72d8f7e64",
+        "title": "Rolex Submariner Watch",
+        "description": "The Rolex Submariner is a legendary dive watch with a rich history. Known for its durability and water resistance, it's a symbol of adventure and exploration.",
+        "category": "mens-watches",
+        "price": 13999.99,
+        "discountPercentage": 0.82,
+        "stock": 35,
+        "tags": [
+            "watches",
+            "luxury watches"
+        ],
+        "brand": "Rolex",
+        "weight": 5,
+        "dimensions": {
+            "width": 5.22,
+            "height": 27.59,
+            "depth": 16.93
+        },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Rolex_Submariner_Watch_1.png",
+            "assets/images/Rolex_Submariner_Watch_2.png",
+            "assets/images/Rolex_Submariner_Watch_3.png"
+        ],
+        "thumbnail": "assets/images/Rolex_Submariner_Watch_thumbnail.png"
+    },
+    {
+        "id": "af5bc76c-5046-4635-bf32-e52036679778",
+        "title": "Amazon Echo Plus",
+        "description": "The Amazon Echo Plus is a smart speaker with built-in Alexa voice control. It features premium sound quality and serves as a hub for controlling smart home devices.",
+        "category": "mobile-accessories",
+        "price": 99.99,
+        "discountPercentage": 16.3,
+        "stock": 50,
+        "tags": [
+            "electronics",
+            "smart speakers"
+        ],
+        "brand": "Amazon",
+        "weight": 7,
+        "dimensions": {
+            "width": 8.1,
+            "height": 7.74,
+            "depth": 5.68
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Amazon_Echo_Plus_1.png",
+            "assets/images/Amazon_Echo_Plus_2.png"
+        ],
+        "thumbnail": "assets/images/Amazon_Echo_Plus_thumbnail.png"
+    },
+    {
+        "id": "13da2da6-765a-461a-bcf1-27ad487f29d8",
+        "title": "Apple Airpods",
+        "description": "The Apple Airpods offer a seamless wireless audio experience. With easy pairing, high-quality sound, and Siri integration, they are perfect for on-the-go listening.",
+        "category": "mobile-accessories",
+        "price": 129.99,
+        "discountPercentage": 4.82,
+        "stock": 93,
+        "tags": [
+            "electronics",
+            "wireless earphones"
+        ],
+        "brand": "Apple",
+        "weight": 3,
+        "dimensions": {
+            "width": 22.62,
+            "height": 9.92,
+            "depth": 18.15
+        },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 3,
+        "images": [
+            "assets/images/Apple_Airpods_1.png",
+            "assets/images/Apple_Airpods_2.png",
+            "assets/images/Apple_Airpods_3.png"
+        ],
+        "thumbnail": "assets/images/Apple_Airpods_thumbnail.png"
+    },
+    {
+        "id": "24993b58-29d3-46fa-98f9-041c01f3b9a2",
+        "title": "Apple AirPods Max Silver",
+        "description": "The Apple AirPods Max in Silver are premium over-ear headphones with high-fidelity audio, adaptive EQ, and active noise cancellation. Experience immersive sound in style.",
+        "category": "mobile-accessories",
+        "price": 549.99,
+        "discountPercentage": 11.7,
+        "stock": 7,
+        "tags": [
+            "electronics",
+            "over-ear headphones"
+        ],
+        "brand": "Apple",
+        "weight": 4,
+        "dimensions": {
+            "width": 7.73,
+            "height": 18.36,
+            "depth": 17.87
+        },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 2,
+        "images": [
+            "assets/images/Apple_AirPods_Max_Silver_1.png"
+        ],
+        "thumbnail": "assets/images/Apple_AirPods_Max_Silver_thumbnail.png"
+    },
+    {
+        "id": "65ec9dc2-f551-43de-8440-2a5c5c7e2eba",
+        "title": "Apple Airpower Wireless Charger",
+        "description": "The Apple AirPower Wireless Charger provides a convenient way to charge your compatible Apple devices wirelessly. Simply place your devices on the charging mat for effortless charging.",
+        "category": "mobile-accessories",
+        "price": 79.99,
+        "discountPercentage": 6.54,
+        "stock": 78,
+        "tags": [
+            "electronics",
+            "wireless chargers"
+        ],
+        "brand": "Apple",
+        "weight": 3,
+        "dimensions": {
+            "width": 25.51,
+            "height": 20.44,
+            "depth": 26.48
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 8,
+        "images": [
+            "assets/images/Apple_Airpower_Wireless_Charger_1.png"
+        ],
+        "thumbnail": "assets/images/Apple_Airpower_Wireless_Charger_thumbnail.png"
+    },
+    {
+        "id": "afdc4b06-b542-4cec-b968-7671b8d6b977",
+        "title": "Apple HomePod Mini Cosmic Grey",
+        "description": "The Apple HomePod Mini in Cosmic Grey is a compact smart speaker that delivers impressive audio and integrates seamlessly with the Apple ecosystem for a smart home experience.",
+        "category": "mobile-accessories",
+        "price": 99.99,
+        "discountPercentage": 3.7,
+        "stock": 65,
+        "tags": [
+            "electronics",
+            "smart speakers"
+        ],
+        "brand": "Apple",
+        "weight": 2,
+        "dimensions": {
+            "width": 21.14,
+            "height": 12.62,
+            "depth": 20.13
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 8,
+        "images": [
+            "assets/images/Apple_HomePod_Mini_Cosmic_Grey_1.png"
+        ],
+        "thumbnail": "assets/images/Apple_HomePod_Mini_Cosmic_Grey_thumbnail.png"
+    },
+    {
+        "id": "fa17c8d0-6000-4812-8445-b41b2c44ef60",
+        "title": "Apple iPhone Charger",
+        "description": "The Apple iPhone Charger is a high-quality charger designed for fast and efficient charging of your iPhone. Ensure your device stays powered up and ready to go.",
+        "category": "mobile-accessories",
+        "price": 19.99,
+        "discountPercentage": 1.01,
+        "stock": 4,
+        "tags": [
+            "electronics",
+            "chargers"
+        ],
+        "brand": "Apple",
+        "weight": 5,
+        "dimensions": {
+            "width": 28.77,
+            "height": 25.05,
+            "depth": 29.55
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "Low Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 43,
+        "images": [
+            "assets/images/Apple_iPhone_Charger_1.png",
+            "assets/images/Apple_iPhone_Charger_2.png"
+        ],
+        "thumbnail": "assets/images/Apple_iPhone_Charger_thumbnail.png"
+    },
+    {
+        "id": "b58e2cf7-d0ac-45ac-ac07-53fe1ba6dff0",
+        "title": "Apple MagSafe Battery Pack",
+        "description": "The Apple MagSafe Battery Pack is a portable and convenient way to add extra battery life to your MagSafe-compatible iPhone. Attach it magnetically for a secure connection.",
+        "category": "mobile-accessories",
+        "price": 99.99,
+        "discountPercentage": 10.27,
+        "stock": 80,
+        "tags": [
+            "electronics",
+            "power banks"
+        ],
+        "brand": "Apple",
+        "weight": 6,
+        "dimensions": {
+            "width": 21.61,
+            "height": 7.98,
+            "depth": 9.32
+        },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 4,
+        "images": [
+            "assets/images/Apple_MagSafe_Battery_Pack_1.png",
+            "assets/images/Apple_MagSafe_Battery_Pack_2.png"
+        ],
+        "thumbnail": "assets/images/Apple_MagSafe_Battery_Pack_thumbnail.png"
+    },
+    {
+        "id": "33e0cb4b-1256-4374-8375-bcde9d2fcf9d",
+        "title": "Apple Watch Series 4 Gold",
+        "description": "The Apple Watch Series 4 in Gold is a stylish and advanced smartwatch with features like heart rate monitoring, fitness tracking, and a beautiful Retina display.",
+        "category": "mobile-accessories",
+        "price": 349.99,
+        "discountPercentage": 5.14,
+        "stock": 68,
+        "tags": [
+            "electronics",
+            "smartwatches"
+        ],
+        "brand": "Apple",
+        "weight": 6,
+        "dimensions": {
+            "width": 8.96,
+            "height": 28.26,
+            "depth": 26.46
+        },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 2,
+        "images": [
+            "assets/images/Apple_Watch_Series_4_Gold_1.png",
+            "assets/images/Apple_Watch_Series_4_Gold_2.png",
+            "assets/images/Apple_Watch_Series_4_Gold_3.png"
+        ],
+        "thumbnail": "assets/images/Apple_Watch_Series_4_Gold_thumbnail.png"
+    },
+    {
+        "id": "609e61a4-eb94-4312-8d94-a44376a05a95",
+        "title": "Beats Flex Wireless Earphones",
+        "description": "The Beats Flex Wireless Earphones offer a comfortable and versatile audio experience. With magnetic earbuds and up to 12 hours of battery life, they are ideal for everyday use.",
+        "category": "mobile-accessories",
+        "price": 49.99,
+        "discountPercentage": 8.27,
+        "stock": 49,
+        "tags": [
+            "electronics",
+            "wireless earphones"
+        ],
+        "brand": "Beats",
+        "weight": 6,
+        "dimensions": {
+            "width": 23.49,
+            "height": 15.22,
+            "depth": 20.05
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 19,
+        "images": [
+            "assets/images/Beats_Flex_Wireless_Earphones_1.png"
+        ],
+        "thumbnail": "assets/images/Beats_Flex_Wireless_Earphones_thumbnail.png"
+    },
+    {
+        "id": "a22be7c4-e3ec-475a-a412-97df3c475881",
+        "title": "iPhone 12 Silicone Case with MagSafe Plum",
+        "description": "The iPhone 12 Silicone Case with MagSafe in Plum is a stylish and protective case designed for the iPhone 12. It features MagSafe technology for easy attachment of accessories.",
+        "category": "mobile-accessories",
+        "price": 29.99,
+        "discountPercentage": 14.35,
+        "stock": 51,
+        "tags": [
+            "electronics",
+            "phone accessories"
+        ],
+        "brand": "Apple",
+        "weight": 5,
+        "dimensions": {
+            "width": 6.32,
+            "height": 23.37,
+            "depth": 21.62
+        },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 19,
+        "images": [
+            "assets/images/iPhone_12_Silicone_Case_with_MagSafe_Plum_1.png",
+            "assets/images/iPhone_12_Silicone_Case_with_MagSafe_Plum_2.png",
+            "assets/images/iPhone_12_Silicone_Case_with_MagSafe_Plum_3.png",
+            "assets/images/iPhone_12_Silicone_Case_with_MagSafe_Plum_4.png"
+        ],
+        "thumbnail": "assets/images/iPhone_12_Silicone_Case_with_MagSafe_Plum_thumbnail.png"
+    },
+    {
+        "id": "697adb28-fb36-4e3d-b06a-d2848ce1854b",
+        "title": "Monopod",
+        "description": "The Monopod is a versatile camera accessory for stable and adjustable shooting. Perfect for capturing selfies, group photos, and videos with ease.",
+        "category": "mobile-accessories",
+        "price": 19.99,
+        "discountPercentage": 11.62,
+        "stock": 96,
+        "tags": [
+            "electronics",
+            "camera accessories"
+        ],
+        "brand": "TechGear",
+        "weight": 9,
+        "dimensions": {
+            "width": 8.42,
+            "height": 25.12,
+            "depth": 29.9
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 10,
+        "images": [
+            "assets/images/Monopod_1.png",
+            "assets/images/Monopod_2.png"
+        ],
+        "thumbnail": "assets/images/Monopod_thumbnail.png"
+    },
+    {
+        "id": "4285f146-b11c-4401-b832-524eb347e791",
+        "title": "Selfie Lamp with iPhone",
+        "description": "The Selfie Lamp with iPhone is a portable and adjustable LED light designed to enhance your selfies and video calls. Attach it to your iPhone for well-lit photos.",
+        "category": "mobile-accessories",
+        "price": 14.99,
+        "discountPercentage": 13.86,
+        "stock": 89,
+        "tags": [
+            "electronics",
+            "selfie accessories"
+        ],
+        "brand": "GadgetMaster",
+        "weight": 7,
+        "dimensions": {
+            "width": 13.38,
+            "height": 26.33,
+            "depth": 22.71
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 4,
+        "images": [
+            "assets/images/Selfie_Lamp_with_iPhone_1.png"
+        ],
+        "thumbnail": "assets/images/Selfie_Lamp_with_iPhone_thumbnail.png"
+    },
+    {
+        "id": "ed9807f2-d8ce-4b08-90b5-06a3d1abe0f9",
+        "title": "Selfie Stick Monopod",
+        "description": "The Selfie Stick Monopod is a extendable and foldable device for capturing the perfect selfie or group photo. Compatible with smartphones and cameras.",
+        "category": "mobile-accessories",
+        "price": 12.99,
+        "discountPercentage": 15.29,
+        "stock": 33,
+        "tags": [
+            "electronics",
+            "selfie accessories"
+        ],
+        "brand": "SnapTech",
+        "weight": 7,
+        "dimensions": {
+            "width": 6.11,
+            "height": 27.92,
+            "depth": 23.63
+        },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 10,
+        "images": [
+            "assets/images/Selfie_Stick_Monopod_1.png"
+        ],
+        "thumbnail": "assets/images/Selfie_Stick_Monopod_thumbnail.png"
+    },
+    {
+        "id": "1c68e237-55ba-4579-b662-38aa9d15a9bc",
+        "title": "TV Studio Camera Pedestal",
+        "description": "The TV Studio Camera Pedestal is a professional-grade camera support system for smooth and precise camera movements in a studio setting. Ideal for broadcast and production.",
+        "category": "mobile-accessories",
+        "price": 499.99,
+        "discountPercentage": 10.28,
+        "stock": 45,
+        "tags": [
+            "electronics",
+            "camera accessories"
+        ],
+        "brand": "ProVision",
+        "weight": 7,
+        "dimensions": {
+            "width": 29.9,
+            "height": 16.66,
+            "depth": 13.85
+        },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 2,
+        "images": [
+            "assets/images/TV_Studio_Camera_Pedestal_1.png"
+        ],
+        "thumbnail": "assets/images/TV_Studio_Camera_Pedestal_thumbnail.png"
+    },
+    {
+        "id": "497640e9-0d68-41bc-b1c3-7bee17dd8fdd",
+        "title": "Generic Motorcycle",
+        "description": "The Generic Motorcycle is a versatile and reliable bike suitable for various riding preferences. With a balanced design, it provides a comfortable and efficient riding experience.",
+        "category": "motorcycle",
+        "price": 3999.99,
+        "discountPercentage": 2.89,
+        "stock": 63,
+        "tags": [
+            "motorcycles"
+        ],
+        "brand": "Generic Motors",
+        "weight": 9,
+        "dimensions": {
+            "width": 14.87,
+            "height": 16.41,
+            "depth": 12.98
+        },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Generic_Motorcycle_1.png",
+            "assets/images/Generic_Motorcycle_2.png",
+            "assets/images/Generic_Motorcycle_3.png",
+            "assets/images/Generic_Motorcycle_4.png"
+        ],
+        "thumbnail": "assets/images/Generic_Motorcycle_thumbnail.png"
+    },
+    {
+        "id": "7f9020af-bf37-476e-90db-cce7800a6928",
+        "title": "Kawasaki Z800",
+        "description": "The Kawasaki Z800 is a powerful and agile sportbike known for its striking design and performance. It's equipped with advanced features, making it a favorite among motorcycle enthusiasts.",
+        "category": "motorcycle",
+        "price": 8999.99,
+        "discountPercentage": 15.07,
+        "stock": 88,
+        "tags": [
+            "motorcycles",
+            "sportbikes"
+        ],
+        "brand": "Kawasaki",
+        "weight": 7,
+        "dimensions": {
+            "width": 28.34,
+            "height": 11.9,
+            "depth": 8.19
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Kawasaki_Z800_1.png",
+            "assets/images/Kawasaki_Z800_2.png",
+            "assets/images/Kawasaki_Z800_3.png",
+            "assets/images/Kawasaki_Z800_4.png"
+        ],
+        "thumbnail": "assets/images/Kawasaki_Z800_thumbnail.png"
+    },
+    {
+        "id": "fd7f475b-194c-4b83-b3d6-48e3f00cb00f",
+        "title": "MotoGP CI.H1",
+        "description": "The MotoGP CI.H1 is a high-performance motorcycle inspired by MotoGP racing technology. It offers cutting-edge features and precision engineering for an exhilarating riding experience.",
+        "category": "motorcycle",
+        "price": 14999.99,
+        "discountPercentage": 17.0,
+        "stock": 85,
+        "tags": [
+            "motorcycles",
+            "sportbikes"
+        ],
+        "brand": "MotoGP",
+        "weight": 9,
+        "dimensions": {
+            "width": 27.4,
+            "height": 10.05,
+            "depth": 5.17
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/MotoGP_CI.H1_1.png",
+            "assets/images/MotoGP_CI.H1_2.png",
+            "assets/images/MotoGP_CI.H1_3.png",
+            "assets/images/MotoGP_CI.H1_4.png"
+        ],
+        "thumbnail": "assets/images/MotoGP_CI.H1_thumbnail.png"
+    },
+    {
+        "id": "3d2d0506-ad7b-4d2d-a543-6a9cdb38e54e",
+        "title": "Scooter Motorcycle",
+        "description": "The Scooter Motorcycle is a practical and fuel-efficient bike ideal for urban commuting. It features a step-through design and user-friendly controls for easy maneuverability.",
+        "category": "motorcycle",
+        "price": 2999.99,
+        "discountPercentage": 19.19,
+        "stock": 11,
+        "tags": [
+            "motorcycles",
+            "scooters"
+        ],
+        "brand": "ScootMaster",
+        "weight": 2,
+        "dimensions": {
+            "width": 8.02,
+            "height": 10.2,
+            "depth": 17.22
+        },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Scooter_Motorcycle_1.png",
+            "assets/images/Scooter_Motorcycle_2.png",
+            "assets/images/Scooter_Motorcycle_3.png",
+            "assets/images/Scooter_Motorcycle_4.png"
+        ],
+        "thumbnail": "assets/images/Scooter_Motorcycle_thumbnail.png"
+    },
+    {
+        "id": "eca3913e-ac7f-4e49-a56f-71f54109b69f",
+        "title": "Sportbike Motorcycle",
+        "description": "The Sportbike Motorcycle is designed for speed and agility, with a sleek and aerodynamic profile. It's suitable for riders looking for a dynamic and thrilling riding experience.",
+        "category": "motorcycle",
+        "price": 7499.99,
+        "discountPercentage": 18.07,
+        "stock": 12,
+        "tags": [
+            "motorcycles",
+            "sportbikes"
+        ],
+        "brand": "SpeedMaster",
+        "weight": 9,
+        "dimensions": {
+            "width": 17.16,
+            "height": 15.02,
+            "depth": 15.03
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Sportbike_Motorcycle_1.png",
+            "assets/images/Sportbike_Motorcycle_2.png",
+            "assets/images/Sportbike_Motorcycle_3.png",
+            "assets/images/Sportbike_Motorcycle_4.png"
+        ],
+        "thumbnail": "assets/images/Sportbike_Motorcycle_thumbnail.png"
+    },
+    {
+        "id": "4a22e39f-8d67-43b0-8384-6056865945ba",
+        "title": "Attitude Super Leaves Hand Soap",
+        "description": "Attitude Super Leaves Hand Soap is a natural and nourishing hand soap enriched with the goodness of super leaves. It cleanses and moisturizes your hands, leaving them feeling fresh and soft.",
+        "category": "skin-care",
+        "price": 8.99,
+        "discountPercentage": 17.42,
+        "stock": 98,
+        "tags": [
+            "personal care",
+            "hand soap"
+        ],
+        "brand": "Attitude",
+        "weight": 6,
+        "dimensions": {
+            "width": 9.98,
+            "height": 14.56,
+            "depth": 19.38
+        },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 32,
+        "images": [
+            "assets/images/Attitude_Super_Leaves_Hand_Soap_1.png",
+            "assets/images/Attitude_Super_Leaves_Hand_Soap_2.png",
+            "assets/images/Attitude_Super_Leaves_Hand_Soap_3.png"
+        ],
+        "thumbnail": "assets/images/Attitude_Super_Leaves_Hand_Soap_thumbnail.png"
+    },
+    {
+        "id": "3ea310d0-2713-4a0b-bc73-dc52ae99272b",
+        "title": "Olay Ultra Moisture Shea Butter Body Wash",
+        "description": "Olay Ultra Moisture Shea Butter Body Wash is a luxurious body wash that hydrates and nourishes your skin with the moisturizing power of shea butter. Enjoy a rich lather and silky-smooth skin.",
+        "category": "skin-care",
+        "price": 12.99,
+        "discountPercentage": 16.95,
+        "stock": 43,
+        "tags": [
+            "personal care",
+            "body wash"
+        ],
+        "brand": "Olay",
+        "weight": 8,
+        "dimensions": {
+            "width": 8.6,
+            "height": 28.86,
+            "depth": 22.75
+        },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 23,
+        "images": [
+            "assets/images/Olay_Ultra_Moisture_Shea_Butter_Body_Wash_1.png",
+            "assets/images/Olay_Ultra_Moisture_Shea_Butter_Body_Wash_2.png",
+            "assets/images/Olay_Ultra_Moisture_Shea_Butter_Body_Wash_3.png"
+        ],
+        "thumbnail": "assets/images/Olay_Ultra_Moisture_Shea_Butter_Body_Wash_thumbnail.png"
+    },
+    {
+        "id": "3500eef2-aa92-4f34-827a-6179562e3359",
+        "title": "Vaseline Men Body and Face Lotion",
+        "description": "Vaseline Men Body and Face Lotion is a specially formulated lotion designed to provide long-lasting moisture to men's skin. It absorbs quickly and helps keep the skin hydrated and healthy.",
+        "category": "skin-care",
+        "price": 9.99,
+        "discountPercentage": 11.63,
+        "stock": 54,
+        "tags": [
+            "personal care",
+            "body lotion"
+        ],
+        "brand": "Vaseline",
+        "weight": 10,
+        "dimensions": {
+            "width": 28.39,
+            "height": 25.58,
+            "depth": 15.49
+        },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 48,
+        "images": [
+            "assets/images/Vaseline_Men_Body_and_Face_Lotion_1.png",
+            "assets/images/Vaseline_Men_Body_and_Face_Lotion_2.png",
+            "assets/images/Vaseline_Men_Body_and_Face_Lotion_3.png"
+        ],
+        "thumbnail": "assets/images/Vaseline_Men_Body_and_Face_Lotion_thumbnail.png"
+    },
+    {
+        "id": "ccab5bc8-9425-4912-995a-3ce9a1705037",
+        "title": "iPhone 5s",
+        "description": "The iPhone 5s is a classic smartphone known for its compact design and advanced features during its release. While it's an older model, it still provides a reliable user experience.",
+        "category": "smartphones",
+        "price": 199.99,
+        "discountPercentage": 11.85,
+        "stock": 65,
+        "tags": [
+            "smartphones",
+            "apple"
+        ],
+        "brand": "Apple",
+        "weight": 4,
+        "dimensions": {
+            "width": 8.49,
+            "height": 25.34,
+            "depth": 18.12
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 2,
+        "images": [
+            "assets/images/iPhone_5s_1.png",
+            "assets/images/iPhone_5s_2.png",
+            "assets/images/iPhone_5s_3.png"
+        ],
+        "thumbnail": "assets/images/iPhone_5s_thumbnail.png"
+    },
+    {
+        "id": "e5e6a42e-5cce-404e-a9c3-cedb569b3b7d",
+        "title": "iPhone 6",
+        "description": "The iPhone 6 is a stylish and capable smartphone with a larger display and improved performance. It introduced new features and design elements, making it a popular choice in its time.",
+        "category": "smartphones",
+        "price": 299.99,
+        "discountPercentage": 4.54,
+        "stock": 99,
+        "tags": [
+            "smartphones",
+            "apple"
+        ],
+        "brand": "Apple",
+        "weight": 8,
+        "dimensions": {
+            "width": 16.21,
+            "height": 22.94,
+            "depth": 5.63
+        },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 3,
+        "images": [
+            "assets/images/iPhone_6_1.png",
+            "assets/images/iPhone_6_2.png",
+            "assets/images/iPhone_6_3.png"
+        ],
+        "thumbnail": "assets/images/iPhone_6_thumbnail.png"
+    },
+    {
+        "id": "64394358-ef92-4013-8902-566c499e9ff3",
+        "title": "iPhone 13 Pro",
+        "description": "The iPhone 13 Pro is a cutting-edge smartphone with a powerful camera system, high-performance chip, and stunning display. It offers advanced features for users who demand top-notch technology.",
+        "category": "smartphones",
+        "price": 1099.99,
+        "discountPercentage": 18.3,
+        "stock": 26,
+        "tags": [
+            "smartphones",
+            "apple"
+        ],
+        "brand": "Apple",
+        "weight": 8,
+        "dimensions": {
+            "width": 22.39,
+            "height": 9.77,
+            "depth": 19.6
+        },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/iPhone_13_Pro_1.png",
+            "assets/images/iPhone_13_Pro_2.png",
+            "assets/images/iPhone_13_Pro_3.png"
+        ],
+        "thumbnail": "assets/images/iPhone_13_Pro_thumbnail.png"
+    },
+    {
+        "id": "5155bb21-ea6d-421b-a4e7-edbca52e6493",
+        "title": "iPhone X",
+        "description": "The iPhone X is a flagship smartphone featuring a bezel-less OLED display, facial recognition technology (Face ID), and impressive performance. It represents a milestone in iPhone design and innovation.",
+        "category": "smartphones",
+        "price": 899.99,
+        "discountPercentage": 14.19,
+        "stock": 99,
+        "tags": [
+            "smartphones",
+            "apple"
+        ],
+        "brand": "Apple",
+        "weight": 10,
+        "dimensions": {
+            "width": 27.86,
+            "height": 8.53,
+            "depth": 17.07
+        },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 2,
+        "images": [
+            "assets/images/iPhone_X_1.png",
+            "assets/images/iPhone_X_2.png",
+            "assets/images/iPhone_X_3.png"
+        ],
+        "thumbnail": "assets/images/iPhone_X_thumbnail.png"
+    },
+    {
+        "id": "848239c5-3135-4a36-968e-1443b39c6509",
+        "title": "Oppo A57",
+        "description": "The Oppo A57 is a mid-range smartphone known for its sleek design and capable features. It offers a balance of performance and affordability, making it a popular choice.",
+        "category": "smartphones",
+        "price": 249.99,
+        "discountPercentage": 12.17,
+        "stock": 76,
+        "tags": [
+            "smartphones",
+            "oppo"
+        ],
+        "brand": "Oppo",
+        "weight": 3,
+        "dimensions": {
+            "width": 29.52,
+            "height": 11.25,
+            "depth": 14.41
+        },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 5,
+        "images": [
+            "assets/images/Oppo_A57_1.png",
+            "assets/images/Oppo_A57_2.png",
+            "assets/images/Oppo_A57_3.png"
+        ],
+        "thumbnail": "assets/images/Oppo_A57_thumbnail.png"
+    },
+    {
+        "id": "7cc5540f-aa8c-4c31-9bd0-3a08620a85e0",
+        "title": "Oppo F19 Pro Plus",
+        "description": "The Oppo F19 Pro Plus is a feature-rich smartphone with a focus on camera capabilities. It boasts advanced photography features and a powerful performance for a premium user experience.",
+        "category": "smartphones",
+        "price": 399.99,
+        "discountPercentage": 15.62,
+        "stock": 92,
+        "tags": [
+            "smartphones",
+            "oppo"
+        ],
+        "brand": "Oppo",
+        "weight": 2,
+        "dimensions": {
+            "width": 20.35,
+            "height": 16.4,
+            "depth": 13.31
+        },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 5,
+        "images": [
+            "assets/images/Oppo_F19_Pro_Plus_1.png",
+            "assets/images/Oppo_F19_Pro_Plus_2.png",
+            "assets/images/Oppo_F19_Pro_Plus_3.png"
+        ],
+        "thumbnail": "assets/images/Oppo_F19_Pro_Plus_thumbnail.png"
+    },
+    {
+        "id": "ef4baa2f-b5d7-46bf-9be5-ced6de315874",
+        "title": "Oppo K1",
+        "description": "The Oppo K1 series offers a range of smartphones with various features and specifications. Known for their stylish design and reliable performance, the Oppo K1 series caters to diverse user preferences.",
+        "category": "smartphones",
+        "price": 299.99,
+        "discountPercentage": 14.58,
+        "stock": 61,
+        "tags": [
+            "smartphones",
+            "oppo"
+        ],
+        "brand": "Oppo",
+        "weight": 2,
+        "dimensions": {
+            "width": 21.83,
+            "height": 27.83,
+            "depth": 27.47
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Oppo_K1_1.png",
+            "assets/images/Oppo_K1_2.png",
+            "assets/images/Oppo_K1_3.png",
+            "assets/images/Oppo_K1_4.png"
+        ],
+        "thumbnail": "assets/images/Oppo_K1_thumbnail.png"
+    },
+    {
+        "id": "8150bde8-5faa-4936-b674-357148020130",
+        "title": "Realme C35",
+        "description": "The Realme C35 is a budget-friendly smartphone with a focus on providing essential features for everyday use. It offers a reliable performance and user-friendly experience.",
+        "category": "smartphones",
+        "price": 149.99,
+        "discountPercentage": 16.47,
+        "stock": 81,
+        "tags": [
+            "smartphones",
+            "realme"
+        ],
+        "brand": "Realme",
+        "weight": 6,
+        "dimensions": {
+            "width": 21.74,
+            "height": 28.75,
+            "depth": 22.22
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Realme_C35_1.png",
+            "assets/images/Realme_C35_2.png",
+            "assets/images/Realme_C35_3.png"
+        ],
+        "thumbnail": "assets/images/Realme_C35_thumbnail.png"
+    },
+    {
+        "id": "ca66f0ae-a0a1-4995-9826-2e856a0806ef",
+        "title": "Realme X",
+        "description": "The Realme X is a mid-range smartphone known for its sleek design and impressive display. It offers a good balance of performance and camera capabilities for users seeking a quality device.",
+        "category": "smartphones",
+        "price": 299.99,
+        "discountPercentage": 2.39,
+        "stock": 87,
+        "tags": [
+            "smartphones",
+            "realme"
+        ],
+        "brand": "Realme",
+        "weight": 1,
+        "dimensions": {
+            "width": 29.32,
+            "height": 16.3,
+            "depth": 24.12
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Realme_X_1.png",
+            "assets/images/Realme_X_2.png",
+            "assets/images/Realme_X_3.png"
+        ],
+        "thumbnail": "assets/images/Realme_X_thumbnail.png"
+    },
+    {
+        "id": "8526ddef-01d9-4d74-b3c9-922a1a5b23f0",
+        "title": "Realme XT",
+        "description": "The Realme XT is a feature-rich smartphone with a focus on camera technology. It comes equipped with advanced camera sensors, delivering high-quality photos and videos for photography enthusiasts.",
+        "category": "smartphones",
+        "price": 349.99,
+        "discountPercentage": 3.03,
+        "stock": 53,
+        "tags": [
+            "smartphones",
+            "realme"
+        ],
+        "brand": "Realme",
+        "weight": 4,
+        "dimensions": {
+            "width": 28.82,
+            "height": 23.44,
+            "depth": 6.21
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 5,
+        "images": [
+            "assets/images/Realme_XT_1.png",
+            "assets/images/Realme_XT_2.png",
+            "assets/images/Realme_XT_3.png"
+        ],
+        "thumbnail": "assets/images/Realme_XT_thumbnail.png"
+    },
+    {
+        "id": "2e66458a-049f-44ae-98b5-b521915bc502",
+        "title": "Samsung Galaxy S7",
+        "description": "The Samsung Galaxy S7 is a flagship smartphone known for its sleek design and advanced features. It features a high-resolution display, powerful camera, and robust performance.",
+        "category": "smartphones",
+        "price": 299.99,
+        "discountPercentage": 8.83,
+        "stock": 55,
+        "tags": [
+            "smartphones",
+            "samsung galaxy"
+        ],
+        "brand": "Samsung",
+        "weight": 8,
+        "dimensions": {
+            "width": 23.33,
+            "height": 27.33,
+            "depth": 27.02
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Samsung_Galaxy_S7_1.png",
+            "assets/images/Samsung_Galaxy_S7_2.png",
+            "assets/images/Samsung_Galaxy_S7_3.png"
+        ],
+        "thumbnail": "assets/images/Samsung_Galaxy_S7_thumbnail.png"
+    },
+    {
+        "id": "6a301c15-bf64-49e9-a3b2-661b1802b7c3",
+        "title": "Samsung Galaxy S8",
+        "description": "The Samsung Galaxy S8 is a premium smartphone with an Infinity Display, offering a stunning visual experience. It boasts advanced camera capabilities and cutting-edge technology.",
+        "category": "smartphones",
+        "price": 499.99,
+        "discountPercentage": 2.69,
+        "stock": 75,
+        "tags": [
+            "smartphones",
+            "samsung galaxy"
+        ],
+        "brand": "Samsung",
+        "weight": 6,
+        "dimensions": {
+            "width": 6.88,
+            "height": 8.96,
+            "depth": 18.13
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Samsung_Galaxy_S8_1.png",
+            "assets/images/Samsung_Galaxy_S8_2.png",
+            "assets/images/Samsung_Galaxy_S8_3.png"
+        ],
+        "thumbnail": "assets/images/Samsung_Galaxy_S8_thumbnail.png"
+    },
+    {
+        "id": "aac6806b-2688-4da0-860d-ea7b6db971a3",
+        "title": "Samsung Galaxy S10",
+        "description": "The Samsung Galaxy S10 is a flagship device featuring a dynamic AMOLED display, versatile camera system, and powerful performance. It represents innovation and excellence in smartphone technology.",
+        "category": "smartphones",
+        "price": 699.99,
+        "discountPercentage": 0.97,
+        "stock": 40,
+        "tags": [
+            "smartphones",
+            "samsung galaxy"
+        ],
+        "brand": "Samsung",
+        "weight": 3,
+        "dimensions": {
+            "width": 28.23,
+            "height": 7.35,
+            "depth": 10.68
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Samsung_Galaxy_S10_1.png",
+            "assets/images/Samsung_Galaxy_S10_2.png",
+            "assets/images/Samsung_Galaxy_S10_3.png"
+        ],
+        "thumbnail": "assets/images/Samsung_Galaxy_S10_thumbnail.png"
+    },
+    {
+        "id": "4c0f20a7-846f-41ae-a266-ffd5e78454aa",
+        "title": "Vivo S1",
+        "description": "The Vivo S1 is a stylish and mid-range smartphone offering a blend of design and performance. It features a vibrant display, capable camera system, and reliable functionality.",
+        "category": "smartphones",
+        "price": 249.99,
+        "discountPercentage": 4.25,
+        "stock": 13,
+        "tags": [
+            "smartphones",
+            "vivo"
+        ],
+        "brand": "Vivo",
+        "weight": 1,
+        "dimensions": {
+            "width": 28.83,
+            "height": 26.69,
+            "depth": 23.12
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 3,
+        "images": [
+            "assets/images/Vivo_S1_1.png",
+            "assets/images/Vivo_S1_2.png",
+            "assets/images/Vivo_S1_3.png"
+        ],
+        "thumbnail": "assets/images/Vivo_S1_thumbnail.png"
+    },
+    {
+        "id": "faa38a07-73e9-4119-b27b-9e8d2972afc3",
+        "title": "Vivo V9",
+        "description": "The Vivo V9 is a smartphone known for its sleek design and emphasis on capturing high-quality selfies. It features a notch display, dual-camera setup, and a modern design.",
+        "category": "smartphones",
+        "price": 299.99,
+        "discountPercentage": 14.57,
+        "stock": 19,
+        "tags": [
+            "smartphones",
+            "vivo"
+        ],
+        "brand": "Vivo",
+        "weight": 5,
+        "dimensions": {
+            "width": 27.29,
+            "height": 9.73,
+            "depth": 14.79
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 2,
+        "images": [
+            "assets/images/Vivo_V9_1.png",
+            "assets/images/Vivo_V9_2.png",
+            "assets/images/Vivo_V9_3.png"
+        ],
+        "thumbnail": "assets/images/Vivo_V9_thumbnail.png"
+    },
+    {
+        "id": "1f249653-3c53-468e-86a8-d91793aa2eb6",
+        "title": "Vivo X21",
+        "description": "The Vivo X21 is a premium smartphone with a focus on cutting-edge technology. It features an in-display fingerprint sensor, a high-resolution display, and advanced camera capabilities.",
+        "category": "smartphones",
+        "price": 499.99,
+        "discountPercentage": 7.32,
+        "stock": 0,
+        "tags": [
+            "smartphones",
+            "vivo"
+        ],
+        "brand": "Vivo",
+        "weight": 7,
+        "dimensions": {
+            "width": 5.72,
+            "height": 16.47,
+            "depth": 27.76
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "Out of Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 4,
+        "images": [
+            "assets/images/Vivo_X21_1.png",
+            "assets/images/Vivo_X21_2.png",
+            "assets/images/Vivo_X21_3.png"
+        ],
+        "thumbnail": "assets/images/Vivo_X21_thumbnail.png"
+    },
+    {
+        "id": "3846d40b-84b0-4445-8e26-92f6554b8237",
+        "title": "Black Sun Glasses",
+        "description": "The Black Sun Glasses are a classic and stylish choice, featuring a sleek black frame and tinted lenses. They provide both UV protection and a fashionable look.",
+        "category": "sunglasses",
+        "price": 29.99,
+        "discountPercentage": 14.22,
+        "stock": 100,
+        "tags": [
+            "eyewear",
+            "sunglasses"
+        ],
+        "brand": "Fashion Shades",
+        "weight": 3,
+        "dimensions": {
+            "width": 14.41,
+            "height": 22.93,
+            "depth": 9.36
+        },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 18,
+        "images": [
+            "assets/images/Black_Sun_Glasses_1.png",
+            "assets/images/Black_Sun_Glasses_2.png",
+            "assets/images/Black_Sun_Glasses_3.png"
+        ],
+        "thumbnail": "assets/images/Black_Sun_Glasses_thumbnail.png"
+    },
+    {
+        "id": "171b5a2b-b4ae-49d8-956d-9cb7a607b7c6",
+        "title": "Classic Sun Glasses",
+        "description": "The Classic Sun Glasses offer a timeless design with a neutral frame and UV-protected lenses. These sunglasses are versatile and suitable for various occasions.",
+        "category": "sunglasses",
+        "price": 24.99,
+        "discountPercentage": 15.67,
+        "stock": 100,
+        "tags": [
+            "eyewear",
+            "sunglasses"
+        ],
+        "brand": "Fashion Shades",
+        "weight": 9,
+        "dimensions": {
+            "width": 15.27,
+            "height": 7.88,
+            "depth": 7.94
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 5,
+        "images": [
+            "assets/images/Classic_Sun_Glasses_1.png",
+            "assets/images/Classic_Sun_Glasses_2.png",
+            "assets/images/Classic_Sun_Glasses_3.png"
+        ],
+        "thumbnail": "assets/images/Classic_Sun_Glasses_thumbnail.png"
+    },
+    {
+        "id": "fd6eab24-8259-4e02-87a7-8bcbcfe72f59",
+        "title": "Green and Black Glasses",
+        "description": "The Green and Black Glasses feature a bold combination of green and black colors, adding a touch of vibrancy to your eyewear collection. They are both stylish and eye-catching.",
+        "category": "sunglasses",
+        "price": 34.99,
+        "discountPercentage": 10.75,
+        "stock": 74,
+        "tags": [
+            "eyewear",
+            "sunglasses"
+        ],
+        "brand": "Fashion Shades",
+        "weight": 9,
+        "dimensions": {
+            "width": 10.62,
+            "height": 22.49,
+            "depth": 28.91
+        },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 12,
+        "images": [
+            "assets/images/Green_and_Black_Glasses_1.png",
+            "assets/images/Green_and_Black_Glasses_2.png",
+            "assets/images/Green_and_Black_Glasses_3.png"
+        ],
+        "thumbnail": "assets/images/Green_and_Black_Glasses_thumbnail.png"
+    },
+    {
+        "id": "7c9a96d4-a8a9-403e-bba1-9d8550f95fbe",
+        "title": "Party Glasses",
+        "description": "The Party Glasses are designed to add flair to your party outfit. With unique shapes or colorful frames, they're perfect for adding a playful touch to your look during celebrations.",
+        "category": "sunglasses",
+        "price": 19.99,
+        "discountPercentage": 19.52,
+        "stock": 35,
+        "tags": [
+            "eyewear",
+            "party glasses"
+        ],
+        "brand": "Fashion Fun",
+        "weight": 1,
+        "dimensions": {
+            "width": 17.04,
+            "height": 25.52,
+            "depth": 12.34
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 19,
+        "images": [
+            "assets/images/Party_Glasses_1.png",
+            "assets/images/Party_Glasses_2.png",
+            "assets/images/Party_Glasses_3.png"
+        ],
+        "thumbnail": "assets/images/Party_Glasses_thumbnail.png"
+    },
+    {
+        "id": "d436d688-8d97-48a3-af9c-74ae549da94f",
+        "title": "Sunglasses",
+        "description": "The Sunglasses offer a classic and simple design with a focus on functionality. These sunglasses provide essential UV protection while maintaining a timeless look.",
+        "category": "sunglasses",
+        "price": 22.99,
+        "discountPercentage": 4.87,
+        "stock": 59,
+        "tags": [
+            "eyewear",
+            "sunglasses"
+        ],
+        "brand": "Fashion Shades",
+        "weight": 6,
+        "dimensions": {
+            "width": 8.15,
+            "height": 28.81,
+            "depth": 8.4
+        },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 11,
+        "images": [
+            "assets/images/Sunglasses_1.png",
+            "assets/images/Sunglasses_2.png",
+            "assets/images/Sunglasses_3.png"
+        ],
+        "thumbnail": "assets/images/Sunglasses_thumbnail.png"
+    },
+    {
+        "id": "31058ea3-feac-47e3-a13a-d9eccf24ed1c",
+        "title": "iPad Mini 2021 Starlight",
+        "description": "The iPad Mini 2021 in Starlight is a compact and powerful tablet from Apple. Featuring a stunning Retina display, powerful A-series chip, and a sleek design, it offers a premium tablet experience.",
+        "category": "tablets",
+        "price": 499.99,
+        "discountPercentage": 19.48,
+        "stock": 32,
+        "tags": [
+            "electronics",
+            "tablets"
+        ],
+        "brand": "Apple",
+        "weight": 3,
+        "dimensions": {
+            "width": 24.9,
+            "height": 11.83,
+            "depth": 17.08
+        },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 3,
+        "images": [
+            "assets/images/iPad_Mini_2021_Starlight_1.png",
+            "assets/images/iPad_Mini_2021_Starlight_2.png",
+            "assets/images/iPad_Mini_2021_Starlight_3.png",
+            "assets/images/iPad_Mini_2021_Starlight_4.png"
+        ],
+        "thumbnail": "assets/images/iPad_Mini_2021_Starlight_thumbnail.png"
+    },
+    {
+        "id": "aaf4bd7a-dcbf-4c79-b230-b219128d2d67",
+        "title": "Samsung Galaxy Tab S8 Plus Grey",
+        "description": "The Samsung Galaxy Tab S8 Plus in Grey is a high-performance Android tablet by Samsung. With a large AMOLED display, powerful processor, and S Pen support, it's ideal for productivity and entertainment.",
+        "category": "tablets",
+        "price": 599.99,
+        "discountPercentage": 8.11,
+        "stock": 76,
+        "tags": [
+            "electronics",
+            "tablets"
+        ],
+        "brand": "Samsung",
+        "weight": 10,
+        "dimensions": {
+            "width": 18.5,
+            "height": 24.49,
+            "depth": 10.45
+        },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Samsung_Galaxy_Tab_S8_Plus_Grey_1.png",
+            "assets/images/Samsung_Galaxy_Tab_S8_Plus_Grey_2.png",
+            "assets/images/Samsung_Galaxy_Tab_S8_Plus_Grey_3.png",
+            "assets/images/Samsung_Galaxy_Tab_S8_Plus_Grey_4.png"
+        ],
+        "thumbnail": "assets/images/Samsung_Galaxy_Tab_S8_Plus_Grey_thumbnail.png"
+    },
+    {
+        "id": "e08e0f83-1122-47d7-9679-f905bf80d32f",
+        "title": "Samsung Galaxy Tab White",
+        "description": "The Samsung Galaxy Tab in White is a sleek and versatile Android tablet. With a vibrant display, long-lasting battery, and a range of features, it offers a great user experience for various tasks.",
+        "category": "tablets",
+        "price": 349.99,
+        "discountPercentage": 4.82,
+        "stock": 0,
+        "tags": [
+            "electronics",
+            "tablets"
+        ],
+        "brand": "Samsung",
+        "weight": 8,
+        "dimensions": {
+            "width": 12.42,
+            "height": 10.22,
+            "depth": 23.37
+        },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "Out of Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Samsung_Galaxy_Tab_White_1.png",
+            "assets/images/Samsung_Galaxy_Tab_White_2.png",
+            "assets/images/Samsung_Galaxy_Tab_White_3.png",
+            "assets/images/Samsung_Galaxy_Tab_White_4.png"
+        ],
+        "thumbnail": "assets/images/Samsung_Galaxy_Tab_White_thumbnail.png"
+    },
+    {
+        "id": "42577e38-9f31-423a-a86b-ea2ec708ec07",
+        "title": "300 Touring",
+        "description": "The 300 Touring is a stylish and comfortable sedan, known for its luxurious features and smooth performance.",
+        "category": "vehicle",
+        "price": 28999.99,
+        "discountPercentage": 7.15,
+        "stock": 53,
+        "tags": [
+            "sedans",
+            "vehicles"
+        ],
+        "brand": "Chrysler",
+        "weight": 5,
+        "dimensions": {
+            "width": 5.03,
+            "height": 6.98,
+            "depth": 8.65
+        },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/300_Touring_1.png",
+            "assets/images/300_Touring_2.png",
+            "assets/images/300_Touring_3.png",
+            "assets/images/300_Touring_4.png",
+            "assets/images/300_Touring_5.png",
+            "assets/images/300_Touring_6.png"
+        ],
+        "thumbnail": "assets/images/300_Touring_thumbnail.png"
+    },
+    {
+        "id": "d5345b66-8dc9-40d7-b514-968b2fa8c422",
+        "title": "Charger SXT RWD",
+        "description": "The Charger SXT RWD is a powerful and sporty rear-wheel-drive sedan, offering a blend of performance and practicality.",
+        "category": "vehicle",
+        "price": 32999.99,
+        "discountPercentage": 2.27,
+        "stock": 85,
+        "tags": [
+            "sedans",
+            "sports cars",
+            "vehicles"
+        ],
+        "brand": "Dodge",
+        "weight": 8,
+        "dimensions": {
+            "width": 27.01,
+            "height": 11.43,
+            "depth": 23.25
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Charger_SXT_RWD_1.png",
+            "assets/images/Charger_SXT_RWD_2.png",
+            "assets/images/Charger_SXT_RWD_3.png",
+            "assets/images/Charger_SXT_RWD_4.png",
+            "assets/images/Charger_SXT_RWD_5.png",
+            "assets/images/Charger_SXT_RWD_6.png"
+        ],
+        "thumbnail": "assets/images/Charger_SXT_RWD_thumbnail.png"
+    },
+    {
+        "id": "f9063559-bb48-4706-a76e-c107a111b0b6",
+        "title": "Dodge Hornet GT Plus",
+        "description": "The Dodge Hornet GT Plus is a compact and agile hatchback, perfect for urban driving with a touch of sportiness.",
+        "category": "vehicle",
+        "price": 24999.99,
+        "discountPercentage": 14.26,
+        "stock": 81,
+        "tags": [
+            "hatchbacks",
+            "compact cars",
+            "vehicles"
+        ],
+        "brand": "Dodge",
+        "weight": 10,
+        "dimensions": {
+            "width": 14.26,
+            "height": 20.05,
+            "depth": 14.21
+        },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Dodge_Hornet_GT_Plus_1.png",
+            "assets/images/Dodge_Hornet_GT_Plus_2.png",
+            "assets/images/Dodge_Hornet_GT_Plus_3.png",
+            "assets/images/Dodge_Hornet_GT_Plus_4.png",
+            "assets/images/Dodge_Hornet_GT_Plus_5.png",
+            "assets/images/Dodge_Hornet_GT_Plus_6.png"
+        ],
+        "thumbnail": "assets/images/Dodge_Hornet_GT_Plus_thumbnail.png"
+    },
+    {
+        "id": "b4e15ee1-47b4-47f2-bee0-f57e0469a03a",
+        "title": "Durango SXT RWD",
+        "description": "The Durango SXT RWD is a spacious and versatile SUV, known for its strong performance and family-friendly features.",
+        "category": "vehicle",
+        "price": 36999.99,
+        "discountPercentage": 9.21,
+        "stock": 0,
+        "tags": [
+            "suvs",
+            "vehicles"
+        ],
+        "brand": "Dodge",
+        "weight": 8,
+        "dimensions": {
+            "width": 17.45,
+            "height": 22.98,
+            "depth": 20.63
+        },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "Out of Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Durango_SXT_RWD_1.png",
+            "assets/images/Durango_SXT_RWD_2.png",
+            "assets/images/Durango_SXT_RWD_3.png",
+            "assets/images/Durango_SXT_RWD_4.png",
+            "assets/images/Durango_SXT_RWD_5.png",
+            "assets/images/Durango_SXT_RWD_6.png"
+        ],
+        "thumbnail": "assets/images/Durango_SXT_RWD_thumbnail.png"
+    },
+    {
+        "id": "b777d20b-4cb7-465e-bb45-d59ad30784a9",
+        "title": "Pacifica Touring",
+        "description": "The Pacifica Touring is a stylish and well-equipped minivan, offering comfort and convenience for family journeys.",
+        "category": "vehicle",
+        "price": 31999.99,
+        "discountPercentage": 6.89,
+        "stock": 22,
+        "tags": [
+            "minivans",
+            "vehicles"
+        ],
+        "brand": "Chrysler",
+        "weight": 8,
+        "dimensions": {
+            "width": 21.11,
+            "height": 16.23,
+            "depth": 22.96
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Pacifica_Touring_1.png",
+            "assets/images/Pacifica_Touring_2.png",
+            "assets/images/Pacifica_Touring_3.png",
+            "assets/images/Pacifica_Touring_4.png",
+            "assets/images/Pacifica_Touring_5.png",
+            "assets/images/Pacifica_Touring_6.png"
+        ],
+        "thumbnail": "assets/images/Pacifica_Touring_thumbnail.png"
+    },
+    {
+        "id": "0706e434-b8da-434b-b0a7-86bdb64d1edc",
+        "title": "Blue Women's Handbag",
+        "description": "The Blue Women's Handbag is a stylish and spacious accessory for everyday use. With a vibrant blue color and multiple compartments, it combines fashion and functionality.",
+        "category": "womens-bags",
+        "price": 49.99,
+        "discountPercentage": 5.24,
+        "stock": 76,
+        "tags": [
+            "fashion accessories",
+            "handbags"
+        ],
+        "brand": "Fashionista",
+        "weight": 2,
+        "dimensions": {
+            "width": 16.06,
+            "height": 14.91,
+            "depth": 28.61
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 15,
+        "images": [
+            "assets/images/Blue_Women's_Handbag_1.png",
+            "assets/images/Blue_Women's_Handbag_2.png",
+            "assets/images/Blue_Women's_Handbag_3.png"
+        ],
+        "thumbnail": "assets/images/Blue_Women's_Handbag_thumbnail.png"
+    },
+    {
+        "id": "5759133e-146b-4437-95d3-0674b75feb92",
+        "title": "Heshe Women's Leather Bag",
+        "description": "The Heshe Women's Leather Bag is a luxurious and high-quality leather bag for the sophisticated woman. With a timeless design and durable craftsmanship, it's a versatile accessory.",
+        "category": "womens-bags",
+        "price": 129.99,
+        "discountPercentage": 7.74,
+        "stock": 9,
+        "tags": [
+            "fashion accessories",
+            "leather bags"
+        ],
+        "brand": "Heshe",
+        "weight": 5,
+        "dimensions": {
+            "width": 24.49,
+            "height": 10.88,
+            "depth": 8.35
+        },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 5,
+        "images": [
+            "assets/images/Heshe_Women's_Leather_Bag_1.png",
+            "assets/images/Heshe_Women's_Leather_Bag_2.png",
+            "assets/images/Heshe_Women's_Leather_Bag_3.png"
+        ],
+        "thumbnail": "assets/images/Heshe_Women's_Leather_Bag_thumbnail.png"
+    },
+    {
+        "id": "1e0e42ae-5a18-4c62-84e7-c59b794c25ff",
+        "title": "Prada Women Bag",
+        "description": "The Prada Women Bag is an iconic designer bag that exudes elegance and luxury. Crafted with precision and featuring the Prada logo, it's a statement piece for fashion enthusiasts.",
+        "category": "womens-bags",
+        "price": 599.99,
+        "discountPercentage": 18.3,
+        "stock": 43,
+        "tags": [
+            "fashion accessories",
+            "designer bags"
+        ],
+        "brand": "Prada",
+        "weight": 4,
+        "dimensions": {
+            "width": 23.45,
+            "height": 16.1,
+            "depth": 5.78
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "7 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Prada_Women_Bag_1.png",
+            "assets/images/Prada_Women_Bag_2.png",
+            "assets/images/Prada_Women_Bag_3.png"
+        ],
+        "thumbnail": "assets/images/Prada_Women_Bag_thumbnail.png"
+    },
+    {
+        "id": "63de96dd-3444-4444-aa1c-c152d48be5a6",
+        "title": "White Faux Leather Backpack",
+        "description": "The White Faux Leather Backpack is a trendy and practical backpack for the modern woman. With a sleek white design and ample storage space, it's perfect for both casual and on-the-go styles.",
+        "category": "womens-bags",
+        "price": 39.99,
+        "discountPercentage": 7.76,
+        "stock": 89,
+        "tags": [
+            "fashion accessories",
+            "backpacks"
+        ],
+        "brand": "Urban Chic",
+        "weight": 1,
+        "dimensions": {
+            "width": 9.35,
+            "height": 22.43,
+            "depth": 15.63
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 16,
+        "images": [
+            "assets/images/White_Faux_Leather_Backpack_1.png",
+            "assets/images/White_Faux_Leather_Backpack_2.png",
+            "assets/images/White_Faux_Leather_Backpack_3.png"
+        ],
+        "thumbnail": "assets/images/White_Faux_Leather_Backpack_thumbnail.png"
+    },
+    {
+        "id": "282ed53c-15ba-4295-b995-dbcdc305630e",
+        "title": "Women Handbag Black",
+        "description": "The Women Handbag in Black is a classic and versatile accessory that complements various outfits. With a timeless black color and functional design, it's a must-have in every woman's wardrobe.",
+        "category": "womens-bags",
+        "price": 59.99,
+        "discountPercentage": 3.08,
+        "stock": 24,
+        "tags": [
+            "fashion accessories",
+            "handbags"
+        ],
+        "brand": "Elegance Collection",
+        "weight": 1,
+        "dimensions": {
+            "width": 15.31,
+            "height": 26.35,
+            "depth": 24.69
+        },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 8,
+        "images": [
+            "assets/images/Women_Handbag_Black_1.png",
+            "assets/images/Women_Handbag_Black_2.png",
+            "assets/images/Women_Handbag_Black_3.png"
+        ],
+        "thumbnail": "assets/images/Women_Handbag_Black_thumbnail.png"
+    },
+    {
+        "id": "c8cdc7ae-ddc7-48a9-b9d7-bedaaf7fc968",
+        "title": "Black & Brown Slipper",
+        "description": "The Black & Brown Slipper is a comfortable and stylish choice for casual wear. Featuring a blend of black and brown colors, it adds a touch of sophistication to your relaxation.",
+        "category": "womens-shoes",
+        "price": 19.99,
+        "discountPercentage": 13.62,
+        "stock": 80,
+        "tags": [
+            "footwear",
+            "slippers"
+        ],
+        "brand": "Comfort Trends",
+        "weight": 9,
+        "dimensions": {
+            "width": 9.73,
+            "height": 15.4,
+            "depth": 6.3
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 29,
+        "images": [
+            "assets/images/Black_&_Brown_Slipper_1.png",
+            "assets/images/Black_&_Brown_Slipper_2.png",
+            "assets/images/Black_&_Brown_Slipper_3.png",
+            "assets/images/Black_&_Brown_Slipper_4.png"
+        ],
+        "thumbnail": "assets/images/Black_&_Brown_Slipper_thumbnail.png"
+    },
+    {
+        "id": "c92e2bb3-61bc-42b8-9b21-c3eaba19d9f2",
+        "title": "Calvin Klein Heel Shoes",
+        "description": "Calvin Klein Heel Shoes are elegant and sophisticated, designed for formal occasions. With a classic design and high-quality materials, they complement your stylish ensemble.",
+        "category": "womens-shoes",
+        "price": 79.99,
+        "discountPercentage": 11.39,
+        "stock": 99,
+        "tags": [
+            "footwear",
+            "heel shoes"
+        ],
+        "brand": "Calvin Klein",
+        "weight": 1,
+        "dimensions": {
+            "width": 15.41,
+            "height": 18.83,
+            "depth": 18.69
+        },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 3,
+        "images": [
+            "assets/images/Calvin_Klein_Heel_Shoes_1.png",
+            "assets/images/Calvin_Klein_Heel_Shoes_2.png",
+            "assets/images/Calvin_Klein_Heel_Shoes_3.png",
+            "assets/images/Calvin_Klein_Heel_Shoes_4.png"
+        ],
+        "thumbnail": "assets/images/Calvin_Klein_Heel_Shoes_thumbnail.png"
+    },
+    {
+        "id": "c042f7b4-af79-48e1-96f3-30d221fdf97b",
+        "title": "Golden Shoes Woman",
+        "description": "The Golden Shoes for Women are a glamorous choice for special occasions. Featuring a golden hue and stylish design, they add a touch of luxury to your outfit.",
+        "category": "womens-shoes",
+        "price": 49.99,
+        "discountPercentage": 14.93,
+        "stock": 99,
+        "tags": [
+            "footwear",
+            "women's shoes"
+        ],
+        "brand": "Fashion Diva",
+        "weight": 3,
+        "dimensions": {
+            "width": 15.32,
+            "height": 27.84,
+            "depth": 21.06
+        },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 19,
+        "images": [
+            "assets/images/Golden_Shoes_Woman_1.png",
+            "assets/images/Golden_Shoes_Woman_2.png",
+            "assets/images/Golden_Shoes_Woman_3.png",
+            "assets/images/Golden_Shoes_Woman_4.png"
+        ],
+        "thumbnail": "assets/images/Golden_Shoes_Woman_thumbnail.png"
+    },
+    {
+        "id": "5b0917de-9722-49f0-9f80-b3242aec4acb",
+        "title": "Pampi Shoes",
+        "description": "Pampi Shoes offer a blend of comfort and style for everyday use. With a versatile design, they are suitable for various casual occasions, providing a trendy and relaxed look.",
+        "category": "womens-shoes",
+        "price": 29.99,
+        "discountPercentage": 0.3,
+        "stock": 36,
+        "tags": [
+            "footwear",
+            "casual shoes"
+        ],
+        "brand": "Pampi",
+        "weight": 3,
+        "dimensions": {
+            "width": 22.13,
+            "height": 23.43,
+            "depth": 28.61
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 9,
+        "images": [
+            "assets/images/Pampi_Shoes_1.png",
+            "assets/images/Pampi_Shoes_2.png",
+            "assets/images/Pampi_Shoes_3.png",
+            "assets/images/Pampi_Shoes_4.png"
+        ],
+        "thumbnail": "assets/images/Pampi_Shoes_thumbnail.png"
+    },
+    {
+        "id": "87019e56-3a01-4d8d-9b63-50e55ff46e2d",
+        "title": "Red Shoes",
+        "description": "The Red Shoes make a bold statement with their vibrant red color. Whether for a party or a casual outing, these shoes add a pop of color and style to your wardrobe.",
+        "category": "womens-shoes",
+        "price": 34.99,
+        "discountPercentage": 0.01,
+        "stock": 53,
+        "tags": [
+            "footwear",
+            "women's shoes"
+        ],
+        "brand": "Fashion Express",
+        "weight": 5,
+        "dimensions": {
+            "width": 29.75,
+            "height": 12.3,
+            "depth": 26.41
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships overnight",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "30 days return policy",
+        "minimumOrderQuantity": 17,
+        "images": [
+            "assets/images/Red_Shoes_1.png",
+            "assets/images/Red_Shoes_2.png",
+            "assets/images/Red_Shoes_3.png",
+            "assets/images/Red_Shoes_4.png"
+        ],
+        "thumbnail": "assets/images/Red_Shoes_thumbnail.png"
+    },
+    {
+        "id": "711ba3b2-e2e9-4783-8e6c-be9e2503e106",
+        "title": "IWC Ingenieur Automatic Steel",
+        "description": "The IWC Ingenieur Automatic Steel watch is a durable and sophisticated timepiece. With a stainless steel case and automatic movement, it combines precision and style for watch enthusiasts.",
+        "category": "womens-watches",
+        "price": 4999.99,
+        "discountPercentage": 5.76,
+        "stock": 85,
+        "tags": [
+            "watches",
+            "luxury watches"
+        ],
+        "brand": "IWC",
+        "weight": 4,
+        "dimensions": {
+            "width": 12.27,
+            "height": 5.91,
+            "depth": 8.71
+        },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/IWC_Ingenieur_Automatic_Steel_1.png",
+            "assets/images/IWC_Ingenieur_Automatic_Steel_2.png",
+            "assets/images/IWC_Ingenieur_Automatic_Steel_3.png"
+        ],
+        "thumbnail": "assets/images/IWC_Ingenieur_Automatic_Steel_thumbnail.png"
+    },
+    {
+        "id": "79524acf-2fb7-4ddf-95f8-862264fb7f0d",
+        "title": "Rolex Cellini Moonphase",
+        "description": "The Rolex Cellini Moonphase watch is a masterpiece of horology. Featuring a moon phase complication, it showcases the craftsmanship and elegance that Rolex is renowned for.",
+        "category": "womens-watches",
+        "price": 15999.99,
+        "discountPercentage": 18.76,
+        "stock": 66,
+        "tags": [
+            "watches",
+            "luxury watches"
+        ],
+        "brand": "Rolex",
+        "weight": 5,
+        "dimensions": {
+            "width": 22.54,
+            "height": 20.15,
+            "depth": 25.37
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "60 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Rolex_Cellini_Moonphase_1.png",
+            "assets/images/Rolex_Cellini_Moonphase_2.png",
+            "assets/images/Rolex_Cellini_Moonphase_3.png"
+        ],
+        "thumbnail": "assets/images/Rolex_Cellini_Moonphase_thumbnail.png"
+    },
+    {
+        "id": "8dc95724-9dac-439b-96d1-e7bdd8684cde",
+        "title": "Rolex Datejust Women",
+        "description": "The Rolex Datejust Women's watch is an iconic timepiece designed for women. With a timeless design and a date complication, it offers both elegance and functionality.",
+        "category": "womens-watches",
+        "price": 10999.99,
+        "discountPercentage": 17.72,
+        "stock": 31,
+        "tags": [
+            "watches",
+            "luxury watches",
+            "women's watches"
+        ],
+        "brand": "Rolex",
+        "weight": 8,
+        "dimensions": {
+            "width": 14.53,
+            "height": 29.73,
+            "depth": 10.22
+        },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Rolex_Datejust_Women_1.png",
+            "assets/images/Rolex_Datejust_Women_2.png",
+            "assets/images/Rolex_Datejust_Women_3.png"
+        ],
+        "thumbnail": "assets/images/Rolex_Datejust_Women_thumbnail.png"
+    },
+    {
+        "id": "f3108b1f-36db-42c6-b0e8-972e81bbf3c3",
+        "title": "Watch Gold for Women",
+        "description": "The Gold Women's Watch is a stunning accessory that combines luxury and style. Featuring a gold-plated case and a chic design, it adds a touch of glamour to any outfit.",
+        "category": "womens-watches",
+        "price": 799.99,
+        "discountPercentage": 6.37,
+        "stock": 94,
+        "tags": [
+            "watches",
+            "women's watches"
+        ],
+        "brand": "Fashion Gold",
+        "weight": 8,
+        "dimensions": {
+            "width": 5.9,
+            "height": 13.64,
+            "depth": 23.65
+        },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "No return policy",
+        "minimumOrderQuantity": 2,
+        "images": [
+            "assets/images/Watch_Gold_for_Women_1.png",
+            "assets/images/Watch_Gold_for_Women_2.png",
+            "assets/images/Watch_Gold_for_Women_3.png"
+        ],
+        "thumbnail": "assets/images/Watch_Gold_for_Women_thumbnail.png"
+    },
+    {
+        "id": "94688c35-d320-4240-9e21-0538a9b79ec5",
+        "title": "Women's Wrist Watch",
+        "description": "The Women's Wrist Watch is a versatile and fashionable timepiece for everyday wear. With a comfortable strap and a simple yet elegant design, it complements various styles.",
+        "category": "womens-watches",
+        "price": 129.99,
+        "discountPercentage": 17.34,
+        "stock": 55,
+        "tags": [
+            "watches",
+            "women's watches"
+        ],
+        "brand": "Fashion Co.",
+        "weight": 8,
+        "dimensions": {
+            "width": 24.74,
+            "height": 25.89,
+            "depth": 8.18
+        },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "availabilityStatus": "In Stock",
+        "returnPolicy": "90 days return policy",
+        "minimumOrderQuantity": 1,
+        "images": [
+            "assets/images/Women's_Wrist_Watch_1.png",
+            "assets/images/Women's_Wrist_Watch_2.png",
+            "assets/images/Women's_Wrist_Watch_3.png"
+        ],
+        "thumbnail": "assets/images/Women's_Wrist_Watch_thumbnail.png"
+    }
+]

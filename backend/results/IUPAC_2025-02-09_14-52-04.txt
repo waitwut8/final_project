@@ -1,0 +1,5 @@
+Test Mode: IUPAC
+Test Duration: 12.86 seconds
+WPM: 36.38
+Total Score: 45955.00675352157
+Total Errors: 1
