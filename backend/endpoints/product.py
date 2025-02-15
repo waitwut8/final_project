@@ -7,7 +7,7 @@ from dependencies import SessionDep
 # from libs.schemas import LoginInfo
 from libs.auth_jwt import get_current_user, JWTBearer
 from models import Role, UserTable
-
+import random
 
 from libs.lib_sender import *
 
@@ -22,6 +22,12 @@ router = APIRouter(
 def get_products(session: SessionDep):
     products = session.exec(select(Product)).all()
     return products
+
+@router.get("/random")
+def get_random_products(session: SessionDep):
+    products = session.exec(select(Product)).all()
+    random_products = random.sample(products, min(len(products), 6))
+    return random_products
 
 
 @router.get("/search/{keyword}")
@@ -50,6 +56,7 @@ def add_product(
     ).role
     if role != Role.ADMIN:
         raise HTTPException(status_code=401, detail="Unauthorized")
+    print(product)
     session.add(product)
     session.commit()
     session.refresh(product)
@@ -81,7 +88,7 @@ def update_product(
     
     old_product.title = product.title if product.title else old_product.title
     old_product.description = product.description if product.description else old_product.description
-    old_product.price = product.price if product.price else old_product.price
+    old_product.price = product.price.replace('$', "") if product.price else old_product.price
     old_product.stock = product.stock if product.stock else old_product.stock
     old_product.tags = product.tags if product.tags else old_product.tags
     old_product.brand = product.brand if product.brand else old_product.brand
@@ -143,3 +150,26 @@ def update_product_thumbnail(
     session.commit()
     session.refresh(product)
     return product
+
+@router.get("/next-id")
+async def get_next_id(session: SessionDep):
+    """
+    Retrieve the next product ID.
+    This function queries the database for the product
+    with the highest ID
+    and returns the next available product ID.
+    Args:
+        session (SessionDep): The database session dependency.
+    Returns:
+        dict: A dictionary containing the next product ID.
+    
+    """
+    last_product = session.exec(select(Product.product_id).order_by(Product.product_id.desc())).all()
+    print(last_product)
+    last_product = max(last_product) if last_product else None
+    print(last_product)
+    
+    if last_product is None:
+        return {"product_id": 1}
+    return {"product_id": int(last_product) + 1}
+

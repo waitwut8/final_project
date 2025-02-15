@@ -38,7 +38,8 @@ class UserTable(SQLModel, table=True):
 
 
 class Product(SQLModel, table=True):
-    product_id: Optional[str] = Field(default=None, primary_key=True)
+    # id: Optional[int] = Field(default = None, primary_key=True)
+    product_id: Optional[int] = Field(default = None, primary_key=True)
     title: str
     description: str
     price: float

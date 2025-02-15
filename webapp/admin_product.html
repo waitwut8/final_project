@@ -1,10 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Product Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" rel="stylesheet"/>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+    <script src="https://unpkg.com/imagekit-javascript/dist/imagekit.min.js" type="text/javascript"></script>
 </head>
 <body>
-$END$
+<div class="container mt-5">
+    <h1 class="text-center">Product Management</h1>
+    <!-- Add Product Button -->
+    <button class="btn btn-primary mb-3" data-bs-target="#productModal" data-bs-toggle="modal" id="addProductBtn">
+        Add product
+    </button>
+    <!-- Product Table -->
+    <table class="display" id="table" style="width:100%">
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>Image</th>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+
+        </tfoot>
+    </table>
+</div>
+<!-- Modal for Add/Edit Product -->
+<div aria-hidden="true" aria-labelledby="productModalLabel" class="modal fade" id="productModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel">Add Product</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/edit-product" class="mt-4" method="POST">
+
+                    <!-- Product Name -->
+                    <div class="mb-3">
+                        <label class="form-label" for="productName">Product Name</label>
+                        <input class="form-control" id="addproductName" name="productName" required type="text" value="">
+                    </div>
+                    <!-- Product Description -->
+                    <div class="mb-3">
+                        <label class="form-label" for="productPrice">Description</label>
+                        <textarea class="form-control product_description" id="addproductDescription" rows="4"></textarea>
+                    </div>
+                    <!-- Product Price -->
+                    <div class="mb-3">
+                        <label class="form-label" for="productPrice">Price</label>
+                        <input class="form-control" id="addproductPrice" name="productPrice" required step="0.01"
+                               type="number" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="productPrice">Stock</label>
+                        <input class="form-control" id="addproductStock" name="productStock" required step="1"
+                               type="number" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="productPrice">Upload Image</label>
+                        <input class="form-control" id="file1" name="addproductImages" required="required" type="file"
+                               value="">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
+                <button class="btn btn-primary" id="saveProductBtn" type="button" data-bs-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/scripts.js"></script>
+<script src="js/admin_product.js"></script>
 </body>
 </html>

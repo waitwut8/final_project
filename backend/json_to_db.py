@@ -15,7 +15,7 @@ def add_data_to_db(session, data):
     id = 1
     for item in data:
         user = Product(**{
-            'product_id': id,  # Ensure product_id is included
+            # 'product_id': id,  # Ensure product_id is included
             'title': item.get('title'),
             'description': item.get('description'),
             'price': item.get('price'),
