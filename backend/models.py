@@ -55,10 +55,10 @@ class LoginPayload(BaseModel):
     role: Role
 class CartItem(BaseModel):
     id: Optional[int] = None
-    # title: Optional[str] = None
-    # price: Optional[float] = None
-    # discount_percentage: Optional[float] = None
-    # thumbnail: Optional[str] = None
+    title: Optional[str] = None
+    price: Optional[float] = None
+    discount_percentage: Optional[float] = None
+    thumbnail: Optional[str] = None
     quantity: Optional[int] = 0  # Default is 0 if not provided
 
     @computed_field

@@ -52,7 +52,7 @@ async def add_to_cart(
         if item not in cart.items:
             print("not in cart")
 
-            cart.items = cart.items + [{"product_id": item.product_id, "quantity": 1}]
+            cart.items = cart.items + [item.model_dump()]
 
             cart = cart.sqlmodel_update(cart.model_dump())
 
