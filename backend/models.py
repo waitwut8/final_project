@@ -1,8 +1,8 @@
-from sqlmodel import Field, SQLModel, create_engine, Column, JSON
-from sqlalchemy import UniqueConstraint
 from enum import Enum
-from typing import Optional
-from pydantic import BaseModel
+from typing import Optional, List
+from sqlmodel import Field, SQLModel, Column, JSON
+from sqlalchemy import UniqueConstraint
+from pydantic import BaseModel, computed_field
 
 
 
@@ -12,7 +12,7 @@ class Role(str, Enum):
     STAFF = "staff"
     GUEST = "guest"
 # class UserTable(SQLModel, table=True):
-#     __table_args__ = (UniqueConstraint('username', name = "abc"),)
+#     __table_args__ = (UniqueConstraint('username', name="abc"),)
 #     id: Optional[int] = Field(default=None, primary_key=True)
 #     username: str
 #     email: str
@@ -24,7 +24,7 @@ class Role(str, Enum):
 #     active: bool
 
 class UserTable(SQLModel, table=True):
-    __table_args__ = (UniqueConstraint('username'),)
+    __table_args__ = (UniqueConstraint('username', name='uq_username'),)
     id: Optional[int] = Field(default=None, primary_key=True)
     first_name: str
     last_name: str
@@ -34,7 +34,7 @@ class UserTable(SQLModel, table=True):
     password: str
     image: str
     role: Role
-    active: Optional[bool] = 'true'
+    active: Optional[bool] = True
 
 
 class Product(SQLModel, table=True):
@@ -53,3 +53,36 @@ class LoginPayload(BaseModel):
     user_name: str
     user_id: str
     role: Role
+class CartItem(BaseModel):
+    id: Optional[int] = None
+    title: Optional[str] = None
+    price: Optional[float] = None
+    discount_percentage: Optional[float] = None
+    thumbnail: Optional[str] = None
+    quantity: Optional[int] = 0  # Default is 0 if not provided
+
+    @computed_field
+    @property
+    def total(self) -> float:
+        # Handle None values safely; if any field is None, return 0 as fallback
+        return (self.price or 0) * (self.quantity or 0)
+
+    @computed_field
+    @property
+    def discounted_price(self) -> float:
+        # Same here, if price or discount is None, return 0
+        return (self.price or 0) * (1 - ((self.discount_percentage or 0) / 100))
+
+    @computed_field
+    @property
+    def discounted_total(self) -> float:
+        # Finally, if discounted price or quantity is None, fallback to 0
+        return (self.discounted_price or 0) * (self.quantity or 0)
+
+    
+class Cart(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: int
+    items: List[str] = Field(sa_column=Column(JSON))
+    total: float
+    discounted_total: float

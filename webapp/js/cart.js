@@ -1,5 +1,5 @@
 async function cartLoad() {
-    let response = await api.get("/cart");
+    let response = await api.get("/cart/");
     if (response.status === 200){
     let data = response.data;
     localStorage.setItem("cart", JSON.stringify(data));
