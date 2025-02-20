@@ -39,10 +39,12 @@ def get_spec_products(keyword: str, session: SessionDep):
                 Product.description.regexp_match(keyword, "i"),
                 Product.tags.regexp_match(keyword, "i"),
                 Product.brand.regexp_match(keyword, "i"),
+                Product.product_id == keyword,
             )
         )
     ).all()
     return result
+
 
 
 @router.post("/add", dependencies=[Depends(JWTBearer)])

@@ -1,235 +1,142 @@
-import os
-import time
-import curses
 import random
+import time
 import requests
-import string
-import json
-from datetime import datetime
-
-def get_random_compound_info(batch_size=5):
-    """Fetch multiple random chemical names and molecular weights from PubChem"""
-    while True:
-        cids = ",".join(str(random.randint(1, 10000000)) for _ in range(batch_size))  # Request multiple at once
-        url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cids}/property/IUPACName,MolecularWeight/JSON"
-        
-        try:
-            response = requests.get(url, timeout=1)
-            if response.status_code != 200:
-                continue
-            data = response.json()
-            properties = data.get("PropertyTable", {}).get("Properties", [])
-
-            # Return the first valid chemical from the batch
-            for prop in properties:
-                name = prop.get("IUPACName")
-                mol_weight = prop.get("MolecularWeight")
-                if name and mol_weight:
-                    return name, mol_weight
-        except Exception:
-            continue  # If the request fails, retry
-
-def get_word_by_difficulty(stdscr, target_difficulty, tolerance=2.0, batch_size=5):
-    """Fetch multiple random compounds, display them, and pick the best match in one step."""
-    attempt = 1
-    
-    while True:
-        candidates = []  # Store (name, weight, difficulty)
-        stdscr.clear()
-        stdscr.addstr(0, 0, f"Attempt {attempt}: Fetching {batch_size} compounds...")
-
-        names_and_weights = [get_random_compound_info() for _ in range(batch_size)]
-
-        for i, (name, mol_weight) in enumerate(names_and_weights):
-            difficulty = calculate_difficulty(name, mol_weight)
-            candidates.append((name, float(mol_weight), difficulty))
-            
-            # Display each candidate and its difficulty
-            stdscr.addstr(2 + i, 0, f"🔍 {name[:30]}... | MW: {float(mol_weight):.2f} | Diff: {difficulty:.2f}")
-
-        stdscr.refresh()
-        time.sleep(0.05)  # Short pause to show candidates
-
-        # Find the best match in the batch
-        best_match = min(
-            (c for c in candidates if abs(c[2] - target_difficulty) <= tolerance and target_difficulty <= c[2]),
-            key=lambda x: abs(x[2] - target_difficulty),
-            default=None
-        )
-
-        stdscr.addstr(2 + batch_size, 0, f"🔎 Searching for {target_difficulty:.2f} ± {tolerance:.2f}...")
-        stdscr.refresh()
-        time.sleep(0.15)  # Short pause before proceeding
-        attempt += 1
-        tolerance *= 1.5  # Gradually expand tolerance
-
-        if best_match:
-            name, mol_weight, difficulty = best_match
-            stdscr.addstr(4 + batch_size, 0, f"✅ MATCH FOUND: {name} (Diff: {difficulty:.2f})")
-            stdscr.refresh()
-            time.sleep(0.75)  # Pause before returning
-            return name, mol_weight, difficulty
+import base64
+import sys
+import curses
 
 
+def fetch_random_github_code():
+    """Fetch random code from a variety of GitHub repos."""
+    random_repos = [
+        "https://api.github.com/repos/python/cpython/contents/Lib",      # Python (CPython)
+        "https://api.github.com/repos/expressjs/express/contents/lib",   # JavaScript (Express)
+        "https://api.github.com/repos/tensorflow/tensorflow/contents/tensorflow",  # C++ (TensorFlow)
+        "https://api.github.com/repos/nodejs/node/contents/lib",        # JavaScript (Node.js)
+        "https://api.github.com/repos/django/django/contents/django",   # Python (Django)
+        "https://api.github.com/repos/pytorch/pytorch/contents/torch",  # Python (PyTorch)
+        "https://api.github.com/repos/keras-team/keras/contents/keras",  # Python (Keras)
+        "https://api.github.com/repos/rust-lang/rust/contents/src",     # Rust
+        "https://api.github.com/repos/angular/angular/contents/packages",  # TypeScript (Angular)
+        "https://api.github.com/repos/opencv/opencv/contents/modules",  # C++ (OpenCV)
+    ]
+    repo_url = random.choice(random_repos)
+    response = requests.get(repo_url)
+    if response.status_code != 200:
+        print("Error fetching repository contents!")
+        sys.exit(1)
 
-def calculate_difficulty(word, mol_weight):
-    """Exponential difficulty scaling based on length, special characters, and molecular weight"""
-    length_factor = len(word) * 0.25  # Regular character length contributes half point each
-    special_chars = sum(1 for char in word if char not in string.ascii_letters)  # Count non-letters
-    special_factor = special_chars * 3  # Special characters are worth 2 points each
-    mol_weight_factor = float(mol_weight) / 100  # Scale the difficulty based on molecular weight (assuming it's in grams/mol)
-    difficulty = ((length_factor + special_factor) ** 1.5) *mol_weight_factor # Exponential scaling based on length and special chars
-    
+    repo_data = response.json()
+    code_files = [file for file in repo_data if file['name'].endswith(('.py', '.js', '.cpp', '.ts'))]
 
-    return difficulty
+    if not code_files:
+        print("No code files found in this repository!")
+        sys.exit(1)
 
-def log_results(duration, wpm, total_score, total_errors, mode):
-    """Log the results to a file with timestamp"""
-    if not os.path.exists("results"):
-        os.makedirs("results")
+    selected_file = random.choice(code_files)
+    file_url = selected_file['url']
+    file_response = requests.get(file_url)
+    if file_response.status_code != 200:
+        print("Error fetching file content!")
+        sys.exit(1)
 
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    filename = f"results/{mode}_{timestamp}.txt"
-    
-    with open(filename, "w") as file:
-        file.write(f"Test Mode: {mode}\n")
-        file.write(f"Test Duration: {duration:.2f} seconds\n")
-        file.write(f"WPM: {wpm:.2f}\n")
-        file.write(f"Total Score: {total_score}\n")
-        file.write(f"Total Errors: {total_errors}\n")
-    
-    print(f"Results saved to {filename}")
+    file_data = file_response.json()
+    content = file_data['content']
+    decoded_content = base64.b64decode(content).decode('utf-8')
 
-def typing_test(stdscr, mode="IUPAC"):
+    return decoded_content
+
+
+def typing_test(stdscr, code_snippet):
+    """Handles the typing test, including error detection and scroll."""
+    curses.curs_set(1)  # Show the cursor
+    stdscr.clear()
+
+    # Initialize color pairs for correct/incorrect text
+    curses.start_color()
+    curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)  # Correct input
+    curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)    # Incorrect input
+    curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)  # Code to type
+
+    max_y, max_x = stdscr.getmaxyx()
+    line_height = max_y - 2  # Leave space for instructions and results
+
+    stdscr.addstr(0, 0, "Type the code below. Errors will be highlighted in red.\n")
+    stdscr.addstr(1, 0, "Press Enter to start typing...")
+    stdscr.refresh()
+    stdscr.getch()  # Wait for Enter to start
+
+    # Split the code into lines
+    code_lines = code_snippet.split('\n')
+    total_lines = len(code_lines)
+    typed_lines = ['' for _ in range(line_height)]  # Store the typed lines
+
+    current_line = 0
     start_time = time.time()
-    
-    # Configure curses
-    curses.curs_set(1)
-    stdscr.clear()
-    stdscr.nodelay(False)
 
-    stdscr.addstr(0, 0, f"Fetching 30 {mode} names from PubChem ...")
-    stdscr.refresh()
-
-    words = []
-    difficulties = []
-    preset_difficulty = [round(150 * (1.5 ** n), 2) for n in range(10)]
-
-    # Fetch words and molecular weights
-    for _ in range(10):
-        word, mol_weight, difficulty = get_word_by_difficulty(stdscr, preset_difficulty[_], tolerance = preset_difficulty[_] * 0.25)
-        words.append(word)
-        
-        difficulties.append((difficulty, mol_weight))  # Store both difficulty and molecular weight
-        stdscr.addstr(4,0,f"Loaded {len(words)} words ...")
-
-    stdscr.clear()
-    stdscr.addstr(0, 0, f"Typing Test ({mode} Mode): Type the chemical names exactly as shown.")
-    stdscr.addstr(1, 0, "Errors appear in red. You must correct them to proceed.")
-    stdscr.refresh()
-
-    total_chars = 0
-    total_errors = 0
-    total_score = 0
-    dec = 0.95
-
-    for idx, (target, (difficulty, mol_weight)) in enumerate(zip(words, difficulties)):
+    while current_line < total_lines:
         stdscr.clear()
-        stdscr.addstr(4, 0, f"Word {idx + 1} (Difficulty: {difficulty:.2f})")
-        stdscr.addstr(5, 0, target)
-        stdscr.addstr(7, 0, "Your input: ")
+        # Show the code snippet and typed lines with real-time error highlighting
+        for i in range(min(line_height, total_lines - current_line)):
+            line = code_lines[current_line + i]
+            typed_line = typed_lines[i]
+            y = i + 2  # Adjust y-coordinate for typing area
+
+            # Highlight correctly typed characters in green, incorrect ones in red
+            for x in range(min(len(line), len(typed_line))):
+                if line[x] == typed_line[x]:
+                    stdscr.addstr(y, x, typed_line[x], curses.color_pair(1))  # Correct
+                else:
+                    stdscr.addstr(y, x, typed_line[x], curses.color_pair(2))  # Incorrect
+
+            # Display remaining code
+            if len(typed_line) < len(line):
+                stdscr.addstr(y, len(typed_line), line[len(typed_line):], curses.color_pair(3))
+
         stdscr.refresh()
 
-        input_y = 7
-        input_x = len("Your input: ")
-        typed = ""
-        errors = 0
-        current_difficulty = difficulty
+        # Wait for the user to type one character at a time
+        char = stdscr.getch()
 
-        while True:
-            stdscr.move(input_y, input_x + len(typed))
-            key = stdscr.get_wch()
-
-            if key in ("\b", "\x7f", "\x08") or key == curses.KEY_BACKSPACE:
-                if typed:
-                    typed = typed[:-1]
-                    stdscr.move(input_y, input_x)
-                    stdscr.clrtoeol()
-                    stdscr.addstr(input_y, input_x, typed)
-                    stdscr.refresh()
-                continue
-
-            if key == "\n":
-                continue
-
-            if typed != target[:len(typed)]:
-                continue  # Force user to fix errors before proceeding
-
-            if len(typed) < len(target) and key == target[len(typed)]:
-                typed += key
-                stdscr.addstr(input_y, input_x, typed)
-                stdscr.refresh()
+        if char == 10:  # Enter key - go to the next line
+            if typed_lines[current_line] == code_lines[current_line]:  # Check if line is correct
+                current_line += 1
+                if current_line < total_lines:
+                    typed_lines.append('')  # Add a new line for typing
             else:
-                typed += key
-                errors += 1  
-                current_difficulty = max(1, current_difficulty * dec)
-                dec *= 0.75  # Exponential decay of difficulty
-
-                correct_length = 0
-                for i in range(len(typed)):
-                    if i < len(target) and typed[i] == target[i]:
-                        correct_length += 1
-                    else:
-                        break
-
-                correct_part = typed[:correct_length]
-                error_part = typed[correct_length:]
-
-                stdscr.move(input_y, input_x)
-                stdscr.clrtoeol()
-                stdscr.addstr(input_y, input_x, correct_part)
-                stdscr.attron(curses.color_pair(1))
-                stdscr.addstr(error_part)
-                stdscr.attroff(curses.color_pair(1))
+                # Don't proceed to the next line if there's an error
+                stdscr.addstr(max_y - 1, 0, "Fix your mistake first!", curses.color_pair(2))
                 stdscr.refresh()
+                time.sleep(1)
+                continue
 
-            # **Redraw the difficulty** every time it changes
-            stdscr.move(4, 0)
-            stdscr.clrtoeol()
-            stdscr.addstr(4, 0, f"Word {idx + 1} (Difficulty: {difficulty:.2f}, Mistake Weight: {(1-dec)*100}, Lost points: {difficulty-current_difficulty:.2f})")
-            stdscr.refresh()
+        elif char == 27:  # Exit if ESC is pressed
+            break
 
-            if typed == target:
-                break
+        elif char == 127:  # Backspace key (ASCII 127)
+            if typed_lines[current_line]:
+                typed_lines[current_line] = typed_lines[current_line][:-1]  # Remove last char
 
-        total_chars += len(target)
-        total_errors += errors
-        word_score = (current_difficulty * 100) - (errors * current_difficulty*1.1)  # Mistake penalty scales with difficulty
-        total_score += max(word_score, 0)  # Don't allow negative score
+        elif 32 <= char <= 126:  # Printable characters only
+            typed_lines[current_line] += chr(char)
 
     end_time = time.time()
-    duration = end_time - start_time
-    minutes = duration / 60
-    wpm = (total_chars / 5) / minutes if minutes > 0 else 0
+    total_time = end_time - start_time
 
-    # Make sure we are not going beyond the window's height
-    print(f"Test Complete! Time: {duration:.2f} seconds")
-    print(f"WPM: {wpm:.2f}")
-    print(f"Total Score: {total_score}")
-    print(f"Total Errors: {total_errors}")
-
-
-    # Save results to file
-    log_results(duration, wpm, total_score, total_errors, mode)
-
-
+    # Show the final results
+    stdscr.clear()
+    stdscr.addstr(0, 0, f"Time Taken: {total_time:.2f} seconds\n")
+    stdscr.refresh()
     stdscr.getch()
 
+
 def main(stdscr):
-    curses.start_color()
-    curses.init_pair(1, curses.COLOR_RED, curses.COLOR_BLACK)
-    mode = "IUPAC"  # Default mode
-    typing_test(stdscr, mode)
+    stdscr.clear()
+    stdscr.refresh()
+    print("Fetching a random code snippet from GitHub...\n")
+    code_snippet = fetch_random_github_code()
+    typing_test(stdscr, code_snippet)
+
 
 if __name__ == "__main__":
     curses.wrapper(main)

@@ -3,6 +3,8 @@ from typing import Optional, List
 from sqlmodel import Field, SQLModel, Column, JSON
 from sqlalchemy import UniqueConstraint
 from pydantic import BaseModel, computed_field
+from sqlalchemy_json import mutable_json_type
+
 
 
 
@@ -55,10 +57,7 @@ class LoginPayload(BaseModel):
     role: Role
 class CartItem(BaseModel):
     id: Optional[int] = None
-    title: Optional[str] = None
-    price: Optional[float] = None
-    discount_percentage: Optional[float] = None
-    thumbnail: Optional[str] = None
+    
     quantity: Optional[int] = 0  # Default is 0 if not provided
 
     @computed_field
@@ -86,3 +85,17 @@ class Cart(SQLModel, table=True):
     items: List[str] = Field(sa_column=Column(JSON))
     total: float
     discounted_total: float
+
+class Status(str, Enum):
+    PENDING = "pending"
+    PROCESSING = "processing"
+    COMPLETED = "completed"
+    CANCELLED = "cancelled"
+class Order(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: int
+    items: List[str] = Field(sa_column=Column(JSON))
+    total: float
+    status: str
+    created_at: Optional[str] = Field(default=None)
+    updated_at: Optional[str] = Field(default=None)
