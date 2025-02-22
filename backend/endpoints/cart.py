@@ -60,8 +60,7 @@ async def add_to_cart(
     product_id: int, session: SessionDep, current_user=Depends(get_current_user)
 ):
     cart = get_cart(session, current_user.get("user_id"))
-    if product_id in cart.items:
-        raise HTTPException(status_code=400, detail="Product already in cart")
+    
     # Rebuild the list to add the new item
     cart.items = cart.items + [product_id]
     session.add(cart)

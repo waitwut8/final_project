@@ -7,6 +7,7 @@ from libs.schemas import LoginInfo
 from libs.auth_jwt import sign_jwt, JWTBearer, decode_jwt, get_current_user
 from models import Role, LoginPayload
 from utils import hash_password, verify_password
+from copy import deepcopy
 
 from libs.lib_sender import *
 
@@ -228,9 +229,12 @@ async def get_profile_pic(session: SessionDep, current_user = Depends(get_curren
 async def change_password(request: Request, session: SessionDep, current_user = Depends(get_current_user)):
     user_id = current_user.get("user_id")
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
+    
     password = (await request.json()).get("password")
+    
     user.password = hash_password(password)
     session.add(user)
+    
     session.commit()
     session.refresh(user)
     return user
