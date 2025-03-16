@@ -8,6 +8,7 @@ from dependencies import SessionDep
 from libs.auth_jwt import get_current_user, JWTBearer
 from models import Role, UserTable
 import random
+from fnc.sequences import flattendeep
 
 from libs.lib_sender import *
 
@@ -46,6 +47,9 @@ def get_spec_products(keyword: str, session: SessionDep):
     return result
 
 
+@router.get("/searchid/{product_id}")
+def get_product_by_id(product_id: str, session: SessionDep):
+    return session.exec(select(Product).where(Product.product_id == product_id)).first()
 
 @router.post("/add", dependencies=[Depends(JWTBearer)])
 def add_product(
@@ -174,4 +178,20 @@ async def get_next_id(session: SessionDep):
     if last_product is None:
         return {"product_id": 1}
     return {"product_id": int(last_product) + 1}
+
+@router.get("/filters")
+async def get_filters(session: SessionDep):
+    """
+    Retrieve the filters for the products.
+    This function queries the database for the distinct
+    values of the brand and tags columns in the products table.
+    Args:
+        session (SessionDep): The database session dependency.
+    Returns:
+        dict: A dictionary containing the filters for the products.
+    
+    """
+    brands = session.exec(select(Product.brand).distinct()).all()
+    tags = set(flattendeep(session.exec(select(Product.tags).distinct()).all()))
+    return {"brands": brands, "tags": tags}
 

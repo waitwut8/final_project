@@ -4,7 +4,9 @@ from fastapi import HTTPException, APIRouter, Depends
 from dependencies import SessionDep
 from libs.auth_jwt import get_current_user
 import copy
+from libs.lib_sender import send_email, generic_email
 
+import datetime
 router = APIRouter(
     prefix="/cart",
     tags=["cart"],
@@ -116,13 +118,42 @@ async def checkout(session: SessionDep, current_user=Depends(get_current_user)):
         user_id=current_user.get("user_id"),
         total=total,
         items=cart.items,  # Copy items to order
-        status="pending",  # You can modify this to your needs
+        status="pending",
+         # You can modify this to your needs
     )
     session.add(order)
     session.commit()
-
+    new_items = cart.items
     # Clear the cart after creating the order
     cart.items = []  # Rebuild the list to clear it
     session.commit()
-
+    # Fetch all products from the database given a list of IDs
+    def get_products_by_ids(session, product_ids: list) -> list:
+        products = session.exec(select(Product).where(Product.product_id.in_(product_ids))).all()
+        return products
+    
+    # Example usage
+    products = get_products_by_ids(session, new_items)
+    product_dict = {}
+    for product in products:
+        if product.product_id in product_dict:
+            product_dict[product.product_id]["quantity"] += 1
+        else:
+            product_dict[product.product_id] = {
+                "name": product.title,
+                "quantity": 1,
+                "price": product.price,
+            }
+    products = [
+        {"name": details["name"], "quantity": details["quantity"], "price": details["price"]}
+        for details in product_dict.values()
+    ]
+    context = {
+        "customer_name": current_user['user_name'],
+        "order_items": products,
+        "total_amount": 0,
+        "current_year": 2025,
+    }
+    send_email("waitwut8@gmail.com", "waitwut8@gmail.com", "Order Confirmation", generic_email(context, "checkout.html"))
+    print(products)
     return {"message": "Checkout successful", "order_id": order.id, "total": total}

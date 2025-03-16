@@ -65,18 +65,18 @@ async def add_user(user: UserTable, session: SessionDep):
         session.add(user)
         session.commit()
         session.refresh(user)
-        # send_email(
-        #     "waitwut8@gmail.com",
-        #     "waitwut8@gmail.com",
-        #     "You have registered",
-        #     generic_email(
-        #         {
-        #             "first": user.first_name,
-        #             "user": user.username,
-        #         },
-        #         "registration.html",
-        #     ),
-        # )
+        send_email(
+            "waitwut8@gmail.com",
+            "waitwut8@gmail.com",
+            "You have registered",
+            generic_email(
+                {
+                    "first": user.first_name,
+                    "user": user.username,
+                },
+                "registration.html",
+            ),
+        )
     except Exception as e:
         print(e)
         raise HTTPException(status_code=400, detail="User already exists")
@@ -265,3 +265,11 @@ async def demote_user(request: Request, session: SessionDep, current_user = Depe
     session.add(user)
     session.commit()
     session.refresh(user)
+
+@router.post("/whothis")
+async def whothis(session: SessionDep, request: Request):
+    user_id = (await request.json())
+    user_id = user_id.get("user_id")
+
+    user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
+    return user.username

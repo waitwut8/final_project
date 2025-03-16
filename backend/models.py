@@ -4,7 +4,7 @@ from sqlmodel import Field, SQLModel, Column, JSON
 from sqlalchemy import UniqueConstraint
 from pydantic import BaseModel, computed_field
 from sqlalchemy_json import mutable_json_type
-
+import datetime
 
 
 
@@ -97,5 +97,5 @@ class Order(SQLModel, table=True):
     items: List[str] = Field(sa_column=Column(JSON))
     total: float
     status: str
-    created_at: Optional[str] = Field(default=None)
-    updated_at: Optional[str] = Field(default=None)
+    created_at: Optional[str] = datetime.datetime.now()
+    updated_at: Optional[str]  = datetime.datetime.now()
