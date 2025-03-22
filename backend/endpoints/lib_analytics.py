@@ -37,11 +37,14 @@ def rev_over_time(session: Session):
             d = datetime.strptime(o.created_at, '%Y-%m-%d %H:%M:%S.%f').date()
             
             for i in o.items:
-                price = session.exec(select(Product).where(Product.product_id == i)).first().price
-                quantity = Counter(o.items)[i]
-                if d not in rev:
-                    rev[d] = 0
-                rev[d] += price * quantity
+                print(i)
+                
+                if (price:=session.exec(select(Product).where(Product.product_id == i)).first()):
+                    price = price.price
+                    quantity = Counter(o.items)[i]
+                    if d not in rev:
+                        rev[d] = 0
+                    rev[d] += price * quantity
             
         
     dates, amounts = zip(*sorted(rev.items())) if rev else ([], [])

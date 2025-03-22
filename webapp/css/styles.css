@@ -11,6 +11,57 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+canvas #mostSold{
+  width: auto !important;
+  height: auto !important;
+}
+.hidden{
+
+  opacity: 0;
+}
+.pop-in {
+  opacity: 1;
+
+  transform: scale(1);
+  transition: none; /* No transition on pop-in */
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+/* General styling for the container */
+.cross-container {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    max-width: 350px;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+/* Styling for the cross icon */
+.cross-icon {
+    font-size: 24px;  /* You can make this bigger if you want to go bold */
+    color: #dc3545;   /* Red for that "oops!" effect */
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Styling for the sample text */
+.sample-text {
+    font-size: 16px;
+    color: #495057;
+    margin: 0;
+    flex-grow: 1;  /* Allows text to grow and fill space if needed */
+}
+
+
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;

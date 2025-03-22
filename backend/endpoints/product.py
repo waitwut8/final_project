@@ -27,7 +27,7 @@ def get_products(session: SessionDep):
 @router.get("/random")
 def get_random_products(session: SessionDep):
     products = session.exec(select(Product)).all()
-    random_products = random.sample(products, min(len(products), 6))
+    random_products = random.sample(products, min(len(products), 12))
     return random_products
 
 

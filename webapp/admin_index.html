@@ -1,71 +1,158 @@
 <!DOCTYPE html>
-<html lang="en"> <!--begin::Head-->
-
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>AdminLTE | Dashboard v3</title><!--begin::Primary Meta Tags-->
+    <title>AdminLTE | Dashboard v3</title>
+
+    <!-- Primary Meta Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="AdminLTE | Dashboard v3">
-    <meta name="author" content="ColorlibHQ">
-    <meta name="description"
-          content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
-    <meta name="keywords"
-          content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard">
-    <!--end::Primary Meta Tags--><!--begin::Fonts-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
-          integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts-->
-    <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css"
-          integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous">
-    <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css"
-          integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
-    <!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="css/adminlte.css"><!--end::Required Plugin(AdminLTE)--><!-- apexcharts -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
-          integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src = "js/scripts.js"></script>
+    <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
 
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous">
+
+    <!-- Bootstrap & AdminLTE Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/adminlte.css">
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css">
+
+    <!-- Custom Styles -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .app-header, .app-footer {
+            background-color: #343a40;
+            color: white;
+        }
+
+        /* Sidebar */
+        .app-sidebar {
+            background-color: #212529;
+            color: white;
+        }
+
+        .brand-link {
+            color: #ffffff;
+        }
+
+        .app-sidebar .sidebar-brand a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: #007bff;
+        }
+
+        .sidebar-brand {
+            margin-bottom: 20px;
+        }
+
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #ddd;
+            font-weight: 500;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .fw-bold {
+            font-weight: 600;
+        }
+
+        .fs-5 {
+            font-size: 1.25rem;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        /* Footer */
+        .app-footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #343a40;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 
-<body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-<div class="app-wrapper"> <!--begin::Header-->
-    <nav class="app-header navbar navbar-expand bg-body"> <!--begin::Container-->
-        <div class="container-fluid"> <!--begin::Start Navbar Links-->
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i
-                        class="bi bi-list"></i> </a></li>
-                <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Home</a></li>
-                <li class="nav-item d-none d-md-block"><a href="order_index.html" class="nav-link">Order Index</a></li>
-            </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
-            <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search-->
-                <li class="nav-item"><a class="nav-link" data-widget="navbar-search" href="#" role="button"> <i
-                        class="bi bi-search"></i> </a></li> <!--end::Navbar Search-->  <!--begin::Menu Body-->
-                <!--end::Menu Body--> <!--begin::Menu Footer-->
-                <li class="user-footer"><a href="index.html" class="btn btn-default btn-flat">Shopping Page</a> <a onclick = "logout()"
-                                                                                                    class="btn btn-default btn-flat float-end">Sign
-                    out</a></li> <!--end::Menu Footer-->
-            </ul>
-             <!--end::User Menu Dropdown-->
-             <!--end::End Navbar Links-->
-        </div> <!--end::Container-->
-    </nav> <!--end::Header--> <!--begin::Sidebar-->
-    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-        <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="admin_index.html" class="brand-link">
-            <!--begin::Brand Text--> <span class="brand-text fw-light">Administraiton</span> <!--end::Brand Text--> </a>
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
 
-            <!--end::Brand Link--> </div>
-        <div class = "sidebar-brand"><a href = "order_index.html"><span class = "brand-text fw-light">Order Control</span></a></div>
-        <div class = "sidebar-brand"><a href = "admin_user.html"><span class = "brand-text fw-light">User Management</span></a></div>
-        <div class = "sidebar-brand"><a href = "admin_product.html"><span class = "brand-text fw-light">Product Management</span></a></div><!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
+<div class="app-wrapper">
+    <!-- Header -->
+    <div id = "admin-header"></div>
 
 
-    </aside> <!--end::Sidebar--> <!--begin::App Main-->
-    <main class="app-main"> <!--begin::App Content Header-->
-        <div class="app-content-header"> <!--begin::Container-->
-            <div class="container-fluid"> <!--begin::Row-->
+    <!-- Sidebar -->
+    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+        <div class="sidebar-brand">
+            <a href="admin_index.html" class="brand-link d-flex align-items-center">
+                <i class="bi bi-house-door-fill me-2"></i> <!-- House Icon for "Administration" -->
+                <span class="brand-text fw-light">Administration</span>
+            </a>
+        </div>
+
+        <div class="sidebar-brand">
+            <a href="order_index.html" class="d-flex align-items-center">
+                <i class="bi bi-cart-fill me-2"></i> <!-- Cart Icon for "Order Control" -->
+                <span class="brand-text fw-light">Order Control</span>
+            </a>
+        </div>
+
+        <div class="sidebar-brand">
+            <a href="admin_user.html" class="d-flex align-items-center">
+                <i class="bi bi-person-fill me-2"></i> <!-- Person Icon for "User Management" -->
+                <span class="brand-text fw-light">User Management</span>
+            </a>
+        </div>
+
+        <div class="sidebar-brand">
+            <a href="admin_product.html" class="d-flex align-items-center">
+                <i class="bi bi-box-fill me-2"></i> <!-- Box Icon for "Product Management" -->
+                <span class="brand-text fw-light">Product Management</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Include Bootstrap Icons if not already done -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <!-- Main Content -->
+    <main class="app-main">
+        <div class="app-content-header">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
                         <h3 class="mb-0">Dashboard v3</h3>
@@ -73,107 +160,69 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                Dashboard v3
-                            </li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
                         </ol>
                     </div>
-                </div> <!--end::Row-->
-            </div> <!--end::Container-->
+                </div>
+            </div>
         </div>
-        <div class="app-content"> <!--begin::Container-->
-            <div class="container-fluid"> <!--begin::Row-->
+        <div class="app-content">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card mb-4">
-                            <div class="card-header border-0">
-                                <div class="d-flex justify-content-between">
-                                    <h3 class="card-title">Products Shipped</h3> <a href="javascript:void(0);"
-                                                                                         class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">View
-                                    Report</a>
+
+                        <!-- Product Shipped Card -->
+                        <div class="card mb-4 mx-4">
+                            <div class="card-header">
+                                <div class="d-flex">
+                                    <h3 class="card-title">Gross Revenue: </h3>
+                                    <h3 class = "card-title ms-1" id = "rev"></h3>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="d-flex">
-                                    <p class="d-flex flex-column"><span class="fw-bold fs-5" id = "order"></span> <span>Orders shipped in 48h</span>
-                                    </p>
-
-                                </div> <!-- /.d-flex -->
-                                <canvas id = "orders"></canvas>
-                            </div>
-                        </div> <!-- /.card -->
-                        <div class="card mb-4">
-                            <div class="card-header border-0">
-                                <h3 class="card-title">Top 20 products sold</h3>
-                                <div class="card-tools"><a href="#" class="btn btn-tool btn-sm"> <i
-                                        class="bi bi-download"></i> </a> <a href="#" class="btn btn-tool btn-sm"> <i
-                                        class="bi bi-list"></i> </a></div>
-                            </div>
-                            <div>
-                                <canvas id = "mostSold"></canvas>
+                                
+                                <div class = "row">
+                                    <div class="col-3"></div>
+                                <div class="chart-container col-6">
+                                    <canvas id="revenue"></canvas>
+                                </div>
+                                <div class="col-3"></div>
+                                </div>
                             </div>
                         </div>
-                        <!-- /.card -->
+
+                        <!-- Top Products Sold -->
+                        <div class="card mb-4 h-100 mx-4" >
+                            <div class="card-header">
+                                <h3 class="card-title">Top 20 Products Sold</h3>
+                                
+                            </div>
+                            <div class="card-body">
+                                <div class = "row">
+                                    <div class="col-3"></div>
+                                <div class="chart-container col-5">
+                                    <canvas id="mostSold"></canvas>
+                                </div>
+                                <div class="col-4"></div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.col-md-6 -->
-                    <div class="col-lg-6">
-                        <div class="card mb-4">
-                            <div class="card-header border-0">
-                                <div class="d-flex justify-content-between">
-                                    <h3 class="card-title">Sales</h3> <a href="javascript:void(0);"
-                                                                         class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">View
-                                    Report</a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <p class="d-flex flex-column"><span class="fw-bold fs-5" id = "rev"></span> <span>Sales in the past 48h</span>
-                                    </p>
 
-                                </div> <!-- /.d-flex -->
-                                <div>
-                                    <canvas id = "revenue"></canvas></div>
-                            </div>
+                </div>
+            </div>
 
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header border-0">
-                                <div class="d-flex justify-content-between">
-                                    <h3 class="card-title">Products Shipped</h3> <a href="javascript:void(0);"
-                                                                         class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">View
-                                    Report</a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <p class="d-flex flex-column"><span class="fw-bold fs-5" id = "shipped_p"></span> <span>Produccts shipped in 48h</span>
-                                    </p>
+    </main>
 
-                                </div> <!-- /.d-flex -->
-                                <div>
-                                    <canvas id = "productsSold"></canvas></div>
-                            </div>
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="container-fluid">
+            <p>&copy; 2025 Company, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
 
-                        </div> <!-- /.card -->
-
-                            <!-- /.d-flex -->
-                            </div>
-                        </div>
-                    </div> <!-- /.col-md-6 -->
-                </div> <!--end::Row-->
-             <!--end::Container-->
-         <!--end::App Content-->
-    </main> <!--end::App Main--> <!--begin::Footer-->
-    <footer class="app-footer"> <!--begin::To the end-->
-        <div class="float-end d-none d-sm-inline">Anything you want</div> <!--end::To the end--> <!--begin::Copyright-->
-        <strong>
-            Copyright &copy; 2014-2024&nbsp;
-            <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
-        </strong>
-        All rights reserved.
-        <!--end::Copyright-->
-    </footer> <!--end::Footer-->
-</div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+<!-- JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
@@ -189,11 +238,15 @@
 <!--end::OverlayScrollbars Configure--> <!-- OPTIONAL SCRIPTS --> <!-- apexcharts -->
 <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
         integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-
+<script src = "js/scripts.js"></script>
 <script src = "js/graph.js"></script>
 <script src = "js/admin_index.js"></script>
 
-</body><!--end::Body-->
-
+<!-- Custom Scripts -->
+<script>
+    // Your custom JS to handle charts or other logic goes here
+</script>
+</body>
 </html>

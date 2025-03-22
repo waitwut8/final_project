@@ -4,168 +4,299 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Modern Business - Start Bootstrap Template</title>
-    <!-- Favicon-->
+    <title>Modern Business - Revamped</title>
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
+
+    <!-- Bootstrap CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Font Awesome & Custom Styles -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css" />
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/fa.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 
+    <!-- Custom styles for restyling -->
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
+        /* Header Styling */
+        #header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, #5a5c7f, #34495e);
+            color: white;
+            padding: 80px 0;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        header a.btn {
+            background-color: #ff7b00;
+            color: white;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        header a.btn:hover {
+            background-color: #ff5400;
+        }
+
+        /* Product Card Styling */
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            border-bottom: 2px solid #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            background: #fff;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .badge {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            color: #777;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #6c63ff, #3a8dff);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #4a42e6, #2470b7);
+        }
+
+        /* Newsletter Section */
+        aside.bg-primary {
+            border-radius: 15px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        aside .input-group input,
+        aside .input-group button {
+            border-radius: 25px;
+        }
+
+        aside .input-group input {
+            padding: 15px 20px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        aside .input-group button {
+            background-color: #ff7b00;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        aside .input-group button:hover {
+            background-color: #ff5400;
+        }
+
+        aside small {
+            font-size: 0.85rem;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #232323;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ff7b00;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ff5400;
+        }
+
+        footer small {
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Improvements */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                margin-bottom: 20px;
+            }
+
+            .card-body {
+                padding: 1rem;
+            }
+
+            aside .input-group input,
+            aside .input-group button {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 </head>
 
 <body class="d-flex flex-column h-100">
 
-
-
+    <!-- Header -->
     <div id="header"></div>
-    <script>
-        fetch('header.html').then(res => res.text()).then((res) => { $("#header").html(res) })
-    </script>
+
+    <!-- Main Content -->
     <main class="flex-shrink-0">
-        <!-- Navigation-->
-        <!-- Navbar-->
 
-        <!-- Navbar -->
-        <!-- Header-->
-        <header class="bg-dark py-5">
+        <!-- Hero Section -->
+        <header class="bg-dark text-white py-5 position-relative overflow-hidden">
             <div class="container px-5">
-                <div class="row gx-5 align-items-center justify-content-center">
-                    <div class="col-lg-8 col-xl-7 col-xxl-6">
-                        <div class="my-5 text-center text-xl-start">
-                            <h1 class="display-5 fw-bolder text-white mb-2 username" id="username">A Bootstrap 5
-                                template for modern businesses</h1>
-
-                        </div>
+                <div class="row gx-5 align-items-center justify-content-between">
+                    <div class="col-lg-7 text-center text-lg-start">
+                        <h1 class="display-4 fw-bold mb-3" id="username">A modern product warehouse</h1>
+                        <p class="lead mb-4">Find everything you need here</p>
+                        <a href="#products" class="btn btn-primary btn-lg rounded-pill shadow-sm">
+                            Explore Products <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
                     </div>
-                    <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"
-                            src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." id="img" /></div>
+                    <div class="col-lg-5 text-center">
+                        <img class="img-fluid rounded-circle shadow-lg" src="assets/images/banner.png" alt="Responsive Design Illustration" id="img" />
+                    </div>
                 </div>
             </div>
         </header>
 
-        <!-- Testimonial section-->
-        <div class="py-5 bg-light">
-            <div class="container px-5 my-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-10 col-xl-7">
-                        <div class="text-center">
-                            <div class="fs-4 mb-4 fst-italic">"This site has let me buy so much stuff, at such a cheap
-                                price"</div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d"
-                                    alt="..." />
-                                <div class="fw-bold">
-                                    <p id="comment_username"></p>
-
-                                    <p id="company_roles"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Blog preview section-->
+        <!-- Product Listings Section -->
         <section class="py-5">
             <div class="container px-5 my-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-8 col-xl-6">
-                        <div class="text-center">
-                            <h2 class="fw-bolder">Product listings</h2>
-                            <p class="lead fw-normal text-muted mb-5">Just a sample of what we offer</p>
-                        </div>
-                    </div>
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold">Product Listings</h2>
+                    <p class="lead text-muted">Just a sample of what we offer</p>
                 </div>
+
                 <div class="row gx-5" id="row">
                     <div class="col-lg-3 mb-5">
                         <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                            <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="Product Image" />
                             <div class="card-body p-4">
-                                <div class="badge bg-primary bg-gradient rounded-pill mb-2" id="">Product</div>
-                                <a class="text-decoration-none link-dark stretched-link" href="#">
-                                    <h5 class="card-title mb-3">Blog post title</h5>
-                                </a>
-                                <p class="card-text mb-0">Some quick example text to build on the card title and make up
-                                    the bulk of the card's content.</p>
+                                <span class="badge bg-primary bg-gradient rounded-pill mb-2">Product</span>
+                                <h5 class="card-title mb-3">
+                                    <a class="text-decoration-none link-dark stretched-link" href="#">Blog Post Title</a>
+                                </h5>
+                                <p class="card-text mb-0">
+                                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                                </p>
                             </div>
-
                         </div>
                     </div>
-
-                    <!-- Call to action-->
-                    <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
-                        <div
-                            class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
-                            <div class="mb-4 mb-xl-0">
-                                <div class="fs-3 fw-bold text-white">New products, delivered to you.</div>
-                                <div class="text-white-50">Sign up for our newsletter for the latest updates.</div>
-                            </div>
-                            <div class="ms-xl-4">
-                                <div class="input-group mb-2">
-                                    <input class="form-control" type="text" placeholder="Email address..."
-                                        aria-label="Email address..." aria-describedby="button-newsletter" />
-                                    <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign
-                                        up</button>
-                                </div>
-                                <div class="small text-white-50">We care about privacy, and will never share your data.
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
                 </div>
+
+                <!-- Call to Action -->
+                <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5 text-white">
+                    <div class="d-flex flex-column flex-xl-row align-items-center justify-content-between">
+                        <div class="mb-4 mb-xl-0">
+                            <h3 class="fw-bold mb-2">New products, delivered to you.</h3>
+                            <p class="text-white-50">Sign up for our newsletter for the latest updates.</p>
+                        </div>
+                        <div class="ms-xl-4">
+                            <div class="input-group mb-2">
+                                <input class="form-control" type="email" placeholder="Email address..." aria-label="Email address" />
+                                <button class="btn btn-outline-light" type="button">Sign up</button>
+                            </div>
+                            <small class="text-white-50">
+                                We care about privacy, and will never share your data.
+                            </small>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </section>
     </main>
-    <!-- Footer-->
+
+    <!-- Footer -->
     <footer class="bg-dark py-4 mt-auto">
-        <div class="container px-5">
-            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                <div class="col-auto">
-                    <div class="small m-0 text-white">Copyright &copy; Your Website 2023</div>
-                </div>
-                <div class="col-auto">
-                    <a class="link-light small" href="#">Privacy</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#">Terms</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#">Contact</a>
-                </div>
+        <div class="container px-5 text-white text-center">
+            <small>&copy; Your Website 2023</small>
+            <div>
+                <a class="link-light small me-2" href="#">Privacy</a>
+                <a class="link-light small me-2" href="#">Terms</a>
+                <a class="link-light small" href="#">Contact</a>
             </div>
         </div>
     </footer>
-    <!-- Bootstrap core JS-->
 
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- Core theme JS-->
+
+    <!-- Custom Scripts -->
     <script src="js/scripts.js"></script>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
     <script src="js/home.js"></script>
+
     <script>
         loadHome();
         listenToNavBar();
-        loadUsername()
-    </script>
-    <!-- Optional: Place to the bottom of scripts -->
-    <script>
-
     </script>
 
 </body>

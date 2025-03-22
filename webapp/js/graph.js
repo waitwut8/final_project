@@ -8,7 +8,7 @@ async function makeGraph(url, ctx, type, title) {
                     datasets: [{
                         label: title,
                         data: res.data[1],
-                        borderWidth: 1
+                        borderWidth: 0.25
                     }]
                 },
                 options: {
@@ -16,7 +16,9 @@ async function makeGraph(url, ctx, type, title) {
                         y: {
                             beginAtZero: true
                         }
-                    }
+                    },
+                    aspectRatio: 1.2,
+                    maintainAspectRatio: false,
                 }
             })
             console.log(res.data[2], title)

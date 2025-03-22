@@ -272,4 +272,4 @@ async def whothis(session: SessionDep, request: Request):
     user_id = user_id.get("user_id")
 
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
-    return user.username
+    return user.username if user else "user does not exist"

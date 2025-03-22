@@ -1,10 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<nav class="app-header navbar navbar-expand bg-body">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <!-- Sidebar toggle button -->
+      <li class="nav-item">
+        <a class="nav-link" data-lte-toggle="sidebar" href="admin_index.html" role="button">
+          <i class="bi bi-list"></i> <!-- Hamburger menu icon -->
+          <span class="ms-2 d-none d-md-inline">Menu</span>
+        </a>
+      </li>
+      <!-- Navigation Links for Desktop -->
+      <li class="nav-item d-none d-md-block">
+        <a href="admin_index.html" class="nav-link">
+          <i class="bi bi-house-door"></i> <!-- Home icon -->
+          Home
+        </a>
+      </li>
+      <li class="nav-item d-none d-md-block">
+        <a href="order_index.html" class="nav-link">
+          <i class="bi bi-cart-check"></i> <!-- Order index icon -->
+          Order Index
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <!-- Search Icon -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="bi bi-search"></i> <!-- Search icon -->
+        </a>
+      </li>
+      <!-- User section -->
+      <li class="nav-item dropdown user-footer">
+        <!-- Shopping Page Button -->
+        <a href="index.html" class="btn btn-outline-primary">
+          <i class="bi bi-shop-window"></i> <!-- Storefront icon -->
+          Shopping Page
+        </a>
+        <!-- Sign out Button -->
+        <a onclick="logout()" class="btn btn-outline-danger float-end">
+          <i class="bi bi-box-arrow-right"></i> <!-- Logout icon -->
+          Sign out
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
 </body>
 </html>

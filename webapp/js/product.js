@@ -1,74 +1,28 @@
 async function loadPage(){
-    /** {
-     "id": "97d22b8b-b724-4ce1-bf92-b4125a5966be",
-     "title": "Essence Mascara Lash Princess",
-     "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
-     "category": "beauty",
-     "price": 9.99,
-     "discountPercentage": 7.17,
-     "stock": 5,
-     "tags": [
-     "beauty",
-     "mascara"
-     ],
-     "brand": "Essence",
-     "weight": 2,
-     "dimensions": {
-     "width": 23.17,
-     "height": 14.43,
-     "depth": 28.01
-     },
-     "warrantyInformation": "1-month warranty",
-     "shippingInformation": "Ships in 1 month",
-     "availabilityStatus": "Low Stock",
-     "returnPolicy": "30 days return policy",
-     "minimumOrderQuantity": 24,
-     "images": [
-     "assets/images/Essence_Mascara_Lash_Princess_1.png"
-     ],
-     "thumbnail": "assets/images/Essence_Mascara_Lash_Princess_thumbnail.png"
-     }
-        */
-    let to_search = getAllUrlParams(window.location.href).product_name
-    let res = await api.get(`/product/${to_search}`);
-    let product = res.data
-    let sku = product.id
 
-    let name = product.title
-    let description = product.description
-    let category = product.category
-    let price = product.price * (1-product.discountPercentage/100)
-    let dimensions = product.dimensions
-
-    let warranty = product.warrantyInformation
-    let shipping = product.shippingInformation
-    let images = product.images
-    console.log(images)
-    let thumbnail = product.thumbnail
+    let to_search = getAllUrlParams(window.location.href).id
+    let res = await api.get(`/product/searchid/${to_search}`);
+    // let product = res.data
+    // let sku = product.id
+    //
+    // let name = product.title
+    // let description = product.description
+    // let category = product.category
+    // let price = product.price * (1-product.discountPercentage/100)
+    // let dimensions = product.dimensions
+    //
+    // let warranty = product.warrantyInformation
+    // let shipping = product.shippingInformation
+    // let images = product.images
+    // console.log(images)
+    // let thumbnail = product.thumbnail
     
     
-    changeCarousel(images)
-    change_content(name, sku, product.price, price, description, dimensions, warranty, shipping)
+    // changeCarousel(images)
+    change_content(res.data)
 }
 function changeCarousel(images){
-    /*
-    * <li
-                                data-bs-target="#carouselId"
-                                data-bs-slide-to="0"
-                                class="active"
-                                aria-current="true"
-                                aria-label="First slide"
-                            ></li>
-                            <li
-                                data-bs-target="#carouselId"
-                                data-bs-slide-to="1"
-                                aria-label="Second slide"
-                            ></li>
-                            <li
-                                data-bs-target="#carouselId"
-                                data-bs-slide-to="2"
-                                aria-label="Third slide"
-                            ></li>*/
+
     let target_list;
     target_list = ""
     let first_target = false
@@ -96,28 +50,7 @@ function changeCarousel(images){
     }
     console.log(target_list)
     $(".carousel-indicators")[0].innerHTML = target_list
-    /*
-    * <div class="carousel-item active">
-                                <img
-                                    src="holder.js/900x500/auto/#777:#555/text:First slide"
-                                    class="w-100 d-block"
-                                    alt="First slide"
-                                />
-                            </div>
-                            <div class="carousel-item">
-                                <img
-                                    src="holder.js/900x500/auto/#666:#444/text:Second slide"
-                                    class="w-100 d-block"
-                                    alt="Second slide"
-                                />
-                            </div>
-                            <div class="carousel-item">
-                                <img
-                                    src="holder.js/900x500/auto/#666:#444/text:Third slide"
-                                    class="w-100 d-block"
-                                    alt="Third slide"
-                                />
-                            </div>*/
+
     let first_carousel = false;
     let carousel_html = ""
     console.log(images)
@@ -146,15 +79,35 @@ function changeCarousel(images){
     $(".carousel-inner")[0].innerHTML = carousel_html
 }
 
-function change_content(name, sku, highprice, lowprice, description, dim, warranty, shipping){
-    $("#name").text(name)
-    $("#id").text(`SKU: ${sku}`)
-    $("#highprice").text(`$${highprice}`)
-    $("#lowprice").text(`$${lowprice}`)
-    $("#description").text(description)
-    $("#dimensions").text(`${dim.width}x${dim.height}x${dim.depth}`)
-    $("#warranty").text(warranty)
-    $("#shipping").text(shipping)
+function change_content(data){
+    // $("#name").text(data.title)
+    // $("#id").text(`SKU: ${data.product_id}`)
+    // $("#highprice").text(`$${highprice}`)
+    // $("#lowprice").text(`$${lowprice}`)
+    // $("#description").text(description)
+    // $("#dimensions").text(`${dim.width}x${dim.height}x${dim.depth}`)
+    // $("#warranty").text(warranty)
+    // $("#shipping").text(shipping)
+    /**
+     * class Product(SQLModel, table=True):
+     *     # id: Optional[int] = Field(default = None, primary_key=True)
+     *     product_id: Optional[int] = Field(default = None, primary_key=True)
+     *     title: str
+     *     description: str
+     *     price: float
+     *     stock: int
+     *     tags: list[str] = Field(sa_column=Column(JSON))
+     *     brand: str
+     *     images: list[str] = Field(sa_column=Column(JSON))
+     *     thumbnail: str
+     */
+    $("#name").text(data.title)
+    $("#id").text(data.product_id);
+    $("#price").text(data.price);
+    $("#description").text(data.description);
+    console.log(String(data.thumbnail).replaceAll("\"", ""))
+    $('#image').attr("src", String(data.thumbnail).replaceAll("\"", ""));
+
 
 }
 function getAllUrlParams(url) {

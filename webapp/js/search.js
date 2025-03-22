@@ -1,248 +1,284 @@
-const dataset = api.get("/products_name").then((res) => {
-    localStorage.setItem('data', JSON.stringify(res));
-    console.log(JSON.stringify(res));
-});
-api.get("/get_filters").then((res) => {
-    localStorage.setItem("filters", JSON.stringify(res.data))
 
 
+// Fetch product data from the FastAPI endpoint and store it in local storage
+const fetchDataAndStore = async () => {
+    try {
+        // Fetching the product data from the FastAPI endpoint
+        const res = await api.get("/product");  // Getting all the product goodness from the server. Mmmm data.
 
-}
-);
-console.log(localStorage.getItem('filters'))
-let data = JSON.parse(localStorage.getItem(('data')))
-var filter_data = JSON.parse(localStorage.getItem("filters"))
-let _input = document.getElementById('search-input');
+        // Store it in localStorage like we're hoarding digital treasures
+        localStorage.setItem('data', JSON.stringify(res.data)); // Saving the fetched data in localStorage (our personal vault).
 
-let b_filters = new Set(), c_filters = new Set();
+        // Log the product data to console so we can pretend to be debugging superheroes
+        console.log("Product Data:", JSON.stringify(res.data)); // *Pretends to be impressed* Wow, look at that data!
+    } catch (error) {
+        // In case something goes wrong, we throw our hands in the air and scream... silently.
+        console.error("Failed to fetch product data:", error);  // Looks like the server's taking a coffee break.
+    }
+};
 
+// Initialize _brand_filters as an empty Set (Because why not start clean?)
+let _brand_filters = new Set(), _tag_filters = new Set();  // Set, because regular arrays were too mainstream for our filtering needs.
+let fmi_price = 0; // fmi => filter minimum price
+let fma_price = 0; // fma => filter maximum price
+// Initialize data from localStorage and search input (We are getting nostalgic now... and efficient)
+let data = JSON.parse(localStorage.getItem('data'));  // We retrieve our precious data from storage like Indiana Jones digging up artifacts.
+let _input = document.getElementById('search-input');  // Getting our search input, because we’re all about that search life.
 
-
-try {
-    var brand_filters = filter_data[0]
-var category_filters = filter_data[1]
-} catch (error) {
-    alert("the data required to run this page is not available. try reloading the page")
-    setTimeout(() => {location.reload()}, 500)
-}
-
-
-
-$("btn-success").on('click', function () {
-    const keyword = $("#search-input").val()
-    searchProducts(keyword, b_filters, c_filters)
-})
-// constructs the suggestion engine
-var products = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.whitespace,
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    // `states` is an array of state names defined in "The Basics"
-    local: data,
-
+// Handle search button click and trigger product search when the "search" button is clicked
+$("#btn-success").on('click', () => {
+    const keyword = $("#search-input").val();  // Grabbing the search keyword like it’s a new clue.
+    searchProducts(keyword);  // Get ready for some search action.
 });
 
-var brands = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.whitespace,
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: brand_filters
-})
-$('#bloodhound .typeahead').typeahead({
-    limit: 10,
-    hint: true,
-    highlight: true,
-    minLength: 1,
 
 
-},
-    {
-        name: 'products',
-        source: products
-    },
-
-);
-
+// Trigger product search when the Enter key is pressed. Yeah, we’re extra like that.
 window.addEventListener("keydown", (event) => {
-    console.log(event.key)
-    if (event.key === "Enter") {
-        console.log($("#search-input")[0].value)
-        searchProducts($("#search-input")[0].value, b_filters, c_filters)
+    if (event.key === "Enter") {  // Enter key! THE MOST DRAMATIC KEY!
+        searchProducts($("#search-input")[0].value);  // Searching on Enter—because why not make the universe follow our rules?
     }
-})
+});
+
+// Initial product search trigger (still not sure why it's here, but keeping it because "why not?")
+searchProducts();  // Starting the search from the get-go. Call it a gut feeling.
 
 
-$('#o_bloodhound .o_typeahead').typeahead({
-    limit: 10,
-    hint: true,
-    highlight: true,
-    minLength: 1,
 
-
-},
-    {
-        name: 'products',
-        source: brands
-    },
-
-);
-$("#brand-filter-adder").on('click', function () {
-    if ($('.o_typeahead.tt-input').val() === "") {
-        return;
-    }
-    if (brand_filters.indexOf($('.o_typeahead.tt-input').val()) === -1) {
-        return;
-    }
-    addToBFilter()
-    searchProducts($("#search-input").val(), b_filters, c_filters)
-})
-
-function addToBFilter() {
-    $("#active-filters").html("")
-    b_filters.add($('.o_typeahead.tt-input').val())
-    for (const i of b_filters) {
-        var toAdd = `<span value = "${i}">
-                                        ${i}
-                                        <span><i class="fa-regular fa-x  link-info filter-value"></i></span>
-                                        
-                                    </span>
-                                    <br>
-                                    <br>`
-        $("#active-filters").append(toAdd)
-    }
-    $(".fa-x").on('click', (event) => {
-
-        var el = $(event.currentTarget).parent().parent()
-        b_filters.delete(el.attr('value'))
-        el.remove()
-        searchProducts($("#search-input").val(), b_filters, c_filters)
-    })
-}
-
-
+// Function to display product information in the results container
 const extracted = (product, resultsContainer) => {
-    const productDiv = document.createElement("div");
+    const productDiv = document.createElement("div");  // Creating a div to hold our product. It's like building a tiny home.
+    productDiv.className = "product card mb-3 col-12 col-sm-6 col-md-4 col-lg-4  mx-auto";  // Adjusted to make it responsive. We're fancy like that.
 
-    productDiv.className = "product card mb-3";
+    // Now, let’s fill the div with actual product info. Prepare to be wowed.
     productDiv.innerHTML = `
-            <div class="card-body">
-                <h4 class="card-title">${product.title}</h4>
-                <img src="${product.thumbnail}" class="img-fluid float-left mr-3 mb-1" alt="${product.title}" />
-                <p class="card-text">${product.description}</p>
-                <hr>
+    <div class="card shadow-lg border-light mb-4" style="border-radius: 15px; overflow: hidden; background: #f9f9f9;">
+        <div class="card-body">
+            <!-- Product Title -->
+            <h4 class="card-title font-weight-bold text-dark" style="font-size: 1.1rem; line-height: 1.4; color: #333;">
+                ${product.title}  <!-- The star of the show, ladies and gentlemen! -->
+            </h4>
 
-                <button  id="${product.id}" class="btn btn-primary add-to-cart-btn">Add to Cart</button>
-
+            <!-- Product Thumbnail and Description -->
+            <div class="d-flex mb-3">
+                <img src="${product.thumbnail.replaceAll('\"', '')}" class="img-fluid rounded-3 mr-3" alt="${product.title}"
+                     style="max-width: 130px; max-height: 130px; object-fit: cover; border: 4px solid #f0f0f0; box-shadow: 0 8px 16px rgba(0,0,0,0.1);" />
             </div>
-        `;
 
+            <hr class="my-3" style="border-color: #e0e0e0;"/>
+
+            <!-- Price and Add to Cart Section -->
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- Price -->
+                <span class="text-dark" style="font-size: 1.1rem; font-weight: bold; color: #333;">
+                    $${product.price}  <!-- Let's make that price shine bright like a diamond. -->
+                </span>
+
+                <!-- Add to Cart Button -->
+                <button id="${product.product_id}" class="btn btn-gradient add-to-cart-btn" style="border-radius: 25px; padding: 10px 20px; background: linear-gradient(135deg, #6c63ff, #3a8dff); color: white; border: none;">
+                    <i class="fas fa-cart-plus"></i> Add to Cart  <!-- We want the cart filled to the brim, people! -->
+                </button>
+            </div>
+
+            <!-- Success Message for Cart -->
+            <p class="hidden text-success mb-0" id="p_${product.product_id}" style="font-size: 0.9rem; font-weight: bold;">
+                <i class="fas fa-check-circle"></i> Product added to cart!  <!-- We can only hope that this shows up when the cart actually gets filled. -->
+            </p>
+        </div>
+    </div>
+`;
+
+    // Append the product card to the results container. Because we're about to drop a knowledge bomb here.
     resultsContainer.appendChild(productDiv);
-    document.getElementById(`${product.id}`).addEventListener("click", (event) => {
-        event.preventDefault();
-        addToCart(product.title).then();
 
+    // Handle the "Add to Cart" button click event. Let's bring out the big guns.
+    document.getElementById(`${product.product_id}`).addEventListener("click", (event) => {
+        event.preventDefault();  // Prevent the default action, because we like to do things our way.
+        addToCart(product.product_id);  // Add to cart logic. Assumed to be defined elsewhere, but we’re too cool to care.
     });
+};
 
-}
+// Function to search for products based on a keyword and filters
+function searchProducts(keyword) {
 
-function searchProducts(keyword, b_filters, c_filters) {
-
-    console.log(keyword)
-    let resultsContainer = document.getElementById("search-results")
-    let searchURL = `/search/${keyword}`;
-
-    if (!keyword) {
-        searchURL = "/products";
+    let resultsContainer = document.getElementById("search-results");  // Where the magic happens. We find, we filter, we display.
+    let searchURL = `/product/search/${keyword}`;  // The URL to search products by keyword.
+    resultsContainer.innerHTML = "";  // Clearing the results container. Out with the old, in with the new.
+    if (!keyword) {  // If no keyword, let’s fetch all products. Like a buffet, but with less food and more data.
+        searchURL = "/product/";  // We’re hitting the main endpoint if there’s no keyword.
     }
 
+    // Let’s fetch and process the search results.
     api.get(searchURL).then((res) => {
-        let results = res.data;
-        resultsContainer.innerHTML = "Are you looking for:   ";
-        let _set = new Set()
-        console.log(b_filters)
-        if (res.status === 200) {
-            if (results.length === 0) {
-                resultsContainer.innerHTML = "<p>No products found</p>";
-                return;
-            }
+        /**
+         * @type {Array<Object>}
+         */
+        let results = res.data;  // These are the juicy results we’ve been waiting for.
 
-            if (b_filters.size === 0 && c_filters.size === 0) {
-                console.log("no filter")
-                results.forEach((product) => {
-                    extracted(product, resultsContainer);
-
-                });
-            }
-            else {
-                console.log("there is a filter: ", b_filters, c_filters)
-                results.forEach((product) => {
-
-                    if ((b_filters.has(product.brand) || b_filters.size === 0) && (c_filters.has(product.category) || c_filters.size === 0)) {
-                        extracted(product, resultsContainer)
-                    }
-                });
-            }
-
-        } else {
-            resultsContainer.innerHTML = `<p class="text-danger">try <a href = 'login.html'>logging in</a>.</p>`;
+        if (results.length === 0) {  // No products found? Well, that’s a bummer.
+            resultsContainer.innerHTML = "<p>No products found</p>";  // A sad moment for all.
+            return;
         }
+        fma_price = Number(localStorage.getItem("Maximum").replace(",", ""))
+        fmi_price = Number(localStorage.getItem("Minimum").replace(",", ""))
+        results.forEach((product) => {
+            console.log( product.title, ": ", _.gte(Number(String(product.price).replace("$", "")), fmi_price) && _.lte(Number(String(product.price).replace("$", "")), fma_price), product.tags, [..._tag_filters],  _.intersection([..._tag_filters], product.tags))
+            // extracted(product, resultsContainer);  // We send each product to be displayed in style.
+        });
+        
+        
+        
+        if (fma_price && fmi_price){
+            results = results.filter(product => _.gte(Number(String(product.price).replace("$", "")), fmi_price) && _.lte(Number(String(product.price).replace("$", "")), fma_price))
+            
+        }
+        // Filter products based on selected brand filters
+        if (_brand_filters.size !== 0) {  // We’re not playing around with brand filters. If they exist, we’re filtering hard.
+            results = results.filter(product => _brand_filters.has(product.brand));  // Filtering based on the brand (let’s get specific).
+        }
+        if (_tag_filters.size !== 0) {  // We’re not playing around with tag filters. If they exist, we’re filtering hard.
+            results = results.filter(product => _.intersection([..._tag_filters], product.tags).length!=0);  // Filtering based on the tag (let’s get specific).
+        }
+        results = results.filter(product => _.gte(Number(String(product.price).replace("$", "")), fmi_price) && _.lte(Number(String(product.price).replace("$", "")), fma_price))
+        // Display the filtered products
+        results.forEach((product) => {
+            extracted(product, resultsContainer);  // We send each product to be displayed in style.
+        });
 
-
-
-
+    }).catch((error) => {
+        console.error("Error fetching search results:", error);  // In case we hit a snag, we’ll just cry a little inside.
     });
 }
 
-function check_for_change() {
-    let checkboxes = $("[type=checkbox][name=checker]")
-    checkboxes.change(function () {
-        let enabledSettings = checkboxes
-            .filter(":checked") // Filter out unchecked boxes.
-            .map(function () { // Extract values using jQuery map.
-                return this.value;
-            })
-            .get() // Get array.
+// Trigger search on clicking the search button
+$("#search-button").on('click', () => {
+    searchProducts($("#search-input").val());  // Trigger the search. It’s go time!
+});
 
-        console.log(enabledSettings);
-        c_filters = new Set(enabledSettings)
+// Function to load and run product filters (brands and tags)
+async function runFilters() {
+    try {
+        // Fetch brand and tag filters from the server. Because filtering is life.
+        const data = (await api.get("/product/filters")).data;
+        const brands = data.brands;
+        const tags = data.tags;
 
-        searchProducts($("#search-input")[0].value, b_filters, c_filters)
+        // Set up Bloodhound for brand filters (we’re pulling out the big guns for this one).
+        const brand_filters = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: brands,  // Using local data because why call external APIs when we have it all right here?
+        });
 
-    });
-}
+        // Initialize typeahead for brand search
+        $("#o_bloodhound .o_typeahead").typeahead({
+            hint: true,  // Hinting at possible brand names, because we’re considerate like that.
+            highlight: true,  // Making sure the highlighted options are as obvious as possible.
+            minLength: 1,  // Triggering after the first letter. We don’t believe in waiting.
+            limit: 25,  // Only showing 25 results—no need to overwhelm people.
+        }, {
+            name: "brands",
+            source: brand_filters,  // We tell Bloodhound where to get its data. It’s like being the teacher’s pet.
+        });
 
-function make_filter(filter) {
-    console.log(filter)
-    brand_filter = $("#type-filter")[0]
+        // Handle brand filter addition
+        $("#brand-filter-adder").on("click", (event) => {
+            event.preventDefault();  // Stopping the page from reloading. This isn't the 90s anymore.
+            const _filter = $("#brand-search").val();  // Grab the brand filter the user typed in.
+            if (brands.includes(_filter)) {  // If the brand exists in our list...
+                console.log(`Adding filter for brand: ${_filter}`);  // Let’s announce it to the world!
+                _brand_filters.add(_filter);  // Add that brand to our collection of filters.
+                updateActiveFilters();  // Let’s update the UI, because we don’t keep things static around here.
+            } else {
+                console.log("Brand not found in filter list");  // Oops, brand’s not in our list. Better luck next time.
+            }
+        });
 
+        // Handle filter removal
+        $(document).on('click', '.cross-icon', function () {
+            const filterBrand = $(this).data('brand');  // Get the brand to remove.
+            _brand_filters.delete(filterBrand);  // Delete that brand from our collection like it never existed.
+            updateActiveFilters();  // Update the UI and make sure everything reflects our fresh choices.
+            searchProducts($("#search-input").val());  // Re-run the search with the new filters, because we’re thorough.
+        });
 
-    brand_filter.innerHTML = ""
-    for (const el of filter) {
-        brand_filter.innerHTML += `
-            <div class="form-check">
-  <input class="form-check-input  border border-dark" type="checkbox" value="${el}" name = "checker">
-  <label class="form-check-label" for="defaultCheck1">
-    ${el}
-  </label>
-</div>
-<br>
-            `
+        // Initialize typeahead for tag search
+        const tag_filters = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: tags,  // Using local data because why call external APIs when we have it all right here?
+        });
 
+        $("#t_bloodhound .t_typeahead").typeahead({
+            hint: true,  // Hinting at possible tag names, because we’re considerate like that.
+            highlight: true,  // Making sure the highlighted options are as obvious as possible.
+            minLength: 1,  // Triggering after the first letter. We don’t believe in waiting.
+            limit: 25,  // Only showing 25 results—no need to overwhelm people.
+        }, {
+            name: "tags",
+            source: tag_filters,  // We tell Bloodhound where to get its data. It’s like being the teacher’s pet.
+        });
 
+        // Handle tag filter addition
+        $("#tag-filter-adder").on("click", (event) => {
+            event.preventDefault();  // Stopping the page from reloading. This isn't the 90s anymore.
+            const _filter = $("#tag-search").val();  // Grab the tag filter the user typed in.
+            if (tags.includes(_filter)) {  // If the tag exists in our list...
+                console.log(`Adding filter for tag: ${_filter}`);  // Let’s announce it to the world!
+                _tag_filters.add(_filter);  // Add that tag to our collection of filters.
+                updateActiveFilters();  // Let’s update the UI, because we don’t keep things static around here.
+            } else {
+                console.log("Tag not found in filter list");  // Oops, tag’s not in our list. Better luck next time.
+            }
+        });
+
+        // Handle filter removal
+        $(document).on('click', '.cross-icon', function () {
+            const filterTag = $(this).data('tag');  // Get the tag to remove.
+            _tag_filters.delete(filterTag);  // Delete that tag from our collection like it never existed.
+            updateActiveFilters();  // Update the UI and make sure everything reflects our fresh choices.
+            searchProducts($("#search-input").val());  // Re-run the search with the new filters, because we’re thorough.
+        });
+
+    } catch (error) {
+        console.error("Error fetching filters:", error);  // If anything goes wrong, we console-log our sadness.
     }
-
-    localStorage.setItem("innerTypeHtml", brand_filter.innerHTML)
-    check_for_change();
-
-
 }
-make_filter(category_filters)
 
+// Function to update the active filters UI
+function updateActiveFilters() {
+    const activeFiltersContainer = $("#active-filters");
+    activeFiltersContainer.empty();  // Empty the old filters because we like a clean slate.
 
+    // Append active brand filters
+    _brand_filters.forEach((brand) => {
+        activeFiltersContainer.append(`
+            <div class="cross-container">
+                <p class="sample-text">
+                    <span class="cross-icon" data-brand="${brand}">&times;</span> ${brand}  <!-- Filter removal button—click it to undo your choices. -->
+                </p>
+            </div>
+        `);
+    });
 
+    // Append active tag filters
+    const tagFiltersContainer = $("#tag-active-filters");
+    tagFiltersContainer.empty();  // Empty the old filters because we like a clean slate.
 
+    _tag_filters.forEach((tag) => {
+        tagFiltersContainer.append(`
+            <div class="cross-container">
+                <p class="sample-text">
+                    <span class="cross-icon" data-tag="${tag}">&times;</span> ${tag}  <!-- Filter removal button—click it to undo your choices. -->
+                </p>
+            </div>
+        `);
+    });
 
-$("#search-button").on('click', function () {
-    searchProducts($("#search-input").val(), b_filters, c_filters)
-})
+    // Re-run the search with the current filters
+    searchProducts($("#search-input").val());  // Don’t forget to refresh the results.
+}
 
-
-
+// Run the filters setup (setting up the showtime!)
+runFilters();
+searchProducts(); // Starting the search from the get-go. Call it a gut feeling.

@@ -2,22 +2,43 @@ const datatable = new DataTable('#userTable');
 
 // Helper function to generate row data
 function generateRowHTML(user) {
+
     return [
-        user.id,
-        user.username,
-        user.email,
-        user.role,
-        user.active,
-        `<div class="mb-3">
-            <button type="button" class="btn btn-warning" data-value='${user.id}'>${user.active?"Disable":"Enable"}</button>
-            <button type="button" class="btn btn-danger" data-value='${user.id}'>Delete</button>
+        `<span class="fw-bold text-muted">${user.id}</span>`,  // User ID in bold with muted color
+        `<span class="text-primary">${user.username}</span>`,   // Username with primary text color
+        `<span class="text-success">${user.email}</span>`,      // Email in green
+        `<span class="badge bg-info text-dark">${user.role}</span>`,  // Role as a badge for extra emphasis
+        user.active ? `<span class="badge bg-success">Active</span>` : `<span class="badge bg-danger">Inactive</span>`,  // Active status with badges
+        `<div class="action-buttons">
+        <div class="btn-group btn-group-sm" role="group">
+            <!-- User Status Toggle Button -->
+            <button type="button" class="btn btn-warning toggle-status" data-value="${user.id}">
+                <i class="fas fa-toggle-${user.active ? 'off' : 'on'}"></i>
+                ${user.active ? "Disable" : "Enable"}
+            </button>
             
+            <!-- Delete Button -->
+            <button type="button" class="btn btn-danger delete-user" data-value="${user.id}">
+                <i class="fas fa-trash-alt"></i> Delete
+            </button>
         </div>
-<div class = "mb-3">
-<button type="button" class="btn btn-primary" data-value='${user.id}'>Promote</button>
-            <button type="button" class="btn btn-secondary" data-value='${user.id}'>Demote</button>
-</div>`
+
+        <div class="btn-group btn-group-sm mt-2" role="group">
+            <!-- Promote Button -->
+            <button type="button" class="btn btn-primary promote" data-value="${user.id}">
+                <i class="fas fa-arrow-up"></i> Promote
+            </button>
+
+            <!-- Demote Button -->
+            <button type="button" class="btn btn-secondary demote" data-value="${user.id}">
+                <i class="fas fa-arrow-down"></i> Demote
+            </button>
+        </div>
+    </div>`
     ];
+
+
+
 }
 
 // Refactored addRow function

@@ -16,178 +16,79 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
+        <style>
+            .product-image { max-height: 400px; object-fit: cover; }
+            .card { border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+            .review-stars { color: gold; }
+            .product-title { font-size: 2rem; font-weight: bold; }
+            .price { font-size: 1.5rem; font-weight: bold; color: #007bff; }
+            .description { font-size: 1rem; color: #6c757d; }
+            .cta-button { background-color: #28a745; color: white; border: none; padding: 10px 20px; cursor: pointer; }
+            .cta-button:hover { background-color: #218838; }
+        </style>
     </head>
 
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid justify-content-between">
-                    <!-- Left elements -->
-                    <div class="d-flex">
-                        <!-- Brand -->
-                        <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
-                            <img
-                                    src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                                    height="20"
-                                    alt="MDB Logo"
-                                    loading="lazy"
-                                    style="margin-top: 2px;"
-                            />
-                        </a>
-
-                        <!-- Search form -->
-                        <form class="input-group w-auto my-auto d-none d-sm-flex">
-                            <label>
-                                <input
-                                        autocomplete="off"
-                                        type="search"
-                                        class="form-control rounded"
-                                        placeholder="Search"
-                                        style="min-width: 125px;"
-                                />
-                            </label>
-                            <span class="input-group-text border-0 d-none d-lg-flex"
-                            ><i class="fa-regular fa-search"></i
-                            ></span>
-                        </form>
-                    </div>
-                    <!-- Left elements -->
-
-                    <!-- Center elements -->
-                    <ul class="navbar-nav flex-row d-none d-md-flex">
-                        <li class="nav-item me-3 me-lg-1 active">
-
-                            <a class="nav-link" href = "index.html">
-                                <i class="fa-regular fa-home fa-2xl  link-info">
-
-                                </i>
-
-                            </a>
-                        </li>
-
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link" href = "login.html">
-                                <span><i class="fa-regular fa-door-open fa-2xl  link-info"></i></span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link" href = "search.html">
-                                <span><i class="fa-regular fa-crate-apple fa-2xl  link-info"></i></span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link"  href = "cart.html">
-                                <span><i class="fa-regular fa-cart-shopping fa-2xl  link-info"></i></span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link" onclick = "logout()">
-                                <span><i class="fa-regular fa-right-from-bracket fa-2xl  link-info"></i></span>
-
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- Center elements -->
-
-                    <!-- Right elements -->
-                    <ul class="navbar-nav flex-row">
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link d-sm-flex align-items-sm-center" href="#">
-
-                                <strong class="d-none d-sm-block ms-1 username-title">John</strong>
-                            </a>
-                        </li>
-
-
-                    </ul>
-                    <!-- Right elements -->
-                </div>
-            </nav>
-        </header>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-
-        <div class="container mt-5">
+    <div id = "header"></div>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Left Column: Product Images -->
             <div class="row">
-                <!-- Product Images -->
-                <div class="col-md-6 mb-4">
-                    <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-                        <ol class="carousel-indicators">
-
-                        </ol>
-                        <div class="carousel-inner" role="listbox">
-
+                <!-- Left Column: Product Images -->
+                <div class="col-md-6">
+                    <div id="images">
+                        <!-- Dynamically populated main product image -->
+                        <img id="image" src="" alt="Main Image" class="img-fluid mb-3">
+                        <div id="image-thumbnails" class="d-flex justify-content-start">
+                            <!-- Dynamically populated image thumbnails go here -->
                         </div>
-                        <button
-                            class="carousel-control-prev"
-                            type="button"
-                            data-bs-target="#carouselId"
-                            data-bs-slide="prev"
-                        >
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button
-                            class="carousel-control-next"
-                            type="button"
-                            data-bs-target="#carouselId"
-                            data-bs-slide="next"
-                        >
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
-                    
                 </div>
 
-                <!-- Product Details -->
+                <!-- Right Column: Product Details -->
                 <div class="col-md-6">
-                    <h2 class="mb-3" id = "name">Premium Wireless Headphones</h2>
-                    <p class="text-muted mb-4" id = "id">SKU: WH1000XM4</p>
-                    <div class="mb-3">
-                        <span class="h4 me-2" id = "lowprice">$349.99</span>
-                        <span class="text-muted" id = "highprice"><s>$399.99</s></span>
-                    </div>
+                    <div class="details">
+                        <!-- Product Name -->
+                        <h1 id="title" class="name">Super Deluxe Widget 3000</h1>
 
-                    
-                    <p class="mb-4" id = "description">Experience premium sound quality and industry-leading noise cancellation with these wireless
-                        headphones. Perfect for music lovers and frequent travelers.</p>
+                        <!-- Product Price -->
+                        <p id="price" class="price">
+                            $199.99 <small class="text-muted"><del>$299.99</del></small>
+                        </p>
 
-                    <div class="mb-4">
-                        <label for="quantity" class="form-label">Quantity:</label>
-                        <input type="number" class="form-control" id="quantity" value="1" min="1" style="width: 80px;">
-                    </div>
-                    <button class="btn btn-primary btn-lg mb-3 me-2">
-                        <i class="bi bi-cart-plus"></i> Add to Cart
-                    </button>
+                        <!-- Product Description -->
+                        <p id="description" class="description">
+                            The Super Deluxe Widget 3000 is not just a widget – it's a lifestyle. With advanced turbo-charged tech, this widget
+                            will change your life. Or at least it will make your life a little more convenient. Do you need a widget this fancy?
+                            Probably not. But do you want one? Absolutely.
+                        </p>
 
-                    <div class="mt-4">
-                        <h5>Key Features:</h5>
-                        <ul>
-                            <li>Dimensions: <p id = "dimensions"></p></li>
-                            <li>Warranty: <p id = "warranty"></p></li>
-                            <li>Shipping: <p id = "shipping"></p></li>
-                            <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-                        </ul>
+                        <!-- Product Tags -->
+                        <div id="tags" class="mb-3">
+                            <!-- Dynamically populated tags go here -->
+                        </div>
+
+                        <!-- Product Thumbnail -->
+                        <img id="thumbnail" src="" alt="Thumbnail" class="img-fluid mb-3">
+
+                        <!-- Add to Cart Button -->
+                        <button class="cta-button btn btn-success">Add to Cart</button>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            // function changeImage(event, src) {
-            //     document.getElementById('mainImage').src = src;
-            //     document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
-            //     event.target.classList.add('active');
-            // }
-        </script>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js@1.17.8/dist/umd/index.production.js" integrity="sha256-BswVd4QSpCLHYZLRCx0R3y78oQuL8q/Tz+TLsMJAENU=" crossorigin="anonymous"></script>
+
+        <!-- JS Libraries originally in the head -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <!-- Customer Reviews Section -->
         <script src = "js/scripts.js"></script>
         <script src = "js/product.js"></script>
         <script>
-
             loadPage()
         </script>
         <!-- Bootstrap JavaScript Libraries -->

@@ -1,95 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Filter - Bootstrap 5</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-        <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"/>
-        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-        <style>
-            *{
-                border: 1px solid lightblue;
-            }
-        </style>
-    </head>
+    <style>
+        .slider-container {
+            position: relative;
+        }
+        .slider {
+            width: 100%;
+        }
+        .slider-range {
+            position: absolute;
+            background-color: #007bff;
+            height: 6px;
+            border-radius: 5px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container my-5">
+    <h3>Price Filter</h3>
 
-    <body>
-        
-        <div class="row">
-            <div class = "col-5">
-                <div class="accordion py-5" id="accordionExample">
-                    <div class="accordion-item show" style = "width: 100%">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style = "font-size: 1rem">
-                                Brand
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show">
-                            <div class="accordion-body container-fluid" id = "brand-filter" style ="height: auto">
-                                <label for="brand-search"></label>
-                                <div class = 'row'>
-                                <div id = "o_bloodhound col-4">
-                                <input type="text" class="brand border border-primary o_typeahead" id="brand-search" style = "">
-                                <button class = "btn btn-primary col-3" id = "brand-filter-adder" style = "font-size: 0.5em">Add filter</button>
-                                </div>
-                                
-                            </div>
-            
-                            </div>
-                            <div class = "px-3">
-            
-                                <div id = "active-filters" class = "container px-2">
-                                    <span value = "filter">
-                                        example filter
-                                        <span><i class="fa-regular fa-x fa-2xl  link-info filter-value"></i></span>
-                                        
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            
-            
-            
-                   
-                    
-                </div>  
+    <!-- Price Range Filter Section -->
+    <div class="row">
+        <div class="col-12">
+            <label for="price-range" class="form-label">Select Price Range</label>
+            <div class="slider-container">
+                <!-- Range Sliders -->
+                <input type="range" id="min-price" class="slider" min="0" max="1000" step="1" value="100">
+                <input type="range" id="max-price" class="slider" min="0" max="1000" step="1" value="500">
+                <!-- Range bar indicating the selected range -->
+                <div id="slider-range" class="slider-range"></div>
             </div>
-     
-        
-        
-        
-        
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
+        </div>
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-        <script>
-            $(document).ready(function(){
-                $(".filter-value").click(function(){
-                    $(this).parent().parent().hide();
-                });
-            });
-        </script>
-    </body>
+        <!-- Price Display -->
+        <div class="col-12 mt-3">
+            <div class="d-flex justify-content-between">
+                <span>Price: $<span id="min-price-display">100</span> - $<span id="max-price-display">500</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example filtered results (this would be dynamic in real use) -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h5>Filtered Results</h5>
+            <p id="filtered-results">Show items between $100 and $500</p>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS (for popper.js support) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script>
+    // Get references to the elements
+    const minPriceSlider = document.getElementById('min-price');
+    const maxPriceSlider = document.getElementById('max-price');
+    const minPriceDisplay = document.getElementById('min-price-display');
+    const maxPriceDisplay = document.getElementById('max-price-display');
+    const filteredResults = document.getElementById('filtered-results');
+    const sliderRange = document.getElementById('slider-range');
+
+    // Function to update the price range display and range bar
+    function updatePriceRange() {
+        const minPrice = parseInt(minPriceSlider.value);
+        const maxPrice = parseInt(maxPriceSlider.value);
+
+        // Ensure min price is never greater than max price
+        if (minPrice > maxPrice) {
+            minPriceSlider.value = maxPrice;
+        }
+
+        // Update the displayed price range
+        minPriceDisplay.textContent = minPrice;
+        maxPriceDisplay.textContent = maxPrice;
+
+        // Update the slider range bar
+        const percentageMin = (minPrice / 1000) * 100;
+        const percentageMax = (maxPrice / 1000) * 100;
+        sliderRange.style.left = `${percentageMin}%`;
+        sliderRange.style.width = `${percentageMax - percentageMin}%`;
+
+        // Update filtered results (this would usually trigger a dynamic item filter)
+        filteredResults.textContent = `Show items between $${minPrice} and $${maxPrice}`;
+    }
+
+    // Event listeners for the sliders
+    minPriceSlider.addEventListener('input', updatePriceRange);
+    maxPriceSlider.addEventListener('input', updatePriceRange);
+
+    // Initial call to set up the page on load
+    updatePriceRange();
+</script>
+</body>
 </html>

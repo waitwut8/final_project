@@ -5,213 +5,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Search</title>
-    <!-- Bootstrap CSS -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src = "js/awesomplete.js"></script>
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"></script>
+
+    <!-- External CSS Libraries -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/css/autoComplete.min.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src = "js/bloodhound.js"></script>
-    <script src = "js/typeahead.bundle.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+
+
+
+
+        .accordion-button {
+            font-size: 1rem;
+            font-weight: bold;
         }
 
-        .search-container {
-            margin-bottom: 20px;
+        .card {
+            transition: all 0.3s ease-in-out;
         }
 
-        .search-results {
-            margin-top: 20px;
-        }
-        .tt-menu{
-            position: static !important;
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
 
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
 
+        .input-group {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        /* Wrapper container styling */
+        .slidecontainer {
+            width: 100%;
+            max-width: 500px; /* Adjust the maximum width of the slider container */
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        /* Slider track styling */
+        .slider {
+            width: 100%;
+            height: 8px; /* Slider track height */
+            -webkit-appearance: none; /* Remove default styling for WebKit browsers */
+            background: #e0e0e0; /* Light gray track */
+            border-radius: 10px; /* Rounded corners for the track */
+            outline: none;
+            transition: background-color 0.2s ease-in-out; /* Smooth transition for hover effect */
+        }
+
+        /* Slider thumb styling */
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px; /* Thumb width */
+            height: 20px; /* Thumb height */
+            border-radius: 50%; /* Round thumb */
+            background: #6c63ff; /* Thumb color */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #6c63ff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for the thumb */
+        .slider:hover::-webkit-slider-thumb {
+            background: #3a8dff; /* Change color when hovering */
+        }
+
+        .slider:hover::-moz-range-thumb {
+            background: #3a8dff; /* Change color when hovering */
+        }
+
+        /* Active slider track when being dragged */
+        .slider:active {
+            background: #6c63ff; /* Change track color when active */
+        }
+
+        /* Styling the slider value display */
+        .slider-value {
+            display: block;
+            font-size: 1rem;
+            color: #333;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Make sure to update the value when the slider moves */
+        #myRange:active + #sliderValue,
+        #myRange:focus + #sliderValue {
+            color: #6c63ff; /* Change color of the value when active/focused */
+        }
     </style>
 </head>
 
 <body>
 
-    <header><nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid justify-content-between">
-            <!-- Left elements -->
-            <div class="d-flex">
-                <!-- Brand -->
-                <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
-                    <img
-                            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                            height="20"
-                            alt="MDB Logo"
-                            loading="lazy"
-                            style="margin-top: 2px;"
-                    />
-                </a>
-
-                <!-- Search form -->
-               
-            </div>
-            <!-- Left elements -->
-
-            <!-- Center elements -->
-            <ul class="navbar-nav flex-row d-none d-md-flex">
-                <li class="nav-item me-3 me-lg-1 active" href="admin_index.html">
-
-                    <a class="nav-link" href = "index.html">
-                       <i class="fa-regular fa-home fa-2xl  link-info">
-
-                       </i>
-
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link" href = "login.html">
-                        <span><i class="fa-regular fa-door-open fa-2xl  link-info"></i></span>
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link" href = "search.html">
-                        <span><i class="fa-regular fa-crate-apple fa-2xl  link-info"></i></span>
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1"?>
-                    <a class="nav-link"  href = "cart.html">
-                        <span><i class="fa-regular fa-cart-shopping fa-2xl  link-info"></i></span>
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link" onclick = "logout()">
-                        <span><i class="fa-regular fa-right-from-bracket fa-2xl  link-info"></i></span>
-
-                    </a>
-                </li>
-            </ul>
-            <!-- Center elements -->
-
-            <!-- Right elements -->
-            <ul class="navbar-nav flex-row">
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link d-sm-flex align-items-sm-center" href="profile.html">
-
-                        <strong class="d-none d-sm-block ms-1 username-title">John</strong>
-                    </a>
-                </li>
-
-
-            </ul>
-            <!-- Right elements -->
-        </div>
-    </nav></header>
-    <div class="row">
-<div class = "col-4">
-    <div class="accordion py-5" id="accordionExample">
-        <div class="accordion-item show" style = "width: 100%">
-            <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style = "font-size: 1rem">
-                    Brand
-                </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show">
-                <div class="accordion-body container-fluid" id = "brand-filter" style ="height: auto">
-                    <label for="brand-search"></label>
-                    <div class = 'row'>
-                    <div id = "o_bloodhound">
-                    <input type="text" class="brand border border-primary o_typeahead" id="brand-search">
-                    <button class = "btn btn-primary col-3" id = "brand-filter-adder" style = "font-size: 0.75em">Add filter</button>
-                    </div>
-                    
-                </div>
-
-                </div>
-                <div class = "px-3">
-
-                    <div id = "active-filters" class = "container mx-3">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <div class="accordion-item w-100">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Type
-                </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body" id = "type-filter">
-                    
-                </div>
-            </div>
-        </div>
-
-        
-    </div>  
+<!-- Navigation Bar -->
+<div id = "header">
 </div>
-    <div class="col-7" >
-        <h1 class="my-4">Product Search</h1>
 
-        <div class="search-container">
-            <div class="input-group">
-                <input id="search-input" type="text" class="form-control" placeholder="Enter keyword" aria-label="Search">
-                <button class="btn btn-primary" type="button" id="search-button">Search</button>
+<!-- Main Content -->
+<div class="container mt-4">
+    <div class="row">
+        <!-- Filters Section -->
+        <div class="col-md-4">
+            <div class="accordion" id="filterAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#brandFilter" aria-expanded="true">
+                            Brands
+                        </button>
+                    </h2>
+                    <div id="brandFilter" class="accordion-collapse ">
+                        <div class="accordion-body">
+                            <div class="input-group mb-3" id = "o_bloodhound">
+                                <input type="text" id="brand-search" class="form-control border-primary o_typeahead" placeholder="Search Brand">
+                                <button class="btn btn-primary" id="brand-filter-adder">Add Filter</button>
+                            </div>
+                            <div id="active-filters" class="mt-2"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#categoryFilter" aria-expanded="true">
+                            Price
+                        </button>
+                    </h2>
+                    <div id="priceFilter" class="accordion-collapse ">
+                        <div class="accordion-body">
+                            <div class="input-group mb-3">
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="10000" value="0" step="1" class="slider" id="myRange" data-output = "sliderValue" data-label = "Minimum">
+                                    <p><span id="sliderValue" class="slider-value">Minimum: $50</span></p>
+                                </div>
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="10000" value="10000" step="1" class="slider" id="myRange2" data-output = "sliderValue2" data-label = "Maximum">
+                                    <p><span id="sliderValue2" class="slider-value">Maximum: $50</span></p>
+                                </div>
+
+
+
+
+
+                                <button class="btn btn-primary" id="categoryFilter-adder">Add Filter</button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#categoryFilter" aria-expanded="true">
+                            Tags
+                        </button>
+                    </h2>
+                    <div id="categoryFilter" class="accordion-collapse ">
+                        <div id="tagFilter" class="accordion-collapse ">
+                            <div class="accordion-body">
+                                <div class="input-group mb-3" id = "t_bloodhound">
+                                    <input type="text" id="tag-search" class="form-control border-primary t_typeahead" placeholder="Search Brand">
+                                    <button class="btn btn-primary" id="tag-filter-adder">Add Filter</button>
+                                </div>
+                                <div id="tag-active-filters" class="mt-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="search-results" id="search-results"></div>
+
+        <!-- Product Search Section -->
+        <div class="col-md-8">
+            <div class="text-center">
+                <h1 class="mb-4">Product Search</h1>
+                <div class="input-group" id ="bloodhound">
+                    <input id="search-input" type="text" class="form-control typeahead" placeholder="Enter product name...">
+                    <button class="btn btn-primary" id="search-button"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+            <div id="search-results" class="mt-4 row"></div>
+        </div>
     </div>
 </div>
 
+<!-- External JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js@1.17.8/dist/umd/index.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="js/bloodhound.js"></script>
+<script src="js/typeahead.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 
- 
-    
-    <!-- Bootstrap JS and dependencies -->
-    <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"
-></script>
+<!-- Custom Scripts -->
+<script src="js/scripts.js"></script>
+<script src="js/search.js"></script>
+<script>
+    setModal_Login();
+    loadUsername();
+    $(document).ready(function () {
+    function updateSlider($slider, $output, label) {
+        let value = Number($slider.val()).toLocaleString();
+        $output.text(`${label}: $${value}`);
+        localStorage.setItem(label, value)
+        console.log(value);
+    }
 
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-    crossorigin="anonymous"
-></script>
+    $(".slider").each(function () {
+        let $slider = $(this);
+        let $output = $("#" + $slider.data("output"));
+        let label = $slider.data("label");
+
+        // Set initial value
+        updateSlider($slider, $output, label);
+
+        // Update on input
+        $slider.on("input", function () {
+            updateSlider($slider, $output, label);
+        });
+        $slider.on("change", function () {
+            searchProducts($("#search-input")[0].value);
+        });
+    });
+});
+
+</script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js@1.17.8/dist/umd/index.production.js" integrity="sha256-BswVd4QSpCLHYZLRCx0R3y78oQuL8q/Tz+TLsMJAENU=" crossorigin="anonymous"></script>
-    <script>
-
-    </script>
-
-
-    <script src="js/scripts.js"></script>
-
-    <script>
-        setModal_Login()
-        load_Username()
-
-
-
-    </script>
-
-    <script src = "js/search.js"></script>
 </body>
-
 </html>
-
-
-

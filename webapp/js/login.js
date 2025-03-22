@@ -7,9 +7,9 @@ function login(form) {
       console.log(r);
       e.preventDefault();
 
-  
+       try{ 
       let res = await axios.post(`${api_url}/user/login`, r);
-  
+      
       let s = await res.data;
   
       let token = s["access_token"],
@@ -31,9 +31,16 @@ function login(form) {
         }
         
         
-      } else {
-        document.getElementById("products").innerHTML =
-          "Please try logging in again";
-      }
-    });
+      } 
     }
+    catch(e){
+      $(`.mb-0`).removeClass("hidden").addClass("pop-in");
+
+        setTimeout(() => {
+            $(`.mb-0`).removeClass("pop-in").addClass("fade-out");
+        }, 12000);
+
+        $(`.mb-0`).removeClass("fade-out").addClass("hidden");
+    }
+    });
+  }
