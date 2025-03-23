@@ -155,11 +155,11 @@
                         <div class="accordion-body">
                             <div class="input-group mb-3">
                                 <div class="slidecontainer">
-                                    <input type="range" min="0" max="10000" value="0" step="1" class="slider" id="myRange" data-output = "sliderValue" data-label = "Minimum">
+                                    <input type="range" min="0" max="10000" value="0" step="10" class="slider" id="myRange" data-output = "sliderValue" data-label = "Minimum">
                                     <p><span id="sliderValue" class="slider-value">Minimum: $50</span></p>
                                 </div>
                                 <div class="slidecontainer">
-                                    <input type="range" min="0" max="10000" value="10000" step="1" class="slider" id="myRange2" data-output = "sliderValue2" data-label = "Maximum">
+                                    <input type="range" min="0" max="37000" value="37000" step="1000" class="slider" id="myRange2" data-output = "sliderValue2" data-label = "Maximum">
                                     <p><span id="sliderValue2" class="slider-value">Maximum: $50</span></p>
                                 </div>
 
@@ -167,7 +167,7 @@
 
 
 
-                                <button class="btn btn-primary" id="categoryFilter-adder">Add Filter</button>
+                                
 
 
                             </div>
@@ -185,7 +185,7 @@
                             <div class="accordion-body">
                                 <div class="input-group mb-3" id = "t_bloodhound">
                                     <input type="text" id="tag-search" class="form-control border-primary t_typeahead" placeholder="Search Brand">
-                                    
+                                    <button class="btn btn-primary" id="tag-filter-adder">Add Filter</button>
                                 </div>
                                 <div id="tag-active-filters" class="mt-2"></div>
                             </div>
@@ -217,8 +217,8 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="js/bloodhound.js"></script>
-<script src="js/typeahead.bundle.js"></script>
+<script src="js/bloodhound.js" defer></script>
+<script src="js/typeahead.bundle.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 
 <!-- Custom Scripts -->

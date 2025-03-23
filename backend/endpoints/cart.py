@@ -157,3 +157,10 @@ async def checkout(session: SessionDep, current_user=Depends(get_current_user)):
     send_email("waitwut8@gmail.com", "waitwut8@gmail.com", "Order Confirmation", generic_email(context, "checkout.html"))
     print(products)
     return {"message": "Checkout successful", "order_id": order.id, "total": total}
+
+    # Get the number of items in the cart
+@router.get("/count")
+async def get_cart_item_count(session: SessionDep, current_user=Depends(get_current_user)):
+    cart = get_cart(session, current_user.get("user_id"))
+    item_count = len(cart.items)
+    return {"item_count": item_count}
