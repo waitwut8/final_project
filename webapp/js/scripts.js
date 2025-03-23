@@ -228,3 +228,10 @@ async function loadUsername() {
         topElement.text("Welcome!"); // No username? Just welcome them like a friendly ghost.
     }
 }
+async function loadCartCount(){
+    let response = await api.get("/cart/count");
+    let count = response.data.item_count
+    $("#cart-count").text(count);
+}
+
+

@@ -16,81 +16,7 @@
 </head>
 
 <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid justify-content-between">
-            <!-- Left elements -->
-            <div class="d-flex">
-                <!-- Brand -->
-                <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
-                    <img
-                            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                            height="20"
-                            alt="MDB Logo"
-                            loading="lazy"
-                            style="margin-top: 2px;"
-                    />
-                </a>
-
-                <!-- Search form -->
-               
-            </div>
-            <!-- Left elements -->
-
-            <!-- Center elements -->
-            <ul class="navbar-nav flex-row d-none d-md-flex">
-                <li class="nav-item me-3 me-lg-1 active" href="admin_index.html">
-
-                    <a class="nav-link" href = "index.html">
-                       <i class="fa-regular fa-home fa-2xl  link-info">
-
-                       </i>
-
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link" href = "login.html">
-                        <span><i class="fa-regular fa-door-open fa-2xl  link-info"></i></span>
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link" href = "search.html">
-                        <span><i class="fa-regular fa-crate-apple fa-2xl  link-info"></i></span>
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1"?>
-                    <a class="nav-link"  href = "cart.html">
-                        <span><i class="fa-regular fa-cart-shopping fa-2xl  link-info"></i></span>
-                    </a>
-                </li>
-
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link" onclick = "logout()">
-                        <span><i class="fa-regular fa-right-from-bracket fa-2xl  link-info"></i></span>
-
-                    </a>
-                </li>
-            </ul>
-            <!-- Center elements -->
-
-            <!-- Right elements -->
-            <ul class="navbar-nav flex-row">
-                <li class="nav-item me-3 me-lg-1">
-                    <a class="nav-link d-sm-flex align-items-sm-center" href="profile.html">
-
-                        <strong class="d-none d-sm-block ms-1 username-title">John</strong>
-                    </a>
-                </li>
-
-
-            </ul>
-            <!-- Right elements -->
-        </div>
-    </nav>
-    </header>
+  <div id="header"></div>
     <main>
         <section class="h-100 h-custom" style="background-color: #d2c9ff;">
             <div class="container py-5 h-100">
@@ -175,6 +101,13 @@
     <script src="js/scripts.js"></script>
     <script src="js/cart.js"></script>
     <script>
+      $(document).ready(function () {
+        // Fetch the header
+        fetch('header.html').then(res => res.text()).then((res) => { $("#header").html(res) }).then((res)=>{loadUsername()})
+
+        // Password Change Handler
+
+    });
         cartLoad(getToken());
         loadCheckout()
         // You can now use the cart object to update the DOM as needed
