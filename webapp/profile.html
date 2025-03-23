@@ -161,7 +161,12 @@
                             <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
                             <input type="password" class="form-control" id="confirmNewPassword" placeholder="Confirm new password" required>
                         </div>
-
+                        <p class="hidden text-success mb-0"  style="font-size: 1.1rem;" id = "yes">
+                            <i class="fas fa-check-circle"></i> Password changed!
+                            </p>
+                            <p class="hidden text-danger mb-0"  style="font-size: 1.1rem;" id = "no">
+                                <i class="fas fa-rectangle-xmark"></i> Passwords do not match
+                                </p>
                         <button type="button" class="btn btn-primary w-100" id="changePassword">Change Password</button>
                     </form>
                 </div>

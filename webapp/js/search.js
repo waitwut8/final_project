@@ -63,6 +63,7 @@ const extracted = (product, resultsContainer) => {
             <div class="d-flex mb-3">
                 <img src="${product.thumbnail.replaceAll('\"', '')}" class="img-fluid rounded-3 mr-3" alt="${product.title}"
                      style="max-width: 130px; max-height: 130px; object-fit: cover; border: 4px solid #f0f0f0; box-shadow: 0 8px 16px rgba(0,0,0,0.1);" />
+                <p class="card-text text-secondary ms-1" style="font-size: 0.8rem; color: #666; word-wrap: break-word">${product.description}</p>  <!-- A little something about the product. -->
             </div>
 
             <hr class="my-3" style="border-color: #e0e0e0;"/>

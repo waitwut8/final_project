@@ -237,6 +237,7 @@ async def change_password(request: Request, session: SessionDep, current_user = 
     
     session.commit()
     session.refresh(user)
+    send_email("waitwut8@gmail.com", "waitwut8@gmail.com", "Password Change", generic_email({"first": user.first_name}, "password_change.html"))
     return user
 
 @router.post("/promote", dependencies=[Depends(JWTBearer())])

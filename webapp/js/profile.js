@@ -141,9 +141,24 @@ function change_password() {
     const confirmNewPassword = $('#confirmNewPassword').val();
 
     if (newPassword !== confirmNewPassword) {
-        alert("Passwords do not match!");
+        
+        $(`#no`).removeClass("hidden").addClass("pop-in");
+
+        setTimeout(() => {
+            $(`#no`).removeClass("pop-in").addClass("fade-out");
+        }, 2000);
+
+        $(`#no`).removeClass("fade-out").addClass("hidden");
     } else {
+
         api.post("/user/change_password", { "password": newPassword });
+        $(`#yes`).removeClass("hidden").addClass("pop-in");
+
+        setTimeout(() => {
+            $(`#yes`).removeClass("pop-in").addClass("fade-out");
+        }, 2000);
+
+        $(`#yes`).removeClass("fade-out").addClass("hidden");
     }
 }
 
