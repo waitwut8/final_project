@@ -21,16 +21,7 @@ async function counter(arr) {
     arr.forEach(item => {
         counts[item] = (counts[item] || 0) + 1; // If item exists, increment; otherwise, start at 1
     });
-    unique_elements = Object.keys(counts);
-
-    unique_names = []
-    for (let i = 0; i < unique_elements.length; i++) {
-        let _v = (await api.get(`/product/searchid/${unique_elements[i]}`)).data
-        console.log(_v)
-        if (_v){
-        unique_names.push(_v.title);
-        }
-    }
+    
 
     return counts;
 }
@@ -41,7 +32,7 @@ async function populate_table() {
 
         api.get("/order/all").then(async (dataset) => {
             console.log(dataset.data)
-            let data = dataset.data
+            let {data} = dataset
 
             let i = 0;
             
