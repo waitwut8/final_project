@@ -235,3 +235,23 @@ async function loadCartCount(){
 }
 
 
+async function isLoggedIn() {
+    let response = await api.post("/user/is_token_active");
+    return response.data.active;
+}
+$(document).ready(async function () {
+    try {
+        if (await isLoggedIn()) {
+            $("#order-logged-in").show();
+            $('#order-not-logged-in').hide();
+        } else {
+            $("#order-logged-in").hide();
+            $('#order-not-logged-in').show();
+        }
+    } catch (error) {
+        console.error("Error checking login status:", error);
+        $("#order-logged-in").hide();
+        $('#order-not-logged-in').show();
+    }
+}
+)

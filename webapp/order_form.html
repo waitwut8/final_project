@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Tracking</title>
     <link href="css/styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css" />
     <style>
         body {
             background-color: #f8f9fa;
@@ -38,15 +37,27 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css" />
 </head>
 
 <body>
 
     <div id="header"></div>
     <header>
-        <h1>Your Orders</h1>
+        <h1>Order Tracking Form</h1>
     </header>
     <div class = "mx-5 my-5 border border-primary">
+        <form id="tracking-form">
+            <div class="mb-3">
+                <label for="order-id" class="form-label">Order ID</label>
+                <input type="text" class="form-control" id="order-track-input" placeholder="Enter your Order ID" required>
+            </div>
+            
+            <p class="hidden text-warning mx-1" id="order-message" style="font-size: 0.9rem; font-weight: bold;">
+                <i class="fas fa-circle-question"></i> Order ID not found, try again?
+            </p>
+            <button type="submit" class="btn btn-primary" id = "order-track-submit">Track Order</button>
+        </form>
     <table id="order-table">
         <thead>
         <tr>
@@ -68,7 +79,7 @@
 
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
     <script src="js/scripts.js"></script>
-    <script src = "js/order_track.js"></script>
+    <script src = "js/order_form.js"></script>
 </body>
 
 </html>

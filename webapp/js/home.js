@@ -92,3 +92,11 @@ function addCards(list_of_items, productsContainer) {
         productsContainer.insertAdjacentHTML("beforeend", productCard);
     }
 }
+///////// BANNER //////////
+function getRandomBanner(){
+    let banner = document.querySelector("#banner");
+    let banner_id = Math.floor(Math.random() * 5) + 1;
+    // banner.innerHTML = `<img src="assets/images/banners/image_${banner_id}.png" class="img-fluid" alt="Banner">`;
+    $("#banner").html(`<img class="img-fluid rounded-circle shadow-lg" src="assets/images/banners/image_${banner_id}.png" alt="Responsive Design Illustration" id="img" />`)
+}
+getRandomBanner(); // Get a random banner image and display it. Because variety is the spice of life.

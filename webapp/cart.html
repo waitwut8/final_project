@@ -33,7 +33,7 @@
                             </div>
                             
                             <div id = "productContainer">
-                              There's nothing here! Try <a href = "login.html">logging in</a>, or if you have, try adding some products to your cart.
+                              There's nothing here! Try <a href = "login.html" class = "link-info">logging in</a>, or if you have, try <a href = "search.html" class = "link-info">adding some products</a> to your cart.
                             </div>
           
                             <div class="pt-5">
@@ -63,6 +63,24 @@
                                 <label class="form-label" for="form3Examplea2" >Enter your code</label>
                               </div>
                             </div>
+                            <div class="mb-4">
+                              <h5 class="text-uppercase mb-3">Payment Options (current outage on digital payment)</h5>
+                              <select class="form-select form-select-lg mb-3" id="payment-options">
+                                  <option selected disabled>Select a payment method</option>
+                                  
+                                  <option value="cash-on-delivery">Cash on Delivery</option>
+                              </select>
+                          </div>
+                          
+                          <div class="mb-4">
+                              <h5 class="text-uppercase mb-3">Delivery Options</h5>
+                              <select class="form-select form-select-lg mb-3" id="delivery-options">
+                                  <option selected disabled>Select a delivery method</option>
+                                  <option value="standard">Standard Delivery (3-5 days)</option>
+                                  <option value="express">Express Delivery (1-2 days)</option>
+                                  <option value="pickup">Pickup from Store</option>
+                              </select>
+                          </div>
           
                             <hr class="my-4">
           

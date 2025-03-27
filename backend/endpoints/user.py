@@ -274,3 +274,7 @@ async def whothis(session: SessionDep, request: Request):
 
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     return user.username if user else "user does not exist"
+
+@router.post("/is_token_active", dependencies=[Depends(JWTBearer())])
+async def is_token_active(current_user=Depends(get_current_user)):
+    return {"active": True} if current_user else {"active": False}

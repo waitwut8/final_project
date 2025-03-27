@@ -4917,6 +4917,9 @@ textarea.form-control-lg {
   margin-top: calc(-1 * var(--bs-list-group-border-width));
   border-top-width: var(--bs-list-group-border-width);
 }
+.list-group-item:hover{
+  background-color: #f8f9fa;
+}
 
 .list-group-horizontal {
   flex-direction: row;

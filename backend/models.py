@@ -89,3 +89,12 @@ class Order(SQLModel, table=True):
     status: str
     created_at: Optional[str] = datetime.datetime.now()
     updated_at: Optional[str]  = datetime.datetime.now()
+
+class Review(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: int
+    product_id: int
+    rating: int
+    review: str
+    created_at: Optional[str] = datetime.datetime.now()
+    updated_at: Optional[str]  = datetime.datetime.now()

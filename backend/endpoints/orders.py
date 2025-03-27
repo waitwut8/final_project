@@ -24,7 +24,7 @@ async def get_your_orders(session: SessionDep, current_user=Depends(get_current_
 
 
 @router.get("/all")
-async def get_all_orders(session: SessionDep, current_user=Depends(get_current_user)):
+async def get_all_orders(session: SessionDep):
     orders = session.exec(select(Order)).all()
     return orders
 
