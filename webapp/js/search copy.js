@@ -105,58 +105,128 @@ const extracted = (product, resultsContainer) => {
     // Append the product card to the results container. Because we're about to drop a knowledge bomb here.
     resultsContainer.appendChild(productDiv);
     resultsContainer.insertAdjacentHTML("afterend", `<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-modal-${product.product_id}" aria-labelledby="offcanvasTopLabel" data-bs-scroll="true" data-bs-backdrop="false">
-    <div class="offcanvas-header">
-        <h5 id="offcanvasTopLabel">${product.title}</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div class="product-card card shadow-lg rounded-lg">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasTopLabel">${product.title}</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="product-card card shadow-lg rounded-lg">
             
             <!-- Product Image Section -->
+            <div class="">
+            <div class="col-md-6 d-flex justify-content-center align-items-center mb-4 mb-md-0">
+            <div class="product-image-container">
+                <img src="${product.thumbnail}" alt="${product.title}" class="img-fluid rounded-lg shadow-sm" style="max-width: 100%; max-height: 300px; object-fit: cover;">
+                <!-- Optional: Subtle hover effect to highlight the image -->
+                <div class="image-overlay d-flex justify-content-center align-items-center">
+                <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+                </div>
+            </div>
+            </div>
+            <div class="card-body">
+            <!-- Price -->
+            <div class="product-price mb-3">
+                <h4 class="text-success font-weight-bold" style="font-size: 1.8rem;">$${product.price}</h4>
+            </div>
 
-
-<!-- Product Information Section -->
-<div class="">
-<div class="col-md-6 d-flex justify-content-center align-items-center mb-4 mb-md-0">
-    <div class="product-image-container">
-        <img src="${product.thumbnail}" alt="${product.title}" class="img-fluid rounded-lg shadow-sm" style="max-width: 100%; max-height: 300px; object-fit: cover;">
-        <!-- Optional: Subtle hover effect to highlight the image -->
-        <div class="image-overlay d-flex justify-content-center align-items-center">
-            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
-        </div>
-    </div>
-</div>
-    <div class="card-body">
-        <!-- Price -->
-        <div class="product-price mb-3">
-            <h4 class="text-success font-weight-bold" style="font-size: 1.8rem;">$${product.price}</h4>
-        </div>
-
-        <!-- Buttons: Add to Cart & More Details -->
-        <div class="d-flex mb-3">
-            <button class="btn btn-success flex-fill mr-2" id="modal-cart-${product.product_id}">
+            <!-- Buttons: Add to Cart & More Details -->
+            <div class="d-flex mb-3">
+                <button class="btn btn-success flex-fill mr-2" id="modal-cart-${product.product_id}">
                 <i class="fas fa-cart-plus"></i> <span class="d-none d-sm-inline">ADD TO CART</span>
-            </button>
-            <button class="btn btn-primary flex-fill">
+                </button>
+                <button class="btn btn-primary flex-fill">
                 <i class="fas fa-info-circle"></i> <span class="d-none d-sm-inline">MORE DETAILS</span>
-            </button>
-        </div>
+                </button>
+            </div>
 
-        <!-- Product Description -->
-        <div class="product-details mb-3">
-            <p class="text-muted" style="font-size: 1rem; line-height: 1.6; color: #6c757d;">${product.description}</p>
-        </div>
-    </div>
-</div>
-
-
+            <!-- Product Description -->
+            <div class="product-details mb-3">
+                <p class="text-muted" style="font-size: 1rem; line-height: 1.6; color: #6c757d;">${product.description}</p>
+            </div>
 
             
-        </div>
-    </div>
-</div>
-`)
+            </div>
+            </div>
 
+            <!-- Review Section -->
+            <div class="product-reviews mt-4">
+            <h5 class="text-dark font-weight-bold mb-3">Customer Reviews</h5>
+            <div class="review-list">
+            <!-- Placeholder for reviews -->
+            <p class="text-muted">No reviews yet. Be the first to review this product!</p>
+            </div>
+            <div class="add-review mt-3">
+            <h6 class="text-dark font-weight-bold">Add a Review</h6>
+            <textarea class="form-control mb-2" id="review-text-${product.product_id}" rows="3" placeholder="Write your review here..."></textarea>
+            <!-- Rating Bar -->
+            <div class="product-rating mb-3">
+                <h6 class="text-dark font-weight-bold">Rating:</h6>
+                <div class="rating-bar d-flex align-items-center">
+                <input type="number" id="rating-input-${product.product_id}" class="form-control" min="1" max="5" step="1" placeholder="Rate (1-5)" style="width: 100px; margin-right: 10px;" />
+                
+                </div>
+            </div>
+            <button class="btn btn-primary" id="submit-review-${product.product_id}">Submit Review</button>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>`);
+
+    // Fetch and display all reviews for the product
+    const fetchReviews = async () => {
+        try {
+            const response = await api.get(`/reviews/product/${product.product_id}`);
+            if (response.status === 200) {
+                const reviews = response.data;
+                const reviewList = document.querySelector(`#offcanvas-modal-${product.product_id} .review-list`);
+                reviewList.innerHTML = ""; // Clear existing reviews
+                if (reviews.length > 0) {
+                    reviews.forEach(review => {
+                        reviewList.innerHTML += `<p class="text-dark"><strong>${review.user || "Anonymous"}:</strong> ${review.review} (Rating: ${review.rating}/5)</p>`;
+                    });
+                } else {
+                    reviewList.innerHTML = "<p class='text-muted'>No reviews yet. Be the first to review this product!</p>";
+                }
+            } else {
+                console.error("Failed to fetch reviews");
+            }
+        } catch (error) {
+            console.error("Error fetching reviews:", error);
+        }
+    };
+
+    // Call fetchReviews to load reviews when the product card is created
+    fetchReviews();
+    // Submit a review request to the server
+    document.getElementById(`submit-review-${product.product_id}`).addEventListener("click", async () => {
+        const reviewText = document.getElementById(`review-text-${product.product_id}`).value;
+        const ratingInput = Number(document.getElementById(`rating-input-${product.product_id}`).value);
+        console.log(reviewText, ratingInput)
+        if (reviewText && ratingInput >= 1 && ratingInput <= 5) {
+            try {
+                const response = await api.post("/reviews/add", {
+                    product_id: product.product_id,
+                    review: reviewText,
+                    rating: ratingInput
+                });
+
+                if (response.status === 200) {
+                    const reviewList = document.querySelector(`#offcanvas-modal-${product.product_id} .review-list`);
+                    reviewList.innerHTML += `<p class="text-dark"><strong>Anonymous:</strong> ${reviewText} (Rating: ${ratingInput}/5)</p>`;
+                    document.getElementById(`review-text-${product.product_id}`).value = ""; // Clear the textarea
+                    document.getElementById(`rating-input-${product.product_id}`).value = ""; // Clear the rating input
+                } else {
+                    alert("Failed to submit review. Please try again.");
+                }
+            } catch (error) {
+                console.error("Error submitting review:", error);
+                alert("An error occurred while submitting your review. Please try again later.");
+            }
+        } else {
+            alert("Please provide a valid review and rating (1-5) before submitting.");
+        }
+    });
     $(`#view-details-${product.product_id}`).on('click', function () {
         var modal = new bootstrap.Modal(document.getElementById(`product-modal-${product.product_id}`));
         modal.show(); // This ensures that the modal is shown properly.
