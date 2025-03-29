@@ -234,6 +234,7 @@ async function loadCartCount(){
     $("#cart-count").text(count);
 }
 
+  
 
 async function isLoggedIn() {
     let response = await api.post("/user/is_token_active");

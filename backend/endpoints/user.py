@@ -61,7 +61,7 @@ async def add_user(user: UserTable, session: SessionDep):
         user.image = "not available"
     
     try:
-        print(user)
+        
         session.add(user)
         session.commit()
         session.refresh(user)
@@ -72,14 +72,14 @@ async def add_user(user: UserTable, session: SessionDep):
             generic_email(
                 {
                     "first": user.first_name,
-                    "user": user.username,
+                    "username": user.username,
                 },
                 "registration.html",
             ),
         )
     except Exception as e:
-        print(e)
-        raise HTTPException(status_code=400, detail="User already exists")
+        
+        raise HTTPException(status_code=400, detail="User already exists") from e
 
     return user
 
@@ -110,7 +110,7 @@ async def update_user(user_id: int, user: UserTable, session: SessionDep):
 async def delete_user(
     request: Request, session: SessionDep, current_user=Depends(get_current_user)
 ):
-    print(await request.json())
+    
     user_id = await request.json()
     user_id = user_id.get("user_id")
     role = (
@@ -149,7 +149,7 @@ async def login_user(user: LoginInfo, session: SessionDep):
 
     if user := check_login(user, session):
         
-        print(f"User {user.username} logged in")
+        
         return sign_jwt({
             "user_name": user.username,
             "user_id": user.id,
@@ -167,16 +167,16 @@ async def edit_profile(
 ):
     user_id = current_user.get("user_id")
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
-    # session.delete(user)
+    
     if user is None:
         raise HTTPException(status_code=404, detail="User not found")
-    # user.username =requested_user.username
+    
     user.email = requested_user.email
-    # user.password =requested_user.password
+    
     user.first_name = requested_user.first_name
     user.last_name = requested_user.last_name
-    # user.role =requested_user.role
-    # print(user)
+    
+    
     session.add(user)
     session.commit()
     session.refresh(user)
@@ -200,8 +200,8 @@ async def disable(request: Request, session: SessionDep):
 
 @router.post("/get_role", dependencies=[Depends(JWTBearer())])
 async def get_role(session: SessionDep, current_user=Depends(get_current_user)):
-    print(current_user)
-    # return sign_jwt(current_user.get("user_name"), current_user.get("user_id"))
+    
+    
     user_id = current_user.get("user_id")
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     return user.role
@@ -221,7 +221,7 @@ async def change_profile_pic(request: Request, session: SessionDep, current_user
 @router.get("/get_profile_pic", dependencies=[Depends(JWTBearer())])
 async def get_profile_pic(session: SessionDep, current_user = Depends(get_current_user)):
     user_id = current_user.get("user_id")
-    print(current_user)
+    
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     return user.image
 

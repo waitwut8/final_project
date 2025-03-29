@@ -24,7 +24,7 @@ def top_products(session: Session):
         top_products_list[0].append(title)
         top_products_list[1].append(quantity)
 
-    # print(top_products_list)
+    
     return top_products_list
 
 def rev_over_time(session: Session):
@@ -37,7 +37,7 @@ def rev_over_time(session: Session):
             d = datetime.strptime(o.created_at, '%Y-%m-%d %H:%M:%S.%f').date()
             
             for i in o.items:
-                print(i)
+                
                 
                 if (price:=session.exec(select(Product).where(Product.product_id == i)).first()):
                     price = price.price
@@ -48,7 +48,7 @@ def rev_over_time(session: Session):
             
         
     dates, amounts = zip(*sorted(rev.items())) if rev else ([], [])
-    # print(dates, amounts)
+    
     all_dates = [dates[0] + timedelta(days=i) for i in range((dates[-1] - dates[0]).days + 1)] if dates else []
     amounts = [rev.get(d, 0) for d in all_dates]
     
@@ -80,19 +80,19 @@ def prod_over_time(session: Session):
     return all_dates, counts, sum(c for d, c in zip(all_dates, counts) if d >= (datetime.now() - timedelta(days=2)).date())
 
 def generate_order(user_id: int, session: Session, status="Pending"):
-    # Get all available products from the database
+    
     products_query = select(Product)
     products = session.exec(products_query).all()
 
-    # Randomly select a few products from the available products
-    selected_products = random.sample(products, random.randint(1, 8))  # Random number of products
+    
+    selected_products = random.sample(products, random.randint(1, 8))  
     times_to_add = [random.randint(1, 10) for x in selected_products]
-    # Generate the order items as a list of product IDs
+    
     items = []
     for product, times in zip(selected_products, times_to_add):
         items.extend([product.product_id] * times)
     
-    # Create the order
+    
     order = Order(
         user_id=user_id,
         items=items,
@@ -104,10 +104,10 @@ def generate_order(user_id: int, session: Session, status="Pending"):
     
 
     
-    # Calculate the total for the order
     
     
-    # Add the order to the session and commit
+    
+    
     session.add(order)
     session.commit()
 

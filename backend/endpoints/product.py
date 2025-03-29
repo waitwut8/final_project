@@ -4,7 +4,7 @@ from sqlmodel import select, or_
 from fastapi import HTTPException, APIRouter, Depends, Request, Response
 from dependencies import SessionDep
 
-# from libs.schemas import LoginInfo
+
 from libs.auth_jwt import get_current_user, JWTBearer
 from models import Role, UserTable
 import random
@@ -62,7 +62,7 @@ def add_product(
     ).role
     if role != Role.ADMIN:
         raise HTTPException(status_code=401, detail="Unauthorized")
-    print(product)
+    
     session.add(product)
     session.commit()
     session.refresh(product)
@@ -84,8 +84,8 @@ def update_product(
     if role != Role.ADMIN:
         raise HTTPException(status_code=401, detail="Unauthorized")
     product_id = product.product_id
-    print(product)
-    print(product_id)
+    
+    
     old_product = session.exec(
         select(Product).where(Product.product_id == product_id)
     ).first()
@@ -100,7 +100,7 @@ def update_product(
     old_product.brand = product.brand if product.brand else old_product.brand
     old_product.images = product.images if product.images else old_product.images
     old_product.thumbnail = product.thumbnail if product.thumbnail else old_product.thumbnail
-    print(old_product)
+    
 
     session.add(old_product)
     session.commit()
@@ -171,9 +171,9 @@ async def get_next_id(session: SessionDep):
     
     """
     last_product = session.exec(select(Product.product_id).order_by(Product.product_id.desc())).all()
-    print(last_product)
+    
     last_product = max(last_product) if last_product else None
-    print(last_product)
+    
     
     if last_product is None:
         return {"product_id": 1}

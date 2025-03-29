@@ -1,4 +1,10 @@
-
+window.onload = function () {
+    var script = document.createElement('script');
+    script.src = 'js/bloodhound.min.js'; // Path to your script file
+    document.head.appendChild(script);
+    script.src = 'js/typeahead.js'; // Path to your script file
+    document.head.appendChild(script);
+  };
 
 // Fetch product data from the FastAPI endpoint and store it in local storage
 const fetchDataAndStore = async () => {

@@ -1,7 +1,8 @@
 function register(){
-    $(".btn").on("click", async function(event){
+    $("#register").on("click", async function(event){
         
             event.preventDefault()
+            console.log("Registering")
             // Get the values from the form fields
             const username = $("#username").val(), email = $("#email").val(), password = $("#password").val(), first = $("#first").val(), last = $("#last").val();
             // Send a POST request to the server
@@ -25,3 +26,4 @@ function register(){
         
     })
 }
+register()

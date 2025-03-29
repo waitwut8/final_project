@@ -28,7 +28,7 @@ async function loadOrderTable(id){
         console.log(itemCounts)
         let itemDetails = Object.keys(itemCounts).map(product_id => {
             let product = products.find(p => p.product_id == product_id);
-            return `<a class = "list-group-item">${product.title} (x${itemCounts[product_id]})</a>`;
+            return `<tr><td>${product.title}</td><td>${itemCounts[product_id]}</td></tr>`;
         }).join("");
         let sum = 0
         for (const i of Object.keys(itemCounts)) {
@@ -47,8 +47,12 @@ async function loadOrderTable(id){
                 <th>Quantity</th>
                 </tr>
             </thead>
+            
             <tbody>
-                ${String(order.items).replace(",", "")}
+            
+                
+                ${order.items}
+                
             </tbody>
             </table>`,
             `<span class="badge bg-success">${order.created_at}</span>`,

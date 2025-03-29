@@ -47,7 +47,7 @@ async def change_order_state(
         .username
     )
     if not order:
-        print("cant find order")
+        
         raise HTTPException(status_code=404, detail="Order not found")
     order.status = list(Status)[state].value
     session.add(order)
