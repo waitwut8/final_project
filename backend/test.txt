@@ -6,6 +6,8 @@ to test:
     - login
     - change profile picture
     - change password
+    - logout functionality
+    - session expiration handling
 - home
     - is banner randomized?
     - is header ok?
@@ -18,17 +20,22 @@ to test:
     - price filter
     - more information off-canvas
     - review function
+    - search results pagination
+    - search results sorting (e.g., by price, relevance)
 - cart
     - can change product quantity
     - set payment details and delivery options
     - give promo code
     - checkout
     - sent email?
+    - cart persistence after logout
+    - cart empty state handling
 - order tracking/form
     - shows all orders
     - if anonymous, does not show order summary
     - if not anonymous, does not show order form
     - order form returns data if exists, shows fade if not
+    - order cancellation functionality
 
 ############## ADMIN ##############
 

@@ -245,6 +245,11 @@ const extracted = (product, resultsContainer) => {
         console.log("clicked")
         addToCart(product.product_id);  // Add to cart logic. Assumed to be defined elsewhere, but we’re too cool to care.
     });
+    // Update the product count text
+    const productCountText = document.getElementById("product-count");
+    if (productCountText) {
+        productCountText.textContent = `${resultsContainer.children.length} products found`;
+    }
 };
 
 // Function to search for products based on a keyword and filters

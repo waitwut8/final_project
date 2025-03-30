@@ -36,6 +36,9 @@ async def get_user_reviews(session: SessionDep, user_id: int):
     return reviews
 @router.post("/add")
 async def add_review(request: Request, session: SessionDep, current_user=Depends(get_current_user)):
+    """
+    Add a new review.
+    """
     request = await request.json()
     product_id = request.get("product_id")
     rating = request.get("rating")
@@ -54,3 +57,62 @@ async def add_review(request: Request, session: SessionDep, current_user=Depends
     return review
 
 
+@router.put("/update/{review_id}")
+async def update_review(
+    review_id: int, request: Request, session: SessionDep, current_user=Depends(get_current_user)
+):
+    """
+    Update an existing review.
+    """
+    request = await request.json()
+    rating = request.get("rating")
+    review_text = request.get("review")
+    if (rating is None) and (review_text is None):
+        raise HTTPException(status_code=400, detail="Nothing to update")
+
+    review = session.exec(select(Review).where(Review.id == review_id)).first()
+    if not review:
+        raise HTTPException(status_code=404, detail="Review not found")
+
+    # Ensure the user is the owner of the review or an admin
+    if review.user_id != current_user.get("user_id"):
+        user_role = session.exec(
+            select(UserTable.role).where(UserTable.id == current_user.get("user_id"))
+        ).first()
+        if user_role != "ADMIN":
+            raise HTTPException(status_code=403, detail="Unauthorized")
+
+    # Update the review
+    if rating is not None:
+        review.rating = rating
+    if review_text is not None:
+        review.review = review_text
+
+    session.add(review)
+    session.commit()
+    session.refresh(review)
+    return review
+
+
+@router.delete("/delete/{review_id}")
+async def delete_review(
+    review_id: int, session: SessionDep, current_user=Depends(get_current_user)
+):
+    """
+    Delete a review.
+    """
+    review = session.exec(select(Review).where(Review.id == review_id)).first()
+    if not review:
+        raise HTTPException(status_code=404, detail="Review not found")
+
+    # Ensure the user is the owner of the review or an admin
+    if review.user_id != current_user.get("user_id"):
+        user_role = session.exec(
+            select(UserTable.role).where(UserTable.id == current_user.get("user_id"))
+        ).first()
+        if user_role != "ADMIN":
+            raise HTTPException(status_code=403, detail="Unauthorized")
+
+    session.delete(review)
+    session.commit()
+    return {"detail": "Review deleted successfully"}

@@ -92,19 +92,17 @@ def update_product(
     if old_product is None:
         raise HTTPException(status_code=404, detail="Product not found")
     
-    old_product.title = product.title if product.title else old_product.title
-    old_product.description = product.description if product.description else old_product.description
-    old_product.price = product.price.replace('$', "") if product.price else old_product.price
-    old_product.stock = product.stock if product.stock else old_product.stock
-    old_product.tags = product.tags if product.tags else old_product.tags
-    old_product.brand = product.brand if product.brand else old_product.brand
-    old_product.images = product.images if product.images else old_product.images
-    old_product.thumbnail = product.thumbnail if product.thumbnail else old_product.thumbnail
+    for field in ["title", "description", "price", "stock", "tags", "brand", "images", "thumbnail"]:
+        if getattr(product, field):
+            setattr(old_product, field, getattr(product, field).replace("$", "").replace("'", ""))
     
 
     session.add(old_product)
     session.commit()
     session.refresh(old_product)
+    updated_product = session.exec(select(Product).where(Product.product_id == product_id)).first()
+    if updated_product == old_product:
+        raise HTTPException(status_code=400, detail="No changes detected in the product")
     return old_product
 
 @router.delete("/delete/{product_id}")

@@ -5,13 +5,15 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from jinja2 import Environment, FileSystemLoader
 
-load_dotenv()
+
 def send_email(sender, receiver, subject, message):
     host = "email-smtp.ap-southeast-2.amazonaws.com"
     
-    
-    username = "AKIAX6RQQILB7VE544HX"
-    password = "BMk4woYMLmJqxacp2mpD1JGAuqTQQrOKo65DPEkJod4o"
+
+    load_dotenv(override=True)
+    username = getenv("SMTP_USER")
+    password = getenv("SMTP_PASS")
+    print(username, password)
     port = 587
 
     context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)

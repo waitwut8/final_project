@@ -46,9 +46,6 @@ async def read_all_user(session: SessionDep, current_user=Depends(get_current_us
     return session.exec(select(UserTable)).all()
 
 
-
-
-
 @router.post("/add")
 async def add_user(user: UserTable, session: SessionDep):
     user.password = hash_password(user.password)
@@ -59,9 +56,9 @@ async def add_user(user: UserTable, session: SessionDep):
         user.phone = "1234567890"
     if not user.image:
         user.image = "not available"
-    
+
     try:
-        
+
         session.add(user)
         session.commit()
         session.refresh(user)
@@ -78,7 +75,7 @@ async def add_user(user: UserTable, session: SessionDep):
             ),
         )
     except Exception as e:
-        
+
         raise HTTPException(status_code=400, detail="User already exists") from e
 
     return user
@@ -110,7 +107,7 @@ async def update_user(user_id: int, user: UserTable, session: SessionDep):
 async def delete_user(
     request: Request, session: SessionDep, current_user=Depends(get_current_user)
 ):
-    
+
     user_id = await request.json()
     user_id = user_id.get("user_id")
     role = (
@@ -148,13 +145,10 @@ def check_login(user: LoginInfo, session: SessionDep) -> object:
 async def login_user(user: LoginInfo, session: SessionDep):
 
     if user := check_login(user, session):
-        
-        
-        return sign_jwt({
-            "user_name": user.username,
-            "user_id": user.id,
-            "role": user.role
-        })
+
+        return sign_jwt(
+            {"user_name": user.username, "user_id": user.id, "role": user.role}
+        )
     else:
         raise HTTPException(status_code=401, detail="Login failed")
 
@@ -167,16 +161,15 @@ async def edit_profile(
 ):
     user_id = current_user.get("user_id")
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
-    
+
     if user is None:
         raise HTTPException(status_code=404, detail="User not found")
-    
+
     user.email = requested_user.email
-    
+
     user.first_name = requested_user.first_name
     user.last_name = requested_user.last_name
-    
-    
+
     session.add(user)
     session.commit()
     session.refresh(user)
@@ -184,10 +177,10 @@ async def edit_profile(
 
 
 @router.post("/disable", dependencies=[Depends(JWTBearer())])
-async def disable(request: Request, session: SessionDep):
+async def disable(request: Request, session: SessionDep, current_user=Depends(get_current_user)):
     user_id = await request.json()
     user_id = user_id.get("user_id")
-
+    verify_user_role(session, current_user)
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     if user is None:
         raise HTTPException(status_code=404, detail="User not found")
@@ -197,17 +190,28 @@ async def disable(request: Request, session: SessionDep):
     session.refresh(user)
     return user
 
+def verify_user_role(session, current_user):
+    role = (
+        session.exec(
+            select(UserTable).where(UserTable.id == current_user.get("user_id"))
+        ).first()
+    ).role
+    if role != Role.ADMIN:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+
 
 @router.post("/get_role", dependencies=[Depends(JWTBearer())])
 async def get_role(session: SessionDep, current_user=Depends(get_current_user)):
-    
-    
+
     user_id = current_user.get("user_id")
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     return user.role
 
+
 @router.post("/change_profile_pic")
-async def change_profile_pic(request: Request, session: SessionDep, current_user = Depends(get_current_user)):
+async def change_profile_pic(
+    request: Request, session: SessionDep, current_user=Depends(get_current_user)
+):
     url = (await request.json()).get("url")
 
     user_id = current_user.get("user_id")
@@ -218,32 +222,43 @@ async def change_profile_pic(request: Request, session: SessionDep, current_user
     session.refresh(user)
     return user
 
+
 @router.get("/get_profile_pic", dependencies=[Depends(JWTBearer())])
-async def get_profile_pic(session: SessionDep, current_user = Depends(get_current_user)):
+async def get_profile_pic(session: SessionDep, current_user=Depends(get_current_user)):
     user_id = current_user.get("user_id")
-    
+
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     return user.image
 
+
 @router.post("/change_password", dependencies=[Depends(JWTBearer())])
-async def change_password(request: Request, session: SessionDep, current_user = Depends(get_current_user)):
+async def change_password(
+    request: Request, session: SessionDep, current_user=Depends(get_current_user)
+):
     user_id = current_user.get("user_id")
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
-    
+
     password = (await request.json()).get("password")
-    
+
     user.password = hash_password(password)
     session.add(user)
-    
+
     session.commit()
     session.refresh(user)
-    send_email("waitwut8@gmail.com", "waitwut8@gmail.com", "Password Change", generic_email({"first": user.first_name}, "password_change.html"))
+    send_email(
+        "waitwut8@gmail.com",
+        "waitwut8@gmail.com",
+        "Password Change",
+        generic_email({"first": user.first_name}, "password_change.html"),
+    )
     return user
 
+
 @router.post("/promote", dependencies=[Depends(JWTBearer())])
-async def promote_user(request: Request, session: SessionDep, current_user = Depends(get_current_user)):
-    if current_user.get("role") != Role.ADMIN:
-        raise HTTPException(status_code=401, detail="Unauthorized")
+async def promote_user(
+    request: Request, session: SessionDep, current_user=Depends(get_current_user)
+):
+    verify_user_role(session, current_user)
     user_id = (await request.json()).get("user_id")
     if not user_id:
         raise HTTPException(status_code=400, detail="No user_id provided")
@@ -254,10 +269,12 @@ async def promote_user(request: Request, session: SessionDep, current_user = Dep
     session.refresh(user)
     return user
 
+
 @router.post("/demote", dependencies=[Depends(JWTBearer())])
-async def demote_user(request: Request, session: SessionDep, current_user = Depends(get_current_user)):
-    if current_user.get("role") != Role.ADMIN:
-        raise HTTPException(status_code=401, detail="Unauthorized")
+async def demote_user(
+    request: Request, session: SessionDep, current_user=Depends(get_current_user)
+):
+    verify_user_role(session, current_user)
     user_id = (await request.json()).get("user_id")
     if not user_id:
         raise HTTPException(status_code=400, detail="No user_id provided")
@@ -267,13 +284,15 @@ async def demote_user(request: Request, session: SessionDep, current_user = Depe
     session.commit()
     session.refresh(user)
 
+
 @router.post("/whothis")
 async def whothis(session: SessionDep, request: Request):
-    user_id = (await request.json())
+    user_id = await request.json()
     user_id = user_id.get("user_id")
 
     user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
     return user.username if user else "user does not exist"
+
 
 @router.post("/is_token_active", dependencies=[Depends(JWTBearer())])
 async def is_token_active(current_user=Depends(get_current_user)):
