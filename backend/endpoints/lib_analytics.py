@@ -3,7 +3,7 @@ from sqlmodel import Session, select
 from models import Order, Product
 from collections import Counter
 import random
-from alive_progress import alive_bar
+
 from dependencies import SessionDep
 
 def top_products(session: Session):
