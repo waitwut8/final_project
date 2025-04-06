@@ -16,6 +16,7 @@
     <!-- Font Awesome & Custom Styles -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css" />
     <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <link href="css/fa.css" rel="stylesheet" />
 
     <!-- Custom styles for restyling -->
@@ -226,7 +227,7 @@
                 </div>
             </div>
         </header>
-
+        
         <!-- Product Listings Section -->
         <section class="py-5">
             <div class="container px-5 my-5">
@@ -251,7 +252,18 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Featured Category Section -->
+                <section class="py-5">
+                    <div class="container px-5 my-5">
+                        <div class="text-center mb-5">
+                            
+                            <h2 class="lead text-muted" id = "tag-title">Category: </h2>
+                        </div>
+                        <div class="row gx-5 justify-content-center" id = "tag-content">
+                            
+                        </div>
+                    </div>
+                </section>
                 <!-- Call to Action -->
                 <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5 text-white">
                     <div class="d-flex flex-column flex-xl-row align-items-center justify-content-between">

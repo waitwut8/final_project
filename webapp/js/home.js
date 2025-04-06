@@ -15,11 +15,15 @@ async function loadHome() {
     productsContainer.innerHTML = "";
 
     // Fetch random products. They’re like the surprise party of e-commerce.
-    let list_of_items = await api.get(`${api_url}/product/random`);
-    list_of_items = list_of_items.data; // Look, we just wanted the data, not the rest of the fluff.
+    
+    // let tag = (await api.get(`${api_url}/product/random_tags`)).data; // Get a random tag. Because why not?
+    // // Fetch products by tag. It’s like a treasure hunt, but with products.
+    // // Fetch products from a different endpoint. Because variety is key.
+    // let new_list_of_items = await api.get(`${api_url}/product/popular_by_tag/${tag}`, {'tag': tag});
+    // new_list_of_items = new_list_of_items.data; // Extract the data, because that's all we care about.
 
-    // Populating the container with the products. Insert those shiny cards!
-    addCards(list_of_items, productsContainer);
+    // Add these new products to the container. Double the fun!
+    
 
     // Uncomment below if you want to be a considerate developer and show logged-in users recommended products.
     // if (Boolean(localStorage.getItem("logged_in")) !== true) {
@@ -30,6 +34,28 @@ async function loadHome() {
     //     list_of_items = list_of_items.data.slice(0, 8); // Limit to top 8 because we have priorities.
     //     addCards(_.flatten(_.values(list_of_items)), productsContainer);
     // }
+    let isLoggedIn =(await api.post(`${api_url}/user/is_token_active`)).data.active;
+    console.log(isLoggedIn);
+    if (isLoggedIn) {
+        // Fetch recommended products. Because they should totally feel special.
+        let list_of_items = await api.get(`${api_url}/product/recommend`);
+        list_of_items = list_of_items.data.slice(0, 8); // Limit to top 8 because we have priorities.
+        addCards(_.flatten(_.values(list_of_items)), productsContainer);
+        let list_of_items2 = await api.get("/product/recommend_random_brand");
+        list_of_items2 = list_of_items2.data
+        $("#tag-title").text(`You might like ${list_of_items2.brand}`)
+        addCards(list_of_items2.recommended_products, $("#tag-content")[0]);
+    }
+    else {
+        let list_of_items = await api.get(`${api_url}/product/random`);
+    list_of_items = list_of_items.data; // Look, we just wanted the data, not the rest of the fluff.
+    addCards(list_of_items, productsContainer);
+    }
+
+    // Populating the container with the products. Insert those shiny cards!
+    
+        // Logic for when they're not logged in. Clearly, they don't deserve recommendations.
+
 
     // If you want to do something with the username, here's a placeholder.
     // let comment_username = await api.get(`/user/username`);
