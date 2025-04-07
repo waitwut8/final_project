@@ -15,7 +15,7 @@ async function loadHome() {
     productsContainer.innerHTML = "";
 
     // Fetch random products. They’re like the surprise party of e-commerce.
-    
+
     // let tag = (await api.get(`${api_url}/product/random_tags`)).data; // Get a random tag. Because why not?
     // // Fetch products by tag. It’s like a treasure hunt, but with products.
     // // Fetch products from a different endpoint. Because variety is key.
@@ -23,7 +23,7 @@ async function loadHome() {
     // new_list_of_items = new_list_of_items.data; // Extract the data, because that's all we care about.
 
     // Add these new products to the container. Double the fun!
-    
+
 
     // Uncomment below if you want to be a considerate developer and show logged-in users recommended products.
     // if (Boolean(localStorage.getItem("logged_in")) !== true) {
@@ -34,7 +34,7 @@ async function loadHome() {
     //     list_of_items = list_of_items.data.slice(0, 8); // Limit to top 8 because we have priorities.
     //     addCards(_.flatten(_.values(list_of_items)), productsContainer);
     // }
-    let isLoggedIn =(await api.post(`${api_url}/user/is_token_active`)).data.active;
+    let isLoggedIn = (await api.post(`${api_url}/user/is_token_active`)).data.active;
     console.log(isLoggedIn);
     if (isLoggedIn) {
         // Fetch recommended products. Because they should totally feel special.
@@ -45,16 +45,15 @@ async function loadHome() {
         list_of_items2 = list_of_items2.data
         $("#tag-title").text(`You might like ${list_of_items2.brand}`)
         addCards(list_of_items2.recommended_products, $("#tag-content")[0]);
-    }
-    else {
+    } else {
         let list_of_items = await api.get(`${api_url}/product/random`);
-    list_of_items = list_of_items.data; // Look, we just wanted the data, not the rest of the fluff.
-    addCards(list_of_items, productsContainer);
+        list_of_items = list_of_items.data; // Look, we just wanted the data, not the rest of the fluff.
+        addCards(list_of_items, productsContainer);
     }
 
     // Populating the container with the products. Insert those shiny cards!
-    
-        // Logic for when they're not logged in. Clearly, they don't deserve recommendations.
+
+    // Logic for when they're not logged in. Clearly, they don't deserve recommendations.
 
 
     // If you want to do something with the username, here's a placeholder.
@@ -68,7 +67,7 @@ async function loadHome() {
 
 // Listen to clicks on the navbar links. (Spoiler: It just logs clicks for now)
 function listenToNavBar() {
-    $(".nav-link").on('click', function() {
+    $(".nav-link").on('click', function () {
         console.log("clicked?"); // Alert me when a navbar link gets clicked. Really important stuff.
     });
 }
@@ -119,10 +118,96 @@ function addCards(list_of_items, productsContainer) {
     }
 }
 ///////// BANNER //////////
-function getRandomBanner(){
+function getRandomBanner() {
     let banner = document.querySelector("#banner");
     let banner_id = Math.floor(Math.random() * 5) + 1;
     // banner.innerHTML = `<img src="assets/images/banners/image_${banner_id}.png" class="img-fluid" alt="Banner">`;
     $("#banner").html(`<img class="img-fluid rounded-circle shadow-lg" src="assets/images/banners/image_${banner_id}.png" alt="Responsive Design Illustration" id="img" />`)
 }
 getRandomBanner(); // Get a random banner image and display it. Because variety is the spice of life.
+
+
+//////// POSTS //////// 
+// Function to load posts and display them on the page.
+async function loadPosts() {
+    const postsContainer = $("#posts-container"); // The container where posts will be added
+    postsContainer.empty(); // Clear any existing posts
+
+    try {
+        // Fetch random posts from the API using your `api` object
+        const response = await api.get("/post/random");
+        const posts = response.data;
+
+        // Loop through the posts and create Bootstrap cards
+        let row;
+        posts.forEach((post, index) => {
+            // Create a new row every 4 posts
+            if (index % 4 === 0) {
+                row = $('<div class="row mb-4"></div>');
+                postsContainer.append(row);
+            }
+
+            // Generate a random image URL from picsum.photos
+            const randomImage = `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`;
+
+            // Create the post card
+            const postCard = `
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="${randomImage}" class="card-img-top rounded-top" alt="Random Image">
+                        <div class="card-body">
+                            <h5 class="card-title text-truncate text-primary fw-bold">${post.title}</h5>
+                            <p class="card-text text-muted">${post.content.substring(0, 100)}...</p>
+                            <p class="card-text">
+                                <span class="text-success"><i class="fas fa-thumbs-up"></i> ${post.likes}</span>
+                                <span class="text-danger ms-3"><i class="fas fa-thumbs-down"></i> ${post.dislikes}</span><br>
+                                <small class="text-muted"><i class="fas fa-eye"></i> ${post.views} views</small>
+                            </p>
+                            <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#postModal-${post.id}">
+                                <i class="fas fa-book-open"></i> Read More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Append the card to the current row
+            row.append(postCard);
+
+            // Create the modal for the post
+            const postModal = `
+                <div class="modal fade" id="postModal-${post.id}" tabindex="-1" aria-labelledby="postModalLabel-${post.id}" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title" id="postModalLabel-${post.id}">${post.title}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="${randomImage}" class="img-fluid rounded mb-3" alt="Random Image">
+                                <p>${post.content}</p>
+                                <p>
+                                    <strong class="text-success"><i class="fas fa-thumbs-up"></i> Likes:</strong> ${post.likes} |
+                                    <strong class="text-danger"><i class="fas fa-thumbs-down"></i> Dislikes:</strong> ${post.dislikes}<br>
+                                    <strong class="text-muted"><i class="fas fa-eye"></i> Views:</strong> ${post.views}
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Append the modal to the body
+            $("body").append(postModal);
+        });
+    } catch (error) {
+        console.error("Error loading posts:", error);
+        postsContainer.html('<p class="text-danger">Failed to load posts. Please try again later.</p>');
+    }
+}
+
+// Call the function to load posts
+loadPosts();

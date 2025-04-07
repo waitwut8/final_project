@@ -1,13 +1,17 @@
 from sqlmodel import select
 import json
-from models import Cart, CartItem  # Import the Cart model
+from models import Cart, CartItem, Post  # Import the Cart and Post models
 
 
 from libs.lib_sender import *
 from sqlmodel import Session
 from database import engine
+import datetime
 
 def read_json_file(file_path):
+    """
+    Reads a JSON file and returns its content as a Python object.
+    """
     with open(file_path, 'r') as file:
         data = json.load(file)
     return data
@@ -43,6 +47,22 @@ def convert_json_to_cart(data: dict) -> Cart:
         discounted_total=data.get("discountedTotal")
     )
 
+def convert_json_to_post(data: dict) -> Post:
+    """
+    Converts JSON post data into a Post object.
+    """
+    current_time = datetime.datetime.now()
+    return Post(
+        id=data.get("id"),
+        user_id=data.get("userId"),
+        title=data.get("title"),
+        content=data.get("body"),
+        likes=data.get("reactions").get("likes"),
+        dislikes=data.get("reactions").get("dislikes"),
+        views=data.get("views"),
+        created_at=current_time,
+        
+    )
 
 def add_data_to_db(session, data):
     """
@@ -58,6 +78,26 @@ def add_data_to_db(session, data):
     
     print(f"Success! Cart for user {cart.user_id} has been added to the database.")
 
+def add_posts_to_db(session, data):
+    """
+    Takes JSON data, converts it to Post objects, and stores them in the database.
+    """
+    # If the data is a list, iterate through it and add each post
+    if isinstance(data, list):
+        for post_data in data:
+            post = convert_json_to_post(post_data)
+            session.add(post)
+    else:
+        # If the data is a single object, convert and add it
+        post = convert_json_to_post(data)
+        session.add(post)
+    
+    session.commit()
+    print("Success! Posts have been added to the database.")
 
+# Read the JSON file
+data = read_json_file('carts.json')  # Change the file name to your JSON file
+
+# Add the posts to the database
 with Session(engine) as session:
-    add_data_to_db(session, data)
+    add_posts_to_db(session, data)

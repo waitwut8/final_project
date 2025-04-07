@@ -4,7 +4,7 @@ from typing import Annotated
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 # SessionDep = Annotated[Session, Depends(get_session)]
-from endpoints import user, product, cart, analytics, orders, reviews
+from endpoints import user, product, cart, analytics, orders, reviews, posts
 from dotenv import load_dotenv
 from os import getenv
 from imagekitio import ImageKit
@@ -18,6 +18,7 @@ app.include_router(cart.router)
 app.include_router(analytics.router)
 app.include_router(orders.router)
 app.include_router(reviews.router)
+app.include_router(posts.router)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 create_db_and_tables()
 load_dotenv()

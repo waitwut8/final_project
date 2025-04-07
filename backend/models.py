@@ -98,3 +98,13 @@ class Review(SQLModel, table=True):
     review: str
     created_at: Optional[str] = datetime.datetime.now()
     updated_at: Optional[str]  = datetime.datetime.now()
+
+class Post(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: int
+    title: str
+    content: str
+    likes: int
+    dislikes: int
+    views: int
+    created_at: Optional[str]
