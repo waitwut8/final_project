@@ -306,3 +306,5 @@ async def recommend_products_by_random_brand(
     top_products = products_with_brand[:top_n]
 
     return {"brand": random_brand, "recommended_products": top_products}
+
+

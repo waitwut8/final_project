@@ -3,6 +3,14 @@ const api_url = "http://127.0.0.1:8000";
 
 // Save the current URL in localStorage. Because why not store everything in there?
 localStorage.setItem('loadedBefore', window.location.href);
+function showSpinner() {
+    document.getElementById("globalSpinner").style.display = "flex";
+}
+
+function hideSpinner() {
+    document.getElementById("globalSpinner").style.display = "none";
+}
+
 
 // Modal for login - The classic "Oops, you're logged out" message.
 function setModal_Login() {
@@ -194,7 +202,7 @@ if (!window.location.href.endsWith("login.html")) {
 async function addToCart(id) {
     let response;
     try {
-        response = await api.post(`/cart/add/${id}`, {product_name: id});
+        response = await api.post(`/cart/add/${id}`, {'product_id': id});
 
         // Make things animate, because why not?
         $(`#p_${id}`).removeClass("hidden").addClass("pop-in");
@@ -254,5 +262,6 @@ $(document).ready(async function () {
         $("#order-logged-in").hide();
         $('#order-not-logged-in').show();
     }
+    
 }
 )

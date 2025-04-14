@@ -68,6 +68,7 @@ function loadProducts() {
     </div>`,
                 item.product_id,
                 `<div style="font-weight: bold; color: #343a40;">${item.title}</div>`,
+                `<div style="font-weight: bold; color: #343a40;">${item.description}</div>`,
                 `<div style="font-size: 1.1rem; color: #28a745; font-weight: bold;">$${item.price}</div>`,
                 `<div style="font-size: 1rem; color: #007bff; font-weight: bold;">${item.stock}</div>`,
                 `

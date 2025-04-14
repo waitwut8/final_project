@@ -1,11 +1,16 @@
+// === USERNAME STUFF ===
+
 // Just here to load the username and the home page content. Yep, that's it.
 loadUsername();
 
 // Function to load the username and display it somewhere on the page.
 function loadUsername() {
-    const username = localStorage.getItem('username') || 'Guest';
-    document.querySelector("#username").textContent = username;
+    const username = localStorage.getItem('username') || 'Guest'; // Be fancy or just... be a guest
+    document.querySelector("#username").textContent = username; // Slap that name right on the page
 }
+
+
+// === THE HOMEPAGE MEGAMIX ===
 
 // The magical function that loads all the home page goodness. No big deal.
 async function loadHome() {
@@ -14,143 +19,136 @@ async function loadHome() {
     // Clearing out any existing products, because apparently, "starting fresh" is the new cool.
     productsContainer.innerHTML = "";
 
-    // Fetch random products. They’re like the surprise party of e-commerce.
+    // Check if user is logged in by sending a totally chill POST request (because why GET when you can POST?)
+    try {
+        let isLoggedIn = (await api.post(`${api_url}/user/is_token_active`)).data.active;
+        console.log("Logged in?", isLoggedIn);
 
-    // let tag = (await api.get(`${api_url}/product/random_tags`)).data; // Get a random tag. Because why not?
-    // // Fetch products by tag. It’s like a treasure hunt, but with products.
-    // // Fetch products from a different endpoint. Because variety is key.
-    // let new_list_of_items = await api.get(`${api_url}/product/popular_by_tag/${tag}`, {'tag': tag});
-    // new_list_of_items = new_list_of_items.data; // Extract the data, because that's all we care about.
+        if (isLoggedIn) {
+            // Fetch recommended products. Because the algorithm *knows you better than your friends*.
+            let list_of_items = await api.get(`${api_url}/product/recommend`);
+            list_of_items = list_of_items.data.slice(0, 8); // Limit to top 8 because attention spans are fragile.
+            addCards(_.flatten(_.values(list_of_items)), productsContainer); // Add those cards to the DOM like a boss.
 
-    // Add these new products to the container. Double the fun!
-
-
-    // Uncomment below if you want to be a considerate developer and show logged-in users recommended products.
-    // if (Boolean(localStorage.getItem("logged_in")) !== true) {
-    //     // Logic for when they're not logged in. Clearly, they don't deserve recommendations.
-    // } else {
-    //     // Logic for when they are. Fetch recommended products. Because they should totally feel special.
-    //     let list_of_items = await api.get(`/rec_products`);
-    //     list_of_items = list_of_items.data.slice(0, 8); // Limit to top 8 because we have priorities.
-    //     addCards(_.flatten(_.values(list_of_items)), productsContainer);
-    // }
-    let isLoggedIn = (await api.post(`${api_url}/user/is_token_active`)).data.active;
-    console.log(isLoggedIn);
-    if (isLoggedIn) {
-        // Fetch recommended products. Because they should totally feel special.
-        let list_of_items = await api.get(`${api_url}/product/recommend`);
-        list_of_items = list_of_items.data.slice(0, 8); // Limit to top 8 because we have priorities.
-        addCards(_.flatten(_.values(list_of_items)), productsContainer);
-        let list_of_items2 = await api.get("/product/recommend_random_brand");
-        list_of_items2 = list_of_items2.data
-        $("#tag-title").text(`You might like ${list_of_items2.brand}`)
-        addCards(list_of_items2.recommended_products, $("#tag-content")[0]);
-    } else {
-        let list_of_items = await api.get(`${api_url}/product/random`);
-        list_of_items = list_of_items.data; // Look, we just wanted the data, not the rest of the fluff.
-        addCards(list_of_items, productsContainer);
+            // Bonus feature: throw in some random brand recommendations just to spice things up.
+            let list_of_items2 = await api.get("/product/recommend_random_brand");
+            list_of_items2 = list_of_items2.data;
+            $("#tag-title").text(`You might like ${list_of_items2.brand}`);
+            addCards(list_of_items2.recommended_products, $("#tag-content")[0]);
+        }
+    } catch (error) {
+        console.error("Error checking login status or loading recommended products:", error);
+        // You're not logged in? Here's some *completely random* products. May the odds be ever in your favor.
+        try {
+            let list_of_items = await api.get(`${api_url}/product/random`);
+            list_of_items = list_of_items.data;
+            addCards(list_of_items, productsContainer);
+        } catch (innerError) {
+            console.error("Error loading random products:", innerError);
+            productsContainer.innerHTML = '<p class="text-danger">Failed to load content. Please try again later.</p>';
+        }
     }
 
-    // Populating the container with the products. Insert those shiny cards!
-
-    // Logic for when they're not logged in. Clearly, they don't deserve recommendations.
-
-
-    // If you want to do something with the username, here's a placeholder.
+    // If you’re still wondering about your own username for some reason, uncomment this
     // let comment_username = await api.get(`/user/username`);
     // setText(getDoc("comment_username"), comment_username.data[0]);
     // setText(getDoc("company_roles"), comment_username.data[1]);
 
-    // Setting up listener for that ultra-important navbar click event. This is going to be a game changer.
+    // Setting up listener for that ultra-important navbar click event. Game-changing stuff here.
     listenToNavBar();
 }
+
+
+// === NAVIGATION NINJAS ===
 
 // Listen to clicks on the navbar links. (Spoiler: It just logs clicks for now)
 function listenToNavBar() {
     $(".nav-link").on('click', function () {
-        console.log("clicked?"); // Alert me when a navbar link gets clicked. Really important stuff.
+        console.log("clicked?"); // The investigative journalism of frontend dev
     });
 }
+
+
+// === LOGIN BUTTON: THE VANISHING ACT ===
 
 // Hide the login button if they're already logged in. Because we’re not here to waste time.
 function hideLogin() {
     if (localStorage.getItem('access_token') && localStorage.getItem('refresh_token')) {
-        $(".fa-door-open").hide(); // If you're logged in, the door to log in again is *gone*.
+        $(".fa-door-open").hide(); // If you're logged in, the door to log in again is *gone*. Poof.
     }
 }
 
 // If you’re not on the login page, hide the login button. It's basic logic, really.
 if (!window.location.href.endsWith("login.html")) {
-    hideLogin(); // Just in case you’re not logged in, let’s hide the button everywhere except the login page.
+    hideLogin(); // Because seeing a login button when you're already logged in is just rude.
 }
+
+
+// === CARD-CREATION ENGINE 9000 ===
 
 // This bad boy is what actually creates the product cards and inserts them. It's a work of art.
 function addCards(list_of_items, productsContainer) {
-    // Loop through each product and make it look good in a card, like a pro designer.
     for (const product of list_of_items) {
         const productCard = `
-        <div class=" col-lg-3 col-md-4 mb-5">
+        <div class="col-lg-3 col-md-4 mb-5">
             <div class="card border-0 rounded-3 shadow-sm h-100">
                 <img src="${product.thumbnail.replaceAll('\"', '')}" alt="${product.title}" class="card-img-top rounded-top"> <!-- Thumbnail for that extra flair -->
 
                 <div class="card-body d-flex flex-column p-4">
-                    <h5 class="card-title fw-bold text-truncate mb-2">
-                        ${product.title} <!-- Display the title, gotta tell them what they're looking at -->
-                    </h5>
-                    
+                    <h5 class="card-title fw-bold text-truncate mb-2">${product.title}</h5> <!-- Because people name things -->
+
                     <span class="badge bg-success bg-gradient rounded-pill fs-6 mb-3">
-                        $${product.price} <!-- Price tag, because capitalism -->
+                        $${product.price} <!-- Capitalism badge -->
                     </span>
 
                     <button type="button" class="btn btn-primary mt-auto rounded-pill" onclick="addToCart(${product.product_id})">
-                        <i class="bi bi-cart-plus me-2"></i> Add to Cart <!-- The classic "Add to Cart" button. Go ahead, click it -->
-                        
+                        <i class="bi bi-cart-plus me-2"></i> Add to Cart <!-- The sacred button of all online stores -->
                     </button>
+
                     <p class="hidden text-success mb-0" id="p_${product.product_id}" style="font-size: 0.9rem;">
-                        <i class="fas fa-check-circle"></i> Product added to cart!
-                        </p>
+                        <i class="fas fa-check-circle"></i> Product added to cart! <!-- Mini celebration -->
+                    </p>
                 </div>
             </div>
         </div>
         `;
-        // Stick the card right into the container like the pro you are. No drama.
-        productsContainer.insertAdjacentHTML("beforeend", productCard);
+        productsContainer.insertAdjacentHTML("beforeend", productCard); // DOM magic, baby.
     }
 }
-///////// BANNER //////////
+
+
+// === THE BANNER LOTTERY ===
+
+// Why have one banner when you can have a surprise banner every time? 🍭
 function getRandomBanner() {
-    let banner = document.querySelector("#banner");
-    let banner_id = Math.floor(Math.random() * 5) + 1;
-    // banner.innerHTML = `<img src="assets/images/banners/image_${banner_id}.png" class="img-fluid" alt="Banner">`;
-    $("#banner").html(`<img class="img-fluid rounded-circle shadow-lg" src="assets/images/banners/image_${banner_id}.png" alt="Responsive Design Illustration" id="img" />`)
+    let banner_id = Math.floor(Math.random() * 5) + 1; // Lucky number between 1 and 5
+    $("#banner").html(`
+        <img class="img-fluid rounded-circle shadow-lg" src="assets/images/banners/image_${banner_id}.png" alt="Banner" id="img" />
+    `);
 }
-getRandomBanner(); // Get a random banner image and display it. Because variety is the spice of life.
+getRandomBanner(); // Treat yourself to a different banner every reload. Spice of life, etc.
 
 
-//////// POSTS //////// 
+// === POST PARTY TIME ===
+
 // Function to load posts and display them on the page.
 async function loadPosts() {
-    const postsContainer = $("#posts-container"); // The container where posts will be added
-    postsContainer.empty(); // Clear any existing posts
+    const postsContainer = $("#posts-container"); // The sacred scroll holder of content
+    postsContainer.empty(); // Yeet any pre-existing content
 
     try {
-        // Fetch random posts from the API using your `api` object
-        const response = await api.get("/post/random");
+        const response = await api.get("/post/random"); // Random? Chaotic? Perfect.
         const posts = response.data;
 
-        // Loop through the posts and create Bootstrap cards
         let row;
         posts.forEach((post, index) => {
-            // Create a new row every 4 posts
             if (index % 4 === 0) {
-                row = $('<div class="row mb-4"></div>');
+                row = $('<div class="row mb-4"></div>'); // A fresh new row every 4 posts. Because grid, baby.
                 postsContainer.append(row);
             }
 
-            // Generate a random image URL from picsum.photos
-            const randomImage = `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`;
+            const randomImage = `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`; // Guaranteed to be vaguely artistic
 
-            // Create the post card
             const postCard = `
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                     <div class="card h-100 shadow-sm border-0">
@@ -170,11 +168,8 @@ async function loadPosts() {
                     </div>
                 </div>
             `;
+            row.append(postCard); // Throw it in like it’s hot
 
-            // Append the card to the current row
-            row.append(postCard);
-
-            // Create the modal for the post
             const postModal = `
                 <div class="modal fade" id="postModal-${post.id}" tabindex="-1" aria-labelledby="postModalLabel-${post.id}" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
@@ -199,9 +194,7 @@ async function loadPosts() {
                     </div>
                 </div>
             `;
-
-            // Append the modal to the body
-            $("body").append(postModal);
+            $("body").append(postModal); // Slap that modal onto the body like a dramatic twist in a TV show
         });
     } catch (error) {
         console.error("Error loading posts:", error);
@@ -209,5 +202,31 @@ async function loadPosts() {
     }
 }
 
-// Call the function to load posts
-loadPosts();
+loadPosts(); // Let's get those hot takes, personal blogs, and oversharing on display
+
+function handleAddPosts(){
+    addPosts()
+}
+function addPosts(){
+    api.post("/post/", {
+        'user_id': 1,
+        'title': $("#post-title").val(),
+        'content': $("#post-content").val(),
+        'likes': 0,
+        'dislikes': 0,
+        'views': 0,
+        'created_at': new Date().toISOString()
+    })
+    window.location.reload()
+}
+
+/**
+ * id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: int
+    title: str
+    content: str
+    likes: int
+    dislikes: int
+    views: int
+    created_at: Optional[str]
+ */

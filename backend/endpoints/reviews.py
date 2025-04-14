@@ -54,8 +54,7 @@ async def add_review(request: Request, session: SessionDep, current_user=Depends
     )
     session.add(review)
     session.commit()
-    return review
-
+    return session.exec(select(UserTable).where(UserTable.id == current_user.get("user_id"))).first()
 
 @router.put("/update/{review_id}")
 async def update_review(

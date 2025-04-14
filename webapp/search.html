@@ -12,6 +12,10 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/css/autoComplete.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    
+    <script src="js/bloodhound.min.js" ></script>
+    <script src="js/typeahead.bundle.min.js" ></script>
 
     <style>
         .accordion-button {
@@ -173,12 +177,12 @@
                                     <div class="slidecontainer">
                                         <input type="range" min="0" max="10000" value="0" step="10" class="slider"
                                             id="myRange" data-output="sliderValue" data-label="Minimum">
-                                        <p><span id="sliderValue" class="slider-value">Minimum: $50</span></p>
+                                        <p><span id="sliderValue" class="slider-value">Minimum:</span></p>
                                     </div>
                                     <div class="slidecontainer">
                                         <input type="range" min="0" max="37000" value="37000" step="0.01" class="slider"
                                             id="myRange2" data-output="sliderValue2" data-label="Maximum">
-                                        <p><span id="sliderValue2" class="slider-value">Maximum: $50</span></p>
+                                        <p><span id="sliderValue2" class="slider-value">Maximum: </span></p>
                                     </div>
 
 
@@ -240,13 +244,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js@1.17.8/dist/umd/index.production.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="js/bloodhound.js" defer></script>
-    <script src="js/typeahead.bundle.js" defer></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 
     <!-- Custom Scripts -->
-    <script src="js/scripts.js"></script>
+    <script src="js/scripts.js" ></script>
     <script src="js/search copy.js"></script>
     <script>
         setModal_Login();

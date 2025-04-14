@@ -3,15 +3,22 @@ from fastapi import Request, HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from enum import Enum
 from datetime import datetime, timezone, timedelta
-from models import UserTable
-from dotenv import load_dotenv
-load_dotenv()
 from os import getenv
+from dotenv import load_dotenv
+from models import UserTable  # Might not be used, but we'll allow it for future ambitions
+
+# Load environment variables like a responsible adult
+load_dotenv()
+
+# Constants (Because magic strings are for amateurs)
 JWT_ALGORITHM = "HS256"
-JWT_SECRET = "63622b9b424e32212a1947ffcf3342748a41f4808540641c2a9469ba2ab489a0"
+JWT_SECRET = getenv("JWT_SECRET", "super-secret-default-key")  # Don't ship your prod secret key, please
 IMGKIT_PUBLIC_KEY = getenv("IKIOPU")
 IMGKIT_URL_ENDPOINT = getenv("IKIOEND")
+
+
 class ExpiryTime(int, Enum):
+    """Token expiry times so your sessions don’t last longer than your gym membership."""
     ONE_MINUTE = 60
     FIVE_MINUTES = 5 * 60
     FIFTEEN_MINUTES = 15 * 60
@@ -23,74 +30,81 @@ class ExpiryTime(int, Enum):
 
 
 def decode_jwt(token: str) -> dict:
+    """
+    Decodes a JWT token and returns its payload.
+    Returns an empty dict if it’s expired, invalid, or just plain wrong.
+    """
     try:
         return jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
     except jwt.ExpiredSignatureError:
-        print("Token has expired")
+        print("🔒 Token has expired. RIP.")
         return {}
     except jwt.InvalidTokenError:
-        print("Invalid token " + token)
+        print(f"🚫 Invalid token: {token}")
         return {}
 
 
-def sign_jwt(user_info: object, expiration: int = ExpiryTime.ONE_DAY) -> dict:
-    # user_info = {
-    #     "user_name": "",
-    #     "user_id": "",
-    #     "role": ""
-    # }
-    
+def sign_jwt(user_info: dict, expiration: int = ExpiryTime.ONE_DAY) -> dict:
+    """
+    Signs a JWT with user info and gives you both access and refresh tokens.
+    Basically, your VIP pass to the backend lounge.
+    """
+    now = datetime.now(timezone.utc)
+    expiry = now + timedelta(seconds=expiration)
+    refresh_expiry = expiry + timedelta(seconds=ExpiryTime.FIFTEEN_MINUTES)
 
-    now_timestamp = datetime.now(timezone.utc).timestamp()
-    expiry_time = now_timestamp + expiration
-    user_info['exp']=expiry_time
-    user_info['iat']=datetime.now(timezone.utc).timestamp()
-    payload = user_info
-    payload_refresh = payload
-    payload_refresh['exp'] += ExpiryTime.FIFTEEN_MINUTES
-
-    token = jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
-    refresh_token = jwt.encode(payload_refresh, JWT_SECRET, algorithm=JWT_ALGORITHM)
-    return {
+    payload = {
         "user_name": user_info.get("user_name"),
-        "role": user_info.get('role'),
-        "user_id": user_info.get('user_id'),
-        "access_token": token,
-        "refresh_token": refresh_token,
-        "expiry_time": datetime.fromtimestamp(expiry_time),
-        "issued_at": datetime.fromtimestamp(now_timestamp),
-        # "imgkit_public_key": IMGKIT_PUBLIC_KEY,
-        # "imgkit_url_endpoint": IMGKIT_URL_ENDPOINT,
+        "user_id": user_info.get("user_id"),
+        "role": user_info.get("role"),
+        "exp": expiry.timestamp(),
+        "iat": now.timestamp(),
+    }
+
+    refresh_payload = {
+        **payload,
+        "exp": refresh_expiry.timestamp()
+    }
+
+    return {
+        "user_name": payload["user_name"],
+        "role": payload["role"],
+        "user_id": payload["user_id"],
+        "access_token": jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM),
+        "refresh_token": jwt.encode(refresh_payload, JWT_SECRET, algorithm=JWT_ALGORITHM),
+        "expiry_time": expiry,
+        "issued_at": now,
+        # Feel free to uncomment these if your frontend gets thirsty for images
+        "imgkit_public_key": IMGKIT_PUBLIC_KEY,
+        "imgkit_url_endpoint": IMGKIT_URL_ENDPOINT,
     }
 
 
 class JWTBearer(HTTPBearer):
+    """
+    Custom JWT auth class for FastAPI.
+    Checks your token like a nightclub bouncer, but more polite.
+    """
     def __init__(self, auto_error: bool = True):
-        super(JWTBearer, self).__init__(auto_error=auto_error)
+        super().__init__(auto_error=auto_error)
 
     async def __call__(self, request: Request):
-        credentials: HTTPAuthorizationCredentials = await super(
-            JWTBearer, self
-        ).__call__(request)
+        credentials: HTTPAuthorizationCredentials = await super().__call__(request)
         if not credentials:
-            raise HTTPException(status_code=401, detail="Invalid authorization code.")
+            raise HTTPException(status_code=401, detail="🛑 No credentials provided.")
         if credentials.scheme != "Bearer":
-            raise HTTPException(
-                status_code=401, detail="Invalid authentication scheme."
-            )
+            raise HTTPException(status_code=401, detail="🧢 Invalid authentication scheme.")
         if not self.verify_jwt(credentials.credentials):
-            raise HTTPException(
-                status_code=401, detail="Invalid token or expired token."
-            )
+            raise HTTPException(status_code=401, detail="💀 Invalid or expired token.")
         return credentials.credentials
 
     def verify_jwt(self, jwt_token: str) -> bool:
-        try:
-            payload = decode_jwt(jwt_token)
-        except Exception:
-            payload = None
-        return bool(payload)
+        return bool(decode_jwt(jwt_token))  # True if payload exists
 
 
 def get_current_user(token: str = Depends(JWTBearer())) -> dict:
+    """
+    Dependency that gives you the current logged-in user's token payload.
+    Aka: your session’s spirit animal.
+    """
     return decode_jwt(token)

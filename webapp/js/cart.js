@@ -16,6 +16,33 @@ function remove_clear(product_id){
     window.location.reload()
     console.log("cleared")
 }
+function getDiscount(items, price) {
+    let itemDiscountRate = 0;
+    let priceDiscountRate = 0;
+
+    // Item discount rates
+    if (items >= 50) {
+        itemDiscountRate = 0.005;
+    } else if (items >= 30) {
+        itemDiscountRate = 0.0025;
+    } else if (items >= 15) {
+        itemDiscountRate = 0.0015;
+    }
+
+    // Price discount rates (fixed the gap between 200–1999!)
+    if (price >= 5000) {
+        priceDiscountRate = 0.002;
+    } else if (price >= 2000) {
+        priceDiscountRate = 0.001;
+    } else if (price >= 100) {
+        priceDiscountRate = 0.0005;
+    }
+
+    const totalDiscount = (items * itemDiscountRate) + (price * priceDiscountRate);
+
+    return Math.min(totalDiscount, 0.35);
+}
+
 async function renderCart() {
     const cart = JSON.parse(localStorage.getItem("cart"));
     console.log(cart);
@@ -42,7 +69,7 @@ async function renderCart() {
         sumTotalProducts += 1;
         sumTotalQuantity += quantity;
         sumTotal += product.price * quantity;
-        sumDiscountedTotal += product.price * quantity;
+        sumDiscountedTotal = sumTotal * (1-getDiscount(sumTotalProducts, sumTotal));
 
         const productRow = createProductRow(product, quantity);
         productsContainer.innerHTML += productRow;
@@ -182,11 +209,12 @@ async function updateCartSummaryIncremental(cart) {
         sumTotalProducts += product.y;
     }
     console.log(sumTotalProducts)
+    sumDiscountedTotal = sumTotal * (1-getDiscount(sumTotalProducts, sumTotal));
 
 
     // Update the cart summary directly using jQuery
     $("#products").text(`items: ${sumTotalProducts}`);
-    $("#price").text(`$${sumTotal.toFixed(2)}`);
+    $("#price").text(`$${sumDiscountedTotal.toFixed(2)}`);
 }
 
 
@@ -200,8 +228,7 @@ function createTotalRow(product, quantity) {
 
     const discountedTotalPrice = document.createElement("div");
     discountedTotalPrice.classList.add("col-md-4");
-    discountedTotalPrice.innerHTML = `<p><strong>Discounted Total:</strong> $${(product.price * quantity).toFixed(2)}</p>`;
-
+    
     totalRow.appendChild(totalPrice);
     totalRow.appendChild(discountedTotalPrice);
     totalRow.appendChild(document.createElement("hr"));
@@ -211,7 +238,7 @@ function createTotalRow(product, quantity) {
 
 function updateCartSummary(sumTotal, sumDiscountedTotal, sumTotalProducts, sumTotalQuantity) {
     document.getElementById("products").innerHTML = `Items: ${sumTotalQuantity}`;
-    document.getElementById("price").innerHTML = `$${sumTotal.toFixed(2)}`;
+    document.getElementById("price").innerHTML = `$${sumDiscountedTotal.toFixed(2)}`;
 }
 
 async function loadCheckout() {

@@ -54,7 +54,7 @@ searchProducts();  // Starting the search from the get-go. Call it a gut feeling
 // Function to display product information in the results container
 const extracted = (product, resultsContainer) => {
     const productDiv = document.createElement("div");  // Creating a div to hold our product. It's like building a tiny home.
-    productDiv.className = "product card mb-3 col-12 col-sm-6 col-md-4 col-lg-4  mx-auto";  // Adjusted to make it responsive. We're fancy like that.
+    productDiv.className = "product card mb-3 col-6 mx-auto";  // Adjusted to make it responsive. We're fancy like that.
 
     // Now, let’s fill the div with actual product info. Prepare to be wowed.
     productDiv.innerHTML = `
@@ -168,7 +168,7 @@ const extracted = (product, resultsContainer) => {
             <div class="product-rating mb-3">
                 <h6 class="text-dark font-weight-bold">Rating:</h6>
                 <div class="rating-bar d-flex align-items-center">
-                <input type="number" id="rating-input-${product.product_id}" class="form-control" min="1" max="5" step="1" placeholder="Rate (1-5)" style="width: 100px; margin-right: 10px;" />
+                <input type="number" id="rating-input-${product.product_id}" class="form-control mx-1" min="1" max="5" step="1" placeholder="Rate (1-5)" style="width: 120px;" />
                 
                 </div>
             </div>
@@ -188,8 +188,10 @@ const extracted = (product, resultsContainer) => {
                 const reviewList = document.querySelector(`#offcanvas-modal-${product.product_id} .review-list`);
                 reviewList.innerHTML = ""; // Clear existing reviews
                 if (reviews.length > 0) {
-                    reviews.forEach(review => {
-                        reviewList.innerHTML += `<p class="text-dark"><strong>${review.user || "Anonymous"}:</strong> ${review.review} (Rating: ${review.rating}/5)</p>`;
+                    reviews.forEach(async review => {
+                        let user = (await api.post("/user/whothis", {"user_id": review.user_id})).data;
+                        console.log(user)
+                        reviewList.innerHTML += `<p class="text-dark"><strong>${user}:</strong> ${review.review} (Rating: ${review.rating}/5)</p>`;
                     });
                 } else {
                     reviewList.innerHTML = "<p class='text-muted'>No reviews yet. Be the first to review this product!</p>";

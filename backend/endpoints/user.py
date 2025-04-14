@@ -62,8 +62,9 @@ async def add_user(user: UserTable, session: SessionDep):
         session.add(user)
         session.commit()
         session.refresh(user)
+        print(f"sending email for {user.first_name}")
         send_email(
-            "waitwut8@gmail.com",
+            
             "waitwut8@gmail.com",
             "You have registered",
             generic_email(
@@ -74,9 +75,10 @@ async def add_user(user: UserTable, session: SessionDep):
                 "registration.html",
             ),
         )
+        print(f"sent email for {user.first_name}")
     except Exception as e:
-
-        raise HTTPException(status_code=400, detail="User already exists") from e
+        print(e)
+        raise HTTPException(status_code=400, detail=f"User already exists: {e}") from e
 
     return user
 

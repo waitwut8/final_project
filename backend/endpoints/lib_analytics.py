@@ -9,20 +9,23 @@ from dependencies import SessionDep
 def top_products(session: Session):
     """Top 20 products by quantity."""
     prod_q = {}
+    products = session.exec(select(Product)).all()
     for o in session.exec(select(Order)).all():
         
         items = [{'title': title, 'quantity': quantity} for title, quantity in Counter(o.items).items()]
         for item in items:
-            product = session.exec(select(Product).where(Product.product_id == item['title'])).first()
-            if product:
+            product = [p for p in products if p.product_id == item['title']]
+            if len(product) > 0:
+                product = product[0]
                 item['title'] = product.title
         for p in items:
             prod_q[p['title']] = prod_q.get(p['title'], 0) + p['quantity']
     top_products_list = [{'title': title, 'quantity': quantity} for title, quantity in sorted(prod_q.items(), key=lambda x: x[1], reverse=True)[:20]]
-    top_products_list = [[], []]
-    for i, (title, quantity) in enumerate(sorted(prod_q.items(), key=lambda x: x[1], reverse=True)[:20]):
-        top_products_list[0].append(title)
-        top_products_list[1].append(quantity)
+    top_products_list = [[item['title'] for item in top_products_list], [item['quantity'] for item in top_products_list]]
+    # top_products_list = [[], []]
+    # for i, (title, quantity) in enumerate(sorted(prod_q.items(), key=lambda x: x[1], reverse=True)[:20]):
+    #     top_products_list[0].append(title)
+    #     top_products_list[1].append(quantity)
 
     
     return top_products_list
