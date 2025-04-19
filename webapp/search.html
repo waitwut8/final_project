@@ -13,9 +13,7 @@
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/css/autoComplete.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    
-    <script src="js/bloodhound.min.js" ></script>
-    <script src="js/typeahead.bundle.min.js" ></script>
+
 
     <style>
         .accordion-button {
@@ -129,6 +127,17 @@
             color: #6c63ff;
             /* Change color of the value when active/focused */
         }
+
+        .price {
+            /* Use a bold, clean font */
+            font-size: 1.8rem;
+            /* Adjust size as needed */
+            font-weight: bold;
+            /* Make it bold */
+            color: red;
+            /* Set the color to red */
+
+        }
     </style>
 
 </head>
@@ -175,7 +184,7 @@
                             <div class="accordion-body">
                                 <div class="input-group mb-3">
                                     <div class="slidecontainer">
-                                        <input type="range" min="0" max="10000" value="0" step="10" class="slider"
+                                        <input type="range" min="0" max="37000" value="0" step="10" class="slider"
                                             id="myRange" data-output="sliderValue" data-label="Minimum">
                                         <p><span id="sliderValue" class="slider-value">Minimum:</span></p>
                                     </div>
@@ -222,7 +231,7 @@
 
             <!-- Product Search Section -->
             <div class="col-md-8">
-                <div class="text-center">
+                <div class="text-center visually-hidden">
                     <h1 class="mb-4">Product Search</h1>
                     <div class="input-group" id="bloodhound">
                         <input id="search-input" type="text" class="form-control typeahead"
@@ -233,6 +242,8 @@
                         </div>
                     </div>
                 </div>
+                <p class="mb-4 fs-1" id="search-result"></p>
+                <p class="mb-4 fs-3" id="search-result-breakdown"></p>
                 <div id="search-results" class="mt-4 row"></div>
             </div>
         </div>
@@ -244,40 +255,31 @@
     <script src="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js@1.17.8/dist/umd/index.production.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="js/bloodhound.min.js" defer></script>
+    <!-- <script src="js/typeahead.bundle.min.js" defer></script> -->
+    <script>
+        const script = document.createElement('script');
+        script.src = `js/typeahead.jquery.js?v=${new Date().getTime()}`;  // Timestamp as a cache-busting trick
+        script.defer = true;
+        document.body.appendChild(script);
+    </script>
+    
 
     <!-- Custom Scripts -->
-    <script src="js/scripts.js" ></script>
-    <script src="js/search copy.js"></script>
+    <script src="js/scripts.js" defer></script>
+    <script src="js/search.js" defer></script>
     <script>
         setModal_Login();
         loadUsername();
-        $(document).ready(function () {
-            function updateSlider($slider, $output, label) {
-                let value = Number($slider.val()).toLocaleString();
-                $output.text(`${label}: $${value}`);
-                localStorage.setItem(label, value)
-                console.log(value);
-            }
+        
+        // Use the promise to delay runFilters()
+        
 
-            $(".slider").each(function () {
-                let $slider = $(this);
-                let $output = $("#" + $slider.data("output"));
-                let label = $slider.data("label");
 
-                // Set initial value
-                updateSlider($slider, $output, label);
 
-                // Update on input
-                $slider.on("input", function () {
-                    updateSlider($slider, $output, label);
-                });
-                $slider.on("change", function () {
-                    searchProducts($("#search-input")[0].value);
-                });
-            });
-        });
+
 
     </script>
 

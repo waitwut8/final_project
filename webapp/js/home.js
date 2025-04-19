@@ -154,7 +154,7 @@ async function loadPosts() {
                     <div class="card h-100 shadow-sm border-0">
                         <img src="${randomImage}" class="card-img-top rounded-top" alt="Random Image">
                         <div class="card-body">
-                            <h5 class="card-title text-truncate text-primary fw-bold">${post.title}</h5>
+                            <h5 class="card-title text-truncate text-primary fw-bold">${post.title.replace(/<[^>]*>/g, '')}</h5>
                             <p class="card-text text-muted">${post.content.substring(0, 100)}...</p>
                             <p class="card-text">
                                 <span class="text-success"><i class="fas fa-thumbs-up"></i> ${post.likes}</span>
@@ -175,7 +175,7 @@ async function loadPosts() {
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header bg-primary text-white">
-                                <h5 class="modal-title" id="postModalLabel-${post.id}">${post.title}</h5>
+                                <h5 class="modal-title" id="postModalLabel-${post.id}">${post.title.replace(/<[^>]*>/g, '')}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
