@@ -28,3 +28,5 @@ async def get_plot_orders_over_time(session: SessionDep):
 async def get_prod_over_time(session: SessionDep):
     return prod_over_time(session)
 
+
+

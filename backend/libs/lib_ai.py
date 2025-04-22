@@ -85,9 +85,9 @@ def fetch_chat_response(client, model_name, user_message, temperature=0.7, top_p
     end_time = time.time()
     print(f"\nTime taken: {end_time - start_time:.2f} seconds")
 
-# Example usage for a support chatbot
-# fetch_chat_response(
-#     client,
-#     model_name,
-#     "Hi, I've tried adding items into my cart, but they don't seem to be saving. Can you help me with that? (Please provide a detailed response.)",
-# )
+
+fetch_chat_response(
+    client,
+    model_name,
+    "Hi, I've tried adding items into my cart, but they don't seem to be saving. Can you help me with that? (Please provide a detailed response.)",
+)
