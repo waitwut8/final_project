@@ -77,11 +77,11 @@
         }
 
         .fa-xl {
-            font-size: 2.75rem;
+            font-size: 1.5rem;
         }
 
         .nav-label {
-            font-size: large;
+            font-size: medium;
             margin: 0 0.5rem;
         }
         /* Logo Container */
@@ -90,14 +90,14 @@
   align-items: center;
   font-family: 'Poppins', sans-serif; /* Custom font from Google Fonts */
   font-weight: 700; /* Bold font weight */
-  font-size: 2.5rem; /* Increased size for the logo */
+  font-size: 1.25rem; /* Increased size for the logo */
   color: #ff5722; /* Vibrant orange color */
 }
 
 /* Shopping Cart Icon */
 .logo i {
-  font-size: 3rem; /* Larger icon size */
-  margin-right: 1rem; /* Increased space between icon and text */
+  font-size: 1.5rem; /* Larger icon size */
+  margin-right: 0.5rem; /* Increased space between icon and text */
   color: #ff5722; /* Match icon color with text */
 }
 
@@ -105,12 +105,12 @@
 .brand-name {
   text-transform: uppercase; /* Make text uppercase */
   letter-spacing: 1.5px; /* Add more spacing between letters */
-  font-size: 2.5rem; /* Larger font size for the brand name */
+  font-size: 1.25rem; /* Larger font size for the brand name */
 }
 
 /* Tagline */
 .tagline {
-  font-size: 1rem; /* Slightly larger font size for tagline */
+  font-size: 0.5rem; /* Slightly larger font size for tagline */
   color: #666; /* Subtle gray color for tagline */
   font-weight: 400; /* Normal font weight for tagline */
   margin-top: -5px; /* Slight adjustment to bring tagline closer */
@@ -130,7 +130,7 @@
     <nav class="navbar navbar-expand-lg navbar-light h-100">
         <div class="container-fluid">
             <!-- Left elements -->
-            <div class="d-flex">
+            <div class="d-flex col-3">
                 <!-- Brand -->
                 <!-- <a class="navbar-brand me-2 mb-3 d-flex align-items-center" href="#">
                 <img src="assets/images/logo.png" alt="MDB Logo">
@@ -151,30 +151,29 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Search Bar -->
-            <div class="col-2"></div>
+            
             <!-- Center elements -->
             <div class="collapse navbar-collapse ms-5" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item mx-5 me-lg-1">
+                    <li class="nav-item mx-4 me-lg-1">
                         <a class="nav-link d-flex align-items-center" href="index.html">
                             <i class="fa-regular fa-home link-primary fa-xl me-2"></i>
                             <span class="nav-label">Home</span>
                         </a>
                     </li>
-                    <li class="nav-item mx-5 me-lg-1">
+                    <li class="nav-item mx-4 me-lg-1">
                         <a class="nav-link d-flex align-items-center" href="login.html">
                             <i class="fa-regular fa-door-open link-primary fa-xl me-2"></i>
                             <span class="nav-label">Login</span>
                         </a>
                     </li>
-                    <li class="nav-item mx-5 me-lg-1">
+                    <li class="nav-item mx-4 me-lg-1">
                         <a class="nav-link d-flex align-items-center" href="search.html">
                             <i class="fa-regular fa-crate-apple link-primary fa-xl me-2"></i>
                             <span class="nav-label">Search</span>
                         </a>
                     </li>
-                    <li class="nav-item mx-5 me-lg-1">
+                    <li class="nav-item mx-4 me-lg-1">
                         <a class="nav-link d-flex align-items-center position-relative" href="cart.html">
                             <i class="fa-regular fa-cart-shopping link-primary fa-xl me-2"></i>
                             <span class="nav-label">Cart</span>
@@ -195,8 +194,8 @@
                     </li>
                 </ul>
             </div>
-            <form class="d-flex input-group w-auto mx-5 ">
-                <input type="search" class="form-control fs-4 h-100" placeholder="Search products..."
+            <form class="d-flex input-group w-auto mx-3 ">
+                <input type="search" class="form-control  h-100" placeholder="Search products..."
                     aria-label="Search" id="search-bar" />
                 <button class="btn btn-outline-primary" id="search-bar-button">
                     <i class="fa-solid fa-magnifying-glass"></i>
