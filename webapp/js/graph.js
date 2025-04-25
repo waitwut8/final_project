@@ -39,7 +39,12 @@
 async function makeGraph(url, ctx, type, title) {
     // Step 1: Beg the API to give us the goods
     const res = await api.get(url); // Just ask nicely. It usually works.
-
+    for (i = 0; i < 5; i++) {
+    res.data[0].pop()
+    res.data[1].pop()
+    res.data[0].shift()
+    res.data[1].shift() 
+    }// Remove the last item from both arrays. Why? Because we said so.
     // Step 2: Summon the chart from the depths of your browser’s soul
     new Chart(ctx, {
         type: type, // Could be 'bar', 'line', 'doughnut'... choose your fighter
@@ -57,7 +62,7 @@ async function makeGraph(url, ctx, type, title) {
                     beginAtZero: true // Because negative sales aren't a thing. Usually.
                 }
             },
-            aspectRatio: 1.2, // Keeps your chart from looking like a sad pancake
+            aspectRatio: 1.4, // Keeps your chart from looking like a sad pancake
             maintainAspectRatio: false // Say no to squished charts
         }
     });
@@ -69,5 +74,38 @@ async function makeGraph(url, ctx, type, title) {
     localStorage.setItem(title, res.data[2]);
 
     // Step 5: Return the full response, in case someone out there still cares about data integrity
+    return res;
+}
+async function makeGraphWithoutTrimming(url, ctx, type, title) {
+    // Step 1: Fetch the data without trimming
+    const res = await api.get(url);
+
+    // Step 2: Create the chart with the full data
+    new Chart(ctx, {
+        type: type,
+        data: {
+            labels: res.data[0],
+            datasets: [{
+                label: title,
+                data: res.data[1],
+                borderWidth: 0.25
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            aspectRatio: 1.4,
+            maintainAspectRatio: false
+        }
+    });
+
+    // Step 3: Log and store the third item in localStorage
+    console.log(res.data[2], title);
+    localStorage.setItem(title, res.data[2]);
+
+    // Step 4: Return the full response
     return res;
 }
