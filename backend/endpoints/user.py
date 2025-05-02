@@ -177,7 +177,33 @@ async def edit_profile(
     session.refresh(user)
     return user
 
+@router.post("/edit_user", dependencies=[Depends(JWTBearer())])
+async def edit_user(
+    request: Request,
+    session: SessionDep,
+    current_user=Depends(get_current_user),
+):
+    verify_user_role(session, current_user)
+    request_data = await request.json()
+    user_id = request_data.get("user_id")
+    user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
+    requested_user = UserTable(**request_data.get("requested_user"))
 
+    
+    
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    user.username = requested_user.username or user.username
+    user.email = requested_user.email or user.email
+    user.first_name = requested_user.first_name or user.first_name
+    user.last_name = requested_user.last_name or user.last_name
+    user.role = requested_user.role or user.role
+
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+    return user
 @router.post("/disable", dependencies=[Depends(JWTBearer())])
 async def disable(request: Request, session: SessionDep, current_user=Depends(get_current_user)):
     user_id = await request.json()
@@ -249,7 +275,6 @@ async def change_password(
     session.refresh(user)
     send_email(
         "waitwut8@gmail.com",
-        "waitwut8@gmail.com",
         "Password Change",
         generic_email({"first": user.first_name}, "password_change.html"),
     )
@@ -299,3 +324,41 @@ async def whothis(session: SessionDep, request: Request):
 @router.post("/is_token_active", dependencies=[Depends(JWTBearer())])
 async def is_token_active(current_user=Depends(get_current_user)):
     return {"active": True} if current_user else {"active": False}
+
+@router.post("/reset_password")
+async def reset_password(request: Request, session: SessionDep):
+    data = await request.json()
+    username = data.get("username")
+    email = data.get("email")
+    first_name = data.get("first_name")
+    last_name = data.get("last_name")
+    new_password = data.get("new_password")
+
+    if not all([username, email, first_name, last_name, new_password]):
+        raise HTTPException(status_code=400, detail="All fields are required")
+
+    user = session.exec(
+        select(UserTable).where(
+            UserTable.username == username,
+            UserTable.email == email,
+            UserTable.first_name == first_name,
+            UserTable.last_name == last_name,
+        )
+    ).first()
+
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found or details incorrect")
+
+    user.password = hash_password(new_password)
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+
+    send_email(
+        "waitwut8@gmail.com",
+        "Password Reset",
+        generic_email({"first": user.first_name}, "password_change.html"),
+    )
+
+    return {"message": "Password reset successfully"}
+

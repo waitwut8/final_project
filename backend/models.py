@@ -13,9 +13,22 @@ class Role(str, Enum):
     USER = "user"
     STAFF = "staff"
     GUEST = "guest"
+    moderator = ADMIN
 
 
 class UserTable(SQLModel, table=True):
+    __table_args__ = (UniqueConstraint('username', name='uq_username'),)
+    id: Optional[int] = Field(default=None, primary_key=True)
+    first_name: str
+    last_name: str
+    email: str
+    phone: str
+    username: str
+    password: str
+    image: str
+    role: Role
+    active: Optional[bool] = True
+class FakeUserTable(SQLModel, table=True):
     __table_args__ = (UniqueConstraint('username', name='uq_username'),)
     id: Optional[int] = Field(default=None, primary_key=True)
     first_name: str

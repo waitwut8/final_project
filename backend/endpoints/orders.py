@@ -4,7 +4,8 @@ from fastapi import HTTPException, APIRouter, Depends, Request
 from dependencies import SessionDep
 from libs.auth_jwt import get_current_user
 from libs.lib_sender import send_email, generic_email
-
+from .lib_analytics import generate_order
+import random
 import datetime
 # TODO: Replace with actual user email once users stop being fake and start getting real.
 
@@ -120,3 +121,38 @@ async def get_specific_order(
             raise HTTPException(status_code=403, detail="Unauthorized")
 
     return order
+@router.post("/generate")
+async def generate_orders(
+    request: Request,
+    session: SessionDep,
+    current_user=Depends(get_current_user)
+):
+    """
+    Generate a specified number of orders for testing or other purposes.
+    ADMIN ONLY.
+    """
+    payload = await request.json()
+    num_orders = payload.get("num_orders")
+
+    if not isinstance(num_orders, int) or num_orders <= 0:
+        raise HTTPException(status_code=400, detail="Invalid number of orders")
+
+    user_role = session.exec(
+        select(UserTable.role).where(UserTable.id == current_user.get("user_id"))
+    ).first()
+
+    if user_role != Role.ADMIN:
+        raise HTTPException(status_code=403, detail="Unauthorized")
+
+    generated_orders = []
+    for _ in range(num_orders):
+        random_user_id = session.exec(select(UserTable.id)).all()
+        if not random_user_id:
+            raise HTTPException(status_code=404, detail="No users found in the database")
+        new_order = generate_order(random.choice(random_user_id), session, random.choice([Status.PENDING, Status.PROCESSING, Status.COMPLETED, Status.CANCELLED]))
+        session.add(new_order)
+        generated_orders.append(new_order)
+
+    session.commit()
+
+    return {"message": f"{num_orders} orders generated successfully", "orders": generated_orders}

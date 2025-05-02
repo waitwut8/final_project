@@ -90,7 +90,7 @@ if (!window.location.href.endsWith("login.html")) {
 function addCards(list_of_items, productsContainer) {
     for (const product of list_of_items) {
         const productCard = `
-        <div class="col-lg-3 col-md-4 mb-5">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-5">
             <div class="card border-0 rounded-3 shadow-sm h-100">
                 <img src="${product.thumbnail.replaceAll('\"', '')}" alt="${product.title}" class="card-img-top rounded-top"> <!-- Thumbnail for that extra flair -->
 
@@ -150,7 +150,7 @@ async function loadPosts() {
             const randomImage = `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`; // Guaranteed to be vaguely artistic
 
             const postCard = `
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                     <div class="card h-100 shadow-sm border-0">
                         <img src="${randomImage}" class="card-img-top rounded-top" alt="Random Image">
                         <div class="card-body">

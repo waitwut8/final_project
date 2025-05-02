@@ -228,7 +228,7 @@ const extracted = (product, resultsContainer) => {
 
                 if (response.status === 200) {
                     const reviewList = document.querySelector(`#offcanvas-modal-${product.product_id} .review-list`);
-                    reviewList.innerHTML += `<p class="text-dark"><strong>Anonymous:</strong> ${reviewText} (Rating: ${ratingInput}/5)</p>`;
+                    reviewList.innerHTML += `<p class="text-dark"><strong>${localStorage.getItem("user_name")}:</strong> ${reviewText} (Rating: ${ratingInput}/5)</p>`;
                     document.getElementById(`review-text-${product.product_id}`).value = ""; // Clear the textarea
                     document.getElementById(`rating-input-${product.product_id}`).value = ""; // Clear the rating input
                 } else {

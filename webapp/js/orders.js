@@ -49,7 +49,7 @@ async function populate_table() {
             // Avoid multiple await calls: parallelize product title lookups
             const productPromises = Object.keys(itemCounts).map(id => searchForId(id));
             const productTitles = await Promise.all(productPromises);
-
+            let costSum = 0;
             for (let i = 0; i < productTitles.length; i++) {
                 const product = productTitles[i];
                 if (product && product.title) {
@@ -57,7 +57,9 @@ async function populate_table() {
                         <td>${index++}</td>
                         <td>${product.title}</td>
                         <td>${itemCounts[Object.keys(itemCounts)[i]]}</td>
+                        <td>$${product.price.toFixed(2)}</td>
                     </tr>`;
+                    costSum += product.price * itemCounts[Object.keys(itemCounts)[i]];
                 }
             }
 
@@ -85,9 +87,10 @@ if (username === "user does not exist") {
                             </div>
                             <div class="modal-body">
                                 <table class="table table-striped">
-                                    <tr><th>#</th><th>Name</th><th>Qty</th></tr>
+                                    <tr><th>#</th><th>Name</th><th>Qty</th><th>Price</th></tr>
                                     ${tooltip}
-                                    <tr><td></td><td><strong>Total</strong></td><td>${order.items.length}</td></tr>
+                                    <tr><td></td><td><strong>Total</strong></td><td>${order.items.length}</td><td></td></tr>
+                                    <tr><td></td><td><strong>Total cost</strong></td><td></td><td>$${costSum.toFixed(2)}</td></tr>
                                 </table>
                             </div>
                             <div class="modal-footer">
@@ -98,11 +101,12 @@ if (username === "user does not exist") {
                 </div>`;
 
             document.body.insertAdjacentHTML('beforeend', modalHTML);
-
+            orderColor = order.status === "pending" ? "warning" : order.status === "processing" ? "primary" : order.status === "completed" ? "success" : "danger";
+            orderColor = order.status === "cancelled" ? "danger" : orderColor; // Ensure cancelled orders are red
             const statusDropdown = `
                 <div class="btn-group">
-                    <button type="button" class="btn btn-danger">${order.status}</button>
-                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                    <button type="button" class="btn btn-outline-${orderColor}" data-bs-toggle="dropdown">${order.status}</button>
+                    <button type="button" class="btn btn-outline-${orderColor} dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
                         <span class="visually-hidden">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu">

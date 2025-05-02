@@ -84,7 +84,7 @@ function loadProducts() {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit product</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -138,11 +138,11 @@ async function edit(data) {
     data = (await api.get("/imagekit_auth")).data;
     let { token, expire: expiration, signature } = data;
 
-    let file = document.getElementById("file1");
+    
     if (file.files.length > 0) {
         console.log("Uploading image...");
         await imagekit.upload({
-            file: file.files[0],
+            file: document.getElementById("file1").files[0],
             fileName: `profile-${$("#inputUsername").val()}`,
             folder: "profiles",
             tags: ["tag1"],
@@ -169,7 +169,7 @@ async function edit(data) {
             });
 
             // Reload the page like nothing happened.
-            window.location.reload();
+            
         });
     } else {
         // No image file, just update the product as is.
@@ -183,7 +183,7 @@ async function edit(data) {
             'description': $('#productDescription').val().replaceAll('\n', ''),
             'images': [],
         });
-        window.location.reload();
+        
     }
 }
 
@@ -195,7 +195,7 @@ async function editProduct(data) {
 // Handle the edit button click. Who’s ready for changes?
 async function handleEdit() {
     edit();
-    localStorage.removeItem('url');
+   
 }
 
 // Initialize the DataTable because... we like smooth tables.
@@ -238,6 +238,16 @@ async function handleAdd() {
 
     let id = (await api.get("/product/next-id")).data;
     await uploadNewImage($("#addproductName").val());
+    console.log({
+        title: $("#addproductName").val(),
+        description: $("#addproductDescription").val(),
+        price: $("#addproductPrice").val(),
+        stock: $("#addproductStock").val(),
+        thumbnail: sessionStorage.getItem('url'),
+        tags: [],
+        images: [],
+        brand: '',
+    })
     await addProduct({
         title: $("#addproductName").val(),
         description: $("#addproductDescription").val(),
@@ -248,6 +258,7 @@ async function handleAdd() {
         images: [],
         brand: '',
     });
+    window.location.reload();
 }
 
 // Add a product to the server. Because, why not?
@@ -268,4 +279,5 @@ function handleDelete(id) {
     // Coming soon: Delete product functionality.
     api.delete("/product/delete/"+id, {'product_id':id});
     window.location.reload();
+    // window.location.reload();
 }

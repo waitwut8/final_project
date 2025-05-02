@@ -128,7 +128,7 @@ async def checkout(session: SessionDep, current_user=Depends(get_current_user)):
 
         # Send confirmation email
         context = {
-            "customer_name": current_user.get("username", "null"),
+            "customer_name": current_user.get("user_name", "null"),
             "order_items": email_items,
             "total_amount": total,
             "current_year": datetime.datetime.now().year,
