@@ -1,3 +1,4 @@
+is_admin()
 // Adding a product row to the table. Simple, just add it and draw.
 function addProductRow(list) {
     table.row.add(list).draw();
@@ -57,7 +58,7 @@ async function upload() {
 
 // Load products from the API and render them like a champ.
 function loadProducts() {
-    api.get("/product/").then(async (res) => {
+    api.get("/product/admin").then(async (res) => {
         for (const item of res.data) {
             
 

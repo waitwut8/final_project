@@ -16,28 +16,21 @@
     <!-- Font Awesome & Custom Styles -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css" />
     <link href="css/styles.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <link href="css/fa.css" rel="stylesheet" />
 
-    <!-- Custom styles for restyling -->
     <style>
-        /* Body Styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f7fa;
             color: #333;
-            margin: 0;
-            padding: 0;
         }
 
-        /* Header Styling */
         #header {
             background: #fff;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             padding: 15px 0;
         }
 
-        /* Hero Section */
         header {
             background: linear-gradient(135deg, #5a5c7f, #34495e);
             color: white;
@@ -65,23 +58,22 @@
             padding: 15px 30px;
             font-size: 1.1rem;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.3s ease-in-out;
         }
 
         header a.btn:hover {
             background-color: #ff5400;
         }
 
-        /* Product Card Styling */
         .card {
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
-        .card img {
-            border-bottom: 2px solid #f1f1f1;
-            border-radius: 10px;
+        .card-img-top {
+            width: 100%;
+            height: auto;
+            border-radius: 10px 10px 0 0;
         }
 
         .card-body {
@@ -92,7 +84,6 @@
         .card-title {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #333;
         }
 
         .badge {
@@ -103,7 +94,6 @@
         .card-text {
             color: #777;
             line-height: 1.5;
-            margin-bottom: 1.5rem;
         }
 
         .btn-gradient {
@@ -111,14 +101,12 @@
             color: white;
             padding: 12px 25px;
             border-radius: 30px;
-            transition: background 0.3s ease-in-out;
         }
 
         .btn-gradient:hover {
             background: linear-gradient(135deg, #4a42e6, #2470b7);
         }
 
-        /* Newsletter Section */
         aside.bg-primary {
             border-radius: 15px;
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
@@ -141,20 +129,12 @@
             padding: 12px 20px;
             font-size: 1rem;
             border: none;
-            transition: background-color 0.3s ease-in-out;
         }
 
         aside .input-group button:hover {
             background-color: #ff5400;
         }
 
-        aside small {
-            font-size: 0.85rem;
-            margin-top: 10px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Footer Styling */
         footer {
             background-color: #232323;
             color: white;
@@ -164,26 +144,15 @@
 
         footer a {
             color: #ff7b00;
-            text-decoration: none;
-            transition: color 0.3s ease;
         }
 
         footer a:hover {
             color: #ff5400;
         }
 
-        footer small {
-            font-size: 0.85rem;
-        }
-
-        /* Responsive Improvements */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
-            }
-
-            .card {
-                margin-bottom: 20px;
             }
 
             .card-body {
@@ -196,198 +165,193 @@
                 padding: 10px 15px;
             }
         }
+
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.95rem;
+            }
+
+            header a.btn {
+                font-size: 0.95rem;
+                padding: 10px 20px;
+            }
+
+            aside .input-group {
+                flex-direction: column;
+            }
+
+            aside .input-group input,
+            aside .input-group button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            aside .input-group button {
+                margin-bottom: 0;
+            }
+
+            footer small,
+            footer a {
+                font-size: 0.75rem;
+            }
+        }
     </style>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- minified snippet to load TalkJS without delaying your page -->
-<script>
-    (function(t,a,l,k,j,s){
-    s=a.createElement('script');s.async=1;s.src='https://cdn.talkjs.com/talk.js';a.head.appendChild(s)
-    ;k=t.Promise;t.Talk={v:3,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
-    .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
-    </script>
-
 </head>
 
 <body class="d-flex flex-column h-100">
 
-    <!-- Header -->
-    <div id="header"></div>
-    <!-- container element in which TalkJS will display a chat UI -->
-    <!-- container element in which TalkJS will display a chat UI -->
+<div id="header"></div>
 
-    <!-- Main Content -->
-    <main class="flex-shrink-0">
+<main class="flex-shrink-0">
+    <header class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row gx-5 align-items-center justify-content-between">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <h1 class="display-4 fw-bold mb-3" id="username">A modern product warehouse</h1>
+                    <p class="lead mb-4">Find everything you need here</p>
+                    <a href="#products" class="btn btn-primary btn-lg rounded-pill shadow-sm">
+                        Explore Products <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+                <div class="col-lg-5 text-center" id="banner"></div>
+            </div>
+        </div>
+    </header>
 
-        <!-- Hero Section -->
-        <header class="bg-dark text-white py-5 position-relative overflow-hidden">
-            <div class="container px-5">
-                <div class="row gx-5 align-items-center justify-content-between">
-                    <div class="col-lg-7 text-center text-lg-start">
-                        <h1 class="display-4 fw-bold mb-3" id="username">A modern product warehouse</h1>
-                        <p class="lead mb-4">Find everything you need here</p>
-                        <a href="#products" class="btn btn-primary btn-lg rounded-pill shadow-sm">
-                            Explore Products <i class="bi bi-arrow-right ms-2"></i>
-                        </a>
-                    </div>
-                    <div class="col-lg-5 text-center" id = "banner">
-                        
+    <section class="py-5" id="products">
+        <div class="container my-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Product Listings</h2>
+                <p class="lead text-muted">Just a sample of what we offer</p>
+            </div>
+            <div class="row gx-5" id="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="Product Image" />
+                        <div class="card-body">
+                            <span class="badge bg-primary rounded-pill mb-2">Product</span>
+                            <h5 class="card-title">
+                                <a class="text-decoration-none link-dark stretched-link" href="#">Blog Post Title</a>
+                            </h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <!-- Product Listings Section -->
-        <section class="py-5">
-            <div class="container px-5 my-5">
-                <div class="text-center mb-5">
-                    <h2 class="fw-bold">Product Listings</h2>
-                    <p class="lead text-muted">Just a sample of what we offer</p>
-                </div>
-
-                <div class="row gx-5" id="row">
-                    <div class="col-lg-3 mb-5">
-                        <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="Product Image" />
-                            <div class="card-body p-4">
-                                <span class="badge bg-primary bg-gradient rounded-pill mb-2">Product</span>
-                                <h5 class="card-title mb-3">
-                                    <a class="text-decoration-none link-dark stretched-link" href="#">Blog Post Title</a>
-                                </h5>
-                                <p class="card-text mb-0">
-                                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Featured Category Section -->
-                <section class="py-5">
-                    <div class="container px-5 my-5">
-                        <div class="text-center mb-5">
-                            
-                            <h2 class="lead text-muted" id = "tag-title"></h2>
-                        </div>
-                        <div class="row gx-5 justify-content-center" id = "tag-content">
-                            
-                        </div>
-                    </div>
-                </section>
-                
-                <section>
-                    <div class="container px-5 my-5">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h2 class="fw-bold">Posts</h2>
-                            <button class="btn btn-primary btn-lg rounded-pill shadow-sm" id="add-post-button" data-bs-toggle="modal" data-bs-target="#addPostModal">
-                                <i class="fas fa-plus me-2"></i> Add Post
-                            </button>
-                            <!-- Add Post Modal -->
-<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="addPostModalLabel">Add New Post</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="text-center mb-5">
+                <h2 class="lead text-muted" id="tag-title"></h2>
             </div>
-            <div class="modal-body">
-                
+            <div class="row gx-5 justify-content-center" id="tag-content"></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container my-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold">Posts</h2>
+                <button class="btn btn-primary btn-lg rounded-pill shadow-sm" id="add-post-button" data-bs-toggle="modal" data-bs-target="#addPostModal">
+                    <i class="fas fa-plus me-2"></i> Add Post
+                </button>
+            </div>
+            <div id="posts-container"></div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="addPostModalLabel">Add New Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
                     <div class="mb-3">
                         <label for="post-title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="post-title" placeholder="Enter post title" required>
+                        <input type="text" class="form-control" id="post-title" placeholder="Enter post title">
                     </div>
                     <div class="mb-3">
                         <label for="post-content" class="form-label">Content</label>
-                        <textarea class="form-control" id="post-content" rows="5" placeholder="Enter post content" required></textarea>
+                        <textarea class="form-control" id="post-content" rows="5" placeholder="Enter post content"></textarea>
                     </div>
-                    <button onclick = "event.preventDefault();handleAddPosts()" class="btn btn-primary">Submit</button>
-                
+                    <button onclick="event.preventDefault();handleAddPosts()" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-                        </div>
-                        <div id="posts-container"></div>
-                    </div>
-                </section>
-                <!-- Call to Action -->
-                <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5 text-white">
-                    <div class="d-flex flex-column flex-xl-row align-items-center justify-content-between">
-                        <div class="mb-4 mb-xl-0">
-                            <h3 class="fw-bold mb-2">New products, delivered to you.</h3>
-                            <p class="text-white-50">Sign up for our newsletter for the latest updates.</p>
-                        </div>
-                        <div class="ms-xl-4">
-                            <div class="input-group mb-2">
-                                <input class="form-control" type="email" placeholder="Email address..." aria-label="Email address" />
-                                <button class="btn btn-outline-light" type="button">Sign up</button>
-                            </div>
-                            <small class="text-white-50">
-                                We care about privacy, and will never share your data.
-                            </small>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </section>
-        
-    </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark py-4 mt-auto">
-        <div class="container px-5 text-white text-center">
-            <small>&copy; Your Website 2023</small>
-            <div>
-                <a class="link-light small me-2" href="#">Privacy</a>
-                <a class="link-light small me-2" href="#">Terms</a>
-                <a class="link-light small" href="#">Contact</a>
+    <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5 text-white">
+        <div class="d-flex flex-column flex-xl-row align-items-center justify-content-between">
+            <div class="mb-4 mb-xl-0">
+                <h3 class="fw-bold mb-2">New products, delivered to you.</h3>
+                <p class="text-white-50">Sign up for our newsletter for the latest updates.</p>
+            </div>
+            <div class="ms-xl-4">
+                <div class="input-group mb-2">
+                    <input class="form-control" type="email" placeholder="Email address..." aria-label="Email address" />
+                    <button class="btn btn-outline-light" type="button">Sign up</button>
+                </div>
+                <small class="text-white-50">We care about privacy, and will never share your data.</small>
             </div>
         </div>
-    </footer>
+    </aside>
+</main>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<footer class="bg-dark py-4 mt-auto">
+    <div class="container text-center">
+        <small>&copy; Your Website 2023</small>
+        <div>
+            <a class="link-light small me-2" href="#">Privacy</a>
+            <a class="link-light small me-2" href="#">Terms</a>
+            <a class="link-light small" href="#">Contact</a>
+        </div>
+    </div>
+</footer>
 
-    <!-- Custom Scripts -->
-    <script src="js/scripts.js"></script>
-    <script src="js/home.js"></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/home.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 
-    <script>
-        loadHome();
-        listenToNavBar();
-        
+<script>
+    loadHome();
+    listenToNavBar();
 
-        Talk.ready.then(function () {
-            const me = new Talk.User("sample_user_alice");
-            const session = new Talk.Session({
-                appId: 't4mx5qfW',
-                me: me,
-            });
+    Talk.ready.then(function () {
+        const me = new Talk.User("sample_user_alice");
+        const session = new Talk.Session({
+            appId: 't4mx5qfW',
+            me: me,
+        });
 
-            // Generate a random image URL for the AI assistant
-            const randomImage = `https://picsum.photos/150?random=${Math.floor(Math.random() * 1000)}`;
+        const randomImage = `https://picsum.photos/150?random=${Math.floor(Math.random() * 1000)}`;
+        const other = new Talk.User({
+            id: "123456",
+            name: "AI Assistant",
+            email: "ai@example.com",
+            photoUrl: randomImage,
+            welcomeMessage: "Hi there! How can I assist you today?",
+        });
 
-            const other = new Talk.User({
-                id: "123456",
-                name: "AI Assistant",
-                email: "ai@example.com",
-                photoUrl: randomImage, // Assign the random image URL here
-                welcomeMessage: "Hi there! How can I assist you today?",
-            });
+        const conversation = session.getOrCreateConversation(Talk.oneOnOneId(me, other));
+        conversation.setParticipant(me);
+        conversation.setParticipant(other);
 
-            const conversation = session.getOrCreateConversation(Talk.oneOnOneId(me, other));
-            conversation.setParticipant(me);
-            conversation.setParticipant(other);
-
-            const popup = session.createPopup();
-            popup.select(conversation);
-            popup.mount({ show: false });
-
-        })
-        </script>
-    <!-- minified snippet to load TalkJS without delaying your page -->
-
-
+        const popup = session.createPopup();
+        popup.select(conversation);
+        popup.mount({ show: false });
+    });
+</script>
 </body>
-
 </html>

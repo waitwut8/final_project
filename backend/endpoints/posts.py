@@ -52,5 +52,14 @@ async def get_random_posts(session: SessionDep, request: Request):
 
     # Sample some chaotic content
     random_posts = random.sample(all_posts, min(len(all_posts), limit))
+    random_posts_2 = deepcopy(random_posts)
+    for post in random_posts:
+        post.views = (post.views or 0) + 1
+        if random.choice([True, False]):
+            post.likes = (post.likes or 0) + random.randint(1, 10)
+        else:
+            post.dislikes = (post.dislikes or 0) + random.randint(1, 10)
+        session.add(post)
+    session.commit()
 
-    return random_posts
+    return random_posts_2

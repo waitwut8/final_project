@@ -1,2 +1,2 @@
 ./rotate_key.sh
-uvicorn api:app
+uvicorn api:app --log-level trace

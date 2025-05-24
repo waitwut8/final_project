@@ -17,104 +17,97 @@
     <link href="css/fa.css" rel="stylesheet">
 
     <style>
-        /* Navbar Styling */
+        /* Custom light blue color */
+        :root {
+            --light-blue: #4da6ff;
+        }
+
+        /* Shrink navbar padding */
         .navbar {
-            background: #ffffff;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 0.75rem 1.5rem;
+            padding-top: 0.3rem !important;
+            padding-bottom: 0.3rem !important;
         }
 
-        .navbar-brand img {
-            height: 28px;
-        }
-
-        .nav-link {
-            font-size: 1.1rem;
+        /* Nav link styling */
+        .navbar-nav .nav-link {
+            color: var(--light-blue) !important;
+            font-size: 0.9rem;
             font-weight: 500;
-            color: #333 !important;
-            transition: all 0.3s ease-in-out;
+            transition: color 0.3s ease;
         }
 
-        .nav-link:hover {
-            color: #0056b3 !important;
-            transform: scale(1.05);
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link:focus {
+            color: #1a73e8 !important; /* Slightly darker on hover */
         }
 
-        /* Icon Styling */
-        .nav-item {
-            text-align: center;
+        /* Icons smaller and light blue */
+        .navbar-nav .fa-regular,
+        .navbar-nav .fa-solid {
+            font-size: 1.1rem;
+            color: var(--light-blue);
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
-        .fa-regular {
-            font-size: 1.6rem;
-            display: block;
-            transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
-        }
-
-        .fa-regular:hover {
-            color: #007bff !important;
+        .navbar-nav .nav-link:hover .fa-regular,
+        .navbar-nav .nav-link:hover .fa-solid {
+            color: #1a73e8;
             transform: scale(1.1);
         }
 
-        /* Small text under icons */
-        .nav-label {
-            font-size: 0.8rem;
-            color: #555;
-            margin-top: 2px;
+        /* Smaller horizontal spacing on nav items */
+        .navbar-nav .nav-item {
+            margin-left: 0.5rem !important;
+            margin-right: 0.5rem !important;
         }
 
-        /* Responsive Navbar */
-        @media (max-width: 992px) {
-            .navbar-nav {
-                text-align: center;
-            }
-
-            .nav-link {
-                display: inline-block;
-                width: 100%;
-                padding: 0.75rem 0;
-            }
+        /* Search form smaller input and button */
+        form.d-flex input#search-bar {
+            font-size: 0.85rem;
+            height: 32px; /* smaller input */
         }
 
-        .fa-xl {
-            font-size: 1.5rem;
+        form.d-flex button#search-bar-button {
+            font-size: 0.9rem;
+            height: 32px;
+            border-color: var(--light-blue);
+            color: var(--light-blue);
         }
 
-        .nav-label {
-            font-size: medium;
-            margin: 0 0.5rem;
+        form.d-flex button#search-bar-button:hover {
+            background-color: var(--light-blue);
+            color: white;
         }
-        /* Logo Container */
-.logo {
-  display: flex;
-  align-items: center;
-  font-family: 'Poppins', sans-serif; /* Custom font from Google Fonts */
-  font-weight: 700; /* Bold font weight */
-  font-size: 1.25rem; /* Increased size for the logo */
-  color: #ff5722; /* Vibrant orange color */
-}
 
-/* Shopping Cart Icon */
-.logo i {
-  font-size: 1.5rem; /* Larger icon size */
-  margin-right: 0.5rem; /* Increased space between icon and text */
-  color: #ff5722; /* Match icon color with text */
-}
+        /* Dropdown menu link colors */
+        .dropdown-menu a.dropdown-item {
+            color: var(--light-blue);
+            font-size: 0.9rem;
+        }
 
-/* Brand Name */
-.brand-name {
-  text-transform: uppercase; /* Make text uppercase */
-  letter-spacing: 1.5px; /* Add more spacing between letters */
-  font-size: 1.25rem; /* Larger font size for the brand name */
-}
+        .dropdown-menu a.dropdown-item:hover {
+            background-color: #cce5ff;
+            color: #004085;
+        }
 
-/* Tagline */
-.tagline {
-  font-size: 0.5rem; /* Slightly larger font size for tagline */
-  color: #666; /* Subtle gray color for tagline */
-  font-weight: 400; /* Normal font weight for tagline */
-  margin-top: -5px; /* Slight adjustment to bring tagline closer */
-}
+        /* Username button smaller and blue */
+        .btn-primary.dropdown-toggle {
+            background-color: var(--light-blue);
+            border-color: var(--light-blue);
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .btn-primary.dropdown-toggle:hover {
+            background-color: #1a73e8;
+            border-color: #1a73e8;
+        }
+
+        /* Shrink logo image */
+        .navbar-brand img {
+            max-height: 32px;
+            width: auto;
+        }
     </style>
 
     <!-- jQuery, Axios & Lodash -->
@@ -126,106 +119,94 @@
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light h-100">
-        <div class="container-fluid">
-            <!-- Left elements -->
-            <div class="d-flex col-3">
-                <!-- Brand -->
-                <!-- <a class="navbar-brand me-2 mb-3 d-flex align-items-center" href="#">
-                <img src="assets/images/logo.png" alt="MDB Logo">
-            </a> -->
-                <!-- Link to Google Fonts -->
-                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-2">
+    <div class="container-fluid">
+        <!-- Logo and brand -->
 
-                <div class="logo">
-                    <i class="bi bi-cart"></i> <!-- Shopping cart icon -->
-                    <div class = "w-100">
-                        <span class="brand-name">The Shopping Site</span>
-                        <div class="tagline">Your one-stop shop for everything!</div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Navbar Toggler (for Mobile) -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <!-- Center elements -->
-            <div class="collapse navbar-collapse ms-5" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item mx-4 me-lg-1">
-                        <a class="nav-link d-flex align-items-center" href="index.html">
-                            <i class="fa-regular fa-home link-primary fa-xl me-2"></i>
-                            <span class="nav-label">Home</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-4 me-lg-1">
-                        <a class="nav-link d-flex align-items-center" href="login.html">
-                            <i class="fa-regular fa-door-open link-primary fa-xl me-2"></i>
-                            <span class="nav-label">Login</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-4 me-lg-1">
-                        <a class="nav-link d-flex align-items-center" href="search.html">
-                            <i class="fa-regular fa-crate-apple link-primary fa-xl me-2"></i>
-                            <span class="nav-label">Search</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-4 me-lg-1">
-                        <a class="nav-link d-flex align-items-center position-relative" href="cart.html">
-                            <i class="fa-regular fa-cart-shopping link-primary fa-xl me-2"></i>
-                            <span class="nav-label">Cart</span>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                id='cart-count' style="font-size: 0.6rem">
-                                3
-                                <span class="visually-hidden">unread messages</span>
-                            </span>
-                        </a>
 
-                    </li>
-                    <li class="nav-item mx-5 me-lg-1">
-                        <a class="nav-link d-flex align-items-center" onclick="logout()">
-                            <i class="fa-regular fa-right-from-bracket link-primary fa-xl me-2"></i>
-                            <span class="nav-label">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <form class="d-flex input-group w-auto mx-3 ">
-                <input type="search" class="form-control  h-100" placeholder="Search products..."
-                    aria-label="Search" id="search-bar" />
-                <button class="btn btn-outline-primary" id="search-bar-button">
+                    <img class = "img-fluid" src="assets/img.png">
+
+
+
+
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Navbar links -->
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
+                <li class="nav-item mx-lg-3 my-1 my-lg-0">
+                    <a class="nav-link d-flex align-items-center justify-content-center" href="index.html">
+                        <i class="fa-regular fa-home fa-xl me-1"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item mx-lg-3 my-1 my-lg-0">
+                    <a class="nav-link d-flex align-items-center justify-content-center" href="login.html">
+                        <i class="fa-regular fa-door-open fa-xl me-1"></i>
+                        <span>Login</span>
+                    </a>
+                </li>
+                <li class="nav-item mx-lg-3 my-1 my-lg-0">
+                    <a class="nav-link d-flex align-items-center justify-content-center" href="search.html">
+                        <i class="fa-regular fa-crate-apple fa-xl me-1"></i>
+                        <span>Search</span>
+                    </a>
+                </li>
+                <li class="nav-item mx-lg-3 my-1 my-lg-0 position-relative">
+                    <a class="nav-link d-flex align-items-center justify-content-center" href="cart.html">
+                        <i class="fa-regular fa-cart-shopping fa-xl me-1"></i>
+                        <span>Cart</span>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                              id="cart-count" style="font-size: 0.6rem;">
+              3
+              <span class="visually-hidden">items in cart</span>
+            </span>
+                    </a>
+                </li>
+                <li class="nav-item mx-lg-3 my-1 my-lg-0">
+                    <a class="nav-link d-flex align-items-center justify-content-center" href="#" onclick="logout()">
+                        <i class="fa-regular fa-right-from-bracket fa-xl me-1"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Search form -->
+            <form class="d-flex mt-3 mt-lg-0 ms-lg-3 w-100 w-lg-auto" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search products..." aria-label="Search" id="search-bar">
+                <button class="btn btn-outline-primary" id="search-bar-button" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
-            <!-- Right elements (User Profile) -->
-            <ul class="navbar-nav flex-row me-5">
-                <li class="nav-item mx-5 me-lg-1">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-primary username-title"><i
-                                class="fa-solid fa-circle-user"></i></button>
-                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                            data-bs-toggle="dropdown">
-                            <span class="visually-hidden">Profile</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                            <li><a class="dropdown-item" href="order_tracking.html" id="order-logged-in">Orders</a></li>
-                            <li><a class="dropdown-item" href="order_form.html" id="order-not-logged-in">Track Your
-                                    Order</a></li>
-                            <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
-                        </ul>
 
-                    </div>
+            <!-- User profile dropdown -->
+            <ul class="navbar-nav ms-lg-3 mt-3 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <button class="btn btn-primary dropdown-toggle d-flex align-items-center" id="profileDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-circle-user me-1"></i> Username
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                        <li><a class="dropdown-item" href="order_tracking.html" id="order-logged-in">Orders</a></li>
+                        <li><a class="dropdown-item" href="order_form.html" id="order-not-logged-in">Track Your Order</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Bootstrap Scripts -->
+
+<!-- Bootstrap Scripts -->
     <script>
         loadCartCount()
         $("#search-bar-button").on("click", function (e) {

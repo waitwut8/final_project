@@ -215,3 +215,24 @@ function redirect_to_search() {
 function triggerSearchEmptyModel() {
     console.log("welp this is awkward");
 }
+
+async function check_role(){
+    try {
+        return await api.get("/user/check_role")
+    }
+    catch (error) {
+        triggerHome()
+    }
+}
+function triggerHome(){
+    alert("Hey, you aren't supposed to be here...")
+    window.location.href="index.html"
+}
+async function is_admin(){
+    let role = await check_role()
+    console.log(role.data.role)
+    role = role.data.role
+    if (role != "admin"){
+        triggerHome()
+    }
+}

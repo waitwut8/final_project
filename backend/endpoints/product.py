@@ -23,7 +23,17 @@ router = APIRouter(
 def get_products(session: SessionDep):
     products = session.exec(select(Product)).all()
     return products
-
+@router.get("/admin", dependencies=[Depends(JWTBearer)])
+def get_products_admin(session: SessionDep, current_user=Depends(get_current_user)):
+    role = (
+        session.exec(
+            select(UserTable).where(UserTable.id == current_user.get("user_id"))
+        ).first()
+    ).role
+    if role != Role.ADMIN:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    products = session.exec(select(Product)).all()
+    return products
 @router.get("/random")
 def get_random_products(session: SessionDep):
     products = session.exec(select(Product)).all()

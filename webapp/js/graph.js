@@ -62,8 +62,14 @@ async function makeGraph(url, ctx, type, title) {
                     beginAtZero: true // Because negative sales aren't a thing. Usually.
                 }
             },
-            aspectRatio: 1.4, // Keeps your chart from looking like a sad pancake
-            maintainAspectRatio: false // Say no to squished charts
+            aspectRatio: 2, // Keeps your chart from looking like a sad pancake
+            responsive: true, // Makes it look good on all devices. Even your grandma's flip phone.
+            maintainAspectRatio: false, // Say no to squished charts
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
         }
     });
 

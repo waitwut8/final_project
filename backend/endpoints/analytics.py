@@ -6,27 +6,30 @@ from libs.auth_jwt import get_current_user
 from endpoints.lib_analytics import top_products, rev_over_time, plot_orders_over_time, prod_over_time, generate_order
 
 import random
+
 router = APIRouter(
     prefix="/analytics",
     tags=["analytics"],
     responses={404: {"description": "Not found"}},
 )
 
+def admin_required(user=Depends(get_current_user)):
+    if not user or not getattr(user, "role", "ADMIN"):
+        raise HTTPException(status_code=403, detail="Admin access required")
+    return user
+
 @router.get("/get_top_products")
-async def get_top_products(session: SessionDep):
+async def get_top_products(session: SessionDep, user=Depends(admin_required)):
     return top_products(session)
 
 @router.get("/get_revenue_over_time")
-async def get_revenue_over_time(session: SessionDep):
+async def get_revenue_over_time(session: SessionDep, user=Depends(admin_required)):
     return rev_over_time(session)
 
 @router.get("/get_orders_over_time")
-async def get_plot_orders_over_time(session: SessionDep):
+async def get_plot_orders_over_time(session: SessionDep, user=Depends(admin_required)):
     return plot_orders_over_time(session)
 
 @router.get("/get_products_over_time")
-async def get_prod_over_time(session: SessionDep):
+async def get_prod_over_time(session: SessionDep, user=Depends(admin_required)):
     return prod_over_time(session)
-
-
-

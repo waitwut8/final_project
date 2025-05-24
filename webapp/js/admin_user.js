@@ -1,3 +1,4 @@
+is_admin()
 const datatable = new DataTable('#userTable');
 function dismissModal() {
     console.log("Modal dismissed")

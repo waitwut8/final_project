@@ -1,3 +1,4 @@
+is_admin()
 makeGraph("/analytics/get_top_products", getDoc("mostSold"), 'bar', 'Products Sold')
 const fmter = new Intl.NumberFormat(
     'en-US', {

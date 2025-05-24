@@ -37,10 +37,10 @@ def decode_jwt(token: str) -> dict:
     try:
         return jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
     except jwt.ExpiredSignatureError:
-        print("🔒 Token has expired. RIP.")
+        print("Token has expired.")
         return {}
     except jwt.InvalidTokenError:
-        print(f"🚫 Invalid token: {token}")
+        print("Invalid token")
         return {}
 
 
@@ -91,11 +91,11 @@ class JWTBearer(HTTPBearer):
     async def __call__(self, request: Request):
         credentials: HTTPAuthorizationCredentials = await super().__call__(request)
         if not credentials:
-            raise HTTPException(status_code=401, detail="🛑 No credentials provided.")
+            raise HTTPException(status_code=401, detail="No credentials provided.")
         if credentials.scheme != "Bearer":
-            raise HTTPException(status_code=401, detail="🧢 Invalid authentication scheme.")
+            raise HTTPException(status_code=401, detail="Invalid authentication scheme.")
         if not self.verify_jwt(credentials.credentials):
-            raise HTTPException(status_code=401, detail="💀 Invalid or expired token.")
+            raise HTTPException(status_code=401, detail="Invalid or expired token.")
         return credentials.credentials
 
     def verify_jwt(self, jwt_token: str) -> bool:

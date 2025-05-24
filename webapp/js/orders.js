@@ -1,5 +1,5 @@
 let table = new DataTable('#orders');
-
+is_admin()
 // Make `counter` synchronous – it's just counting.
 function counter(arr) {
     return arr.reduce((counts, item) => {
@@ -103,7 +103,7 @@ if (username === "user does not exist") {
             document.body.insertAdjacentHTML('beforeend', modalHTML);
             orderColor = order.status === "pending" ? "warning" : order.status === "processing" ? "primary" : order.status === "completed" ? "success" : "danger";
             orderColor = order.status === "cancelled" ? "danger" : orderColor; // Ensure cancelled orders are red
-            const statusDropdown = `
+            let statusDropdown = `
                 <div class="btn-group">
                     <button type="button" class="btn btn-outline-${orderColor}" data-bs-toggle="dropdown">${order.status}</button>
                     <button type="button" class="btn btn-outline-${orderColor} dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
@@ -116,6 +116,13 @@ if (username === "user does not exist") {
                         <li><a class="dropdown-item" onclick="updateStage('${order.id}', 3)">Set to Cancelled</a></li>
                     </ul>
                 </div>`;
+            if (order.status == "completed" || order.status == "cancelled"){
+                statusDropdown=`
+                <div class = "btn-group">
+                    <button type="button" class = "btn btn-outline-${orderColor}" onclick='alert("Orders that are completed or cancelled cannot be changed.")'>${order.status}</button>
+                </div>
+                `
+            }
 
             table.row.add([
                 order.id,

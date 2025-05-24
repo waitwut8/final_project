@@ -6,7 +6,7 @@ from dependencies import SessionDep
 from libs.schemas import LoginInfo
 from libs.auth_jwt import sign_jwt, JWTBearer, decode_jwt, get_current_user
 from models import Role, LoginPayload
-from utils import hash_password, verify_password
+from utils import hash_password, verify_password, generate_code_from_string
 from copy import deepcopy
 
 from libs.lib_sender import *
@@ -17,7 +17,13 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-
+@router.get("/check_role", dependencies=[Depends(JWTBearer())])
+async def check_role(session: SessionDep, current_user=Depends(get_current_user)):
+    user_id = current_user.get("user_id")
+    user = session.exec(select(UserTable).where(UserTable.id == user_id)).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {"role": user.role}
 @router.get("/whoami", dependencies=[Depends(JWTBearer())])
 async def whoami(session: SessionDep, current_user=Depends(get_current_user)):
 
@@ -136,7 +142,9 @@ def check_login(user: LoginInfo, session: SessionDep) -> object:
     ).first()
     if user_info is None:
         raise HTTPException(status_code=404, detail="User not found")
-
+    if not user_info.active:
+        raise HTTPException(status_code=403, detail="User is disabled")
+    
     if verify_password(user.password, user_info.password):
         return user_info
     else:
@@ -328,37 +336,42 @@ async def is_token_active(current_user=Depends(get_current_user)):
 @router.post("/reset_password")
 async def reset_password(request: Request, session: SessionDep):
     data = await request.json()
+    code = data.get("code")
     username = data.get("username")
-    email = data.get("email")
-    first_name = data.get("first_name")
-    last_name = data.get("last_name")
-    new_password = data.get("new_password")
-
-    if not all([username, email, first_name, last_name, new_password]):
-        raise HTTPException(status_code=400, detail="All fields are required")
-
-    user = session.exec(
-        select(UserTable).where(
-            UserTable.username == username,
-            UserTable.email == email,
-            UserTable.first_name == first_name,
-            UserTable.last_name == last_name,
-        )
-    ).first()
-
-    if user is None:
-        raise HTTPException(status_code=404, detail="User not found or details incorrect")
-
+    new_password = data.get("password")
+    print(data)
+    if not code or not username or not new_password:
+        raise HTTPException(status_code=400, detail="Missing required fields")
+    user = session.exec(select(UserTable).where(UserTable.username == username)).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    if  generate_code_from_string(user.username) != code:
+        raise HTTPException(status_code=400, detail="Invalid code")
     user.password = hash_password(new_password)
     session.add(user)
     session.commit()
     session.refresh(user)
 
+@router.post("/send_reset_code")
+async def send_reset_code(request: Request, session: SessionDep):
+    data = await request.json()
+    username = data.get("username")
+    if not username:
+        raise HTTPException(status_code=400, detail="Missing required fields")
+    user = session.exec(select(UserTable).where(UserTable.username == username)).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    code = generate_code_from_string(user.username)
     send_email(
-        "waitwut8@gmail.com",
-        "Password Reset",
-        generic_email({"first": user.first_name}, "password_change.html"),
+        receiver="waitwut8@gmail.com",
+        subject="Password Reset Code",
+        message=generic_email(
+            {
+                "first": user.first_name,
+                "username": user.username,
+                "code": code,
+            },
+            "password_reset.html",
+        ),
     )
-
-    return {"message": "Password reset successfully"}
 

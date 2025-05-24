@@ -113,9 +113,13 @@
     <form method="post" id="loginform">
         <input type="text" name="username" placeholder="Username" required class = "my-5">
         <input type="password" name="password" placeholder="Password" required>
-        <p class="hidden text-danger mb-0"  style="font-size: 1.1rem;">
-            <i class="fas fa-rectangle-xmark"></i> Wrong password
+        <p class="hidden text-danger mb-0"  id = "wrong_credentials" style="font-size: 1.1rem;">
+            <i class="fas fa-rectangle-xmark"></i> Wrong username or password
             </p>
+        <p class = "hidden text-danger mb-0" id = "disabled_account" style = "font-size: 1.1rem;">
+            <i class="fas fa-rectangle-xmark"></i> Your account has been disabled
+        </p>
+        </p>
         <button type="submit">Login</button>
         
     </form>
@@ -123,6 +127,7 @@
     <!-- Footer Text -->
     <div class="footer-text">
         <p>Don't have an account? <a href="register.html">Register here</a></p>
+        <p>Forgot your password? <a href="forgot_password.html">Reset it here</a></p>
     </div>
 </div>
 

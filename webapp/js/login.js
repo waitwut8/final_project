@@ -34,13 +34,24 @@ function login(form) {
       } 
     }
     catch(e){
-      $(`.mb-0`).removeClass("hidden").addClass("pop-in");
+        console.log(e)
+        if (e.status === 403){
+            $(`#disabled_account`).removeClass("hidden").addClass("pop-in");
+
+            setTimeout(() => {
+                $(`#disabled_account`).removeClass("pop-in").addClass("fade-out");
+            }, 12000);
+
+            $(`#disabled_account`).removeClass("fade-out").addClass("hidden");
+            return 0;
+        }
+      $(`#wrong_credentials`).removeClass("hidden").addClass("pop-in");
 
         setTimeout(() => {
-            $(`.mb-0`).removeClass("pop-in").addClass("fade-out");
+            $(`#wrong_credentials`).removeClass("pop-in").addClass("fade-out");
         }, 12000);
 
-        $(`.mb-0`).removeClass("fade-out").addClass("hidden");
+        $(`#wrong_credentials`).removeClass("fade-out").addClass("hidden");
     }
     });
   }
